@@ -17,8 +17,6 @@ Python for Science / Basics
 The GitHub repository of this project : `Python for Science / Basics <https://github.com/IOGS-LEnsE-training/python-for-science>`_
 
 
-Basic concepts categories
-*************************
 
 .. toctree::
    :maxdepth: 1
@@ -26,7 +24,7 @@ Basic concepts categories
    
 
 About the LEnsE
-***************
+###############
 
 This is a test.
 
