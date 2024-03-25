@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interactive way or scripts &mdash; Python for Science / Basics 0.1 documentation</title>
+  <title>Different ways to run Python code &mdash; Python for Science / Basics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data types in Python" href="python_data.html" />
+    <link rel="next" title="First steps with Python" href="python.html" />
     <link rel="prev" title="Python requirements for Scientific use" href="python_install.html" /> 
 </head>
 
@@ -50,15 +50,23 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="python.html">     Starting with Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="python_prepare.html">     Preparing Python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_gen.html">     What is Python ?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_install.html">     Python installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">     Interactive or scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_data.html">     Data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_control.html">     Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_functions.html">     Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">     Work Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-interpreter-python-repl">Interactive Interpreter (Python REPL)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#script-execution">Script Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrated-development-environments">Integrated Development Environments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#idle-from-python">IDLE from Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spyder-anaconda-distribution">Spyder / Anaconda distribution</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">     Starting with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_matplotlib.html">     Numpy and Matplotlib Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list_array.html">     Lists vs Arrays</a></li>
@@ -82,8 +90,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="python.html">Starting with Python</a></li>
-      <li class="breadcrumb-item active">Interactive way or scripts</li>
+          <li class="breadcrumb-item"><a href="python_prepare.html">Preparing Python</a></li>
+      <li class="breadcrumb-item active">Different ways to run Python code</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/contents/python_scripts.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -93,9 +101,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="interactive-way-or-scripts">
-<span id="python-scripts"></span><h1>Interactive way or scripts<a class="headerlink" href="#interactive-way-or-scripts" title="Link to this heading"></a></h1>
-<p>JupyterLab is a web-based interactive development environment for Jupyter notebooks. It allows you to create and edit Python code in a notebook-style interface, with support for markdown, code execution, and visualization.</p>
+  <section id="different-ways-to-run-python-code">
+<span id="python-scripts"></span><h1>Different ways to run Python code<a class="headerlink" href="#different-ways-to-run-python-code" title="Link to this heading"></a></h1>
+<p>There are several ways to <strong>run Python code</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Interactive Interpreter (Python REPL)</strong>: This is the most basic way to run Python code. You can open a command prompt or terminal and type <cite>python</cite> to enter the Python interactive interpreter. Then you can type Python code directly and execute it line by line.</p></li>
+<li><p><strong>Script Execution</strong>: Python code is written in a text file and then executed using the Python interpreter.</p></li>
+<li><p><strong>Integrated Development Environments (IDEs)</strong>: IDEs provide a complete environment for writing, debugging, and running code.</p></li>
+<li><p><strong>Jupyter Notebooks</strong>: Jupyter Notebooks are interactive documents that combine code, visualizations, and explanatory text.</p></li>
+<li><p><strong>Online Platforms</strong>: There are online platforms and services that allow you to write and execute Python code directly in your web browser without installing anything locally. Examples include <em>Google Colab</em>, <em>Repl.it</em>, and <em>Jupyter Online</em>.</p></li>
+</ol>
+<section id="interactive-interpreter-python-repl">
+<h2>Interactive Interpreter (Python REPL)<a class="headerlink" href="#interactive-interpreter-python-repl" title="Link to this heading"></a></h2>
+<p>A <abbr title="Read-Eval-Print Loop">REPL</abbr> is an interactive programming environment that allows you to <strong>enter commands which are then executed immediately</strong>, and the results are displayed.</p>
+<p><em>Python</em>’s standard interactive interpreter provides a REPL environment, where you can type <em>Python</em> expressions or statements and see their results immediately.</p>
+<p>To execute <em>Python</em> instructions directly in its REPL, you can start it from the command line with <code class="code docutils literal notranslate"><span class="pre">python</span></code> in a command shell (<code class="code docutils literal notranslate"><span class="pre">cmd</span></code> in Microsoft Windows).</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/cmd_shell_python.png"><img alt="../_images/cmd_shell_python.png" src="../_images/cmd_shell_python.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Example of execution of an instruction in a Python REPL.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Then you can run any instruction and see its result.</p>
+</section>
+<section id="script-execution">
+<h2>Script Execution<a class="headerlink" href="#script-execution" title="Link to this heading"></a></h2>
+<p>Script execution refers to running <em>Python</em> code stored in <strong>script files</strong> (<code class="file docutils literal notranslate"><span class="pre">.py</span></code> files). While a REPL allows you to execute Python code interactively line by line, script execution involves running a <strong>complete Python script</strong> from start to finish.</p>
+<p>A common method to run a script is to execute from the command line or terminal by navigating to the directory containing the script and using the python command followed by the script’s filename. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>script.py
+</pre></div>
+</div>
+</section>
+<section id="integrated-development-environments">
+<h2>Integrated Development Environments<a class="headerlink" href="#integrated-development-environments" title="Link to this heading"></a></h2>
+<p>Integrated Development Environments, like <em>PyCharm</em>, <em>Visual Studio Code</em> or <em>Spyder</em> provide a convenient interface for writing, debugging, and executing Python scripts. You can simply open the script file in the IDE and run it using the provided tools.</p>
+<section id="idle-from-python">
+<h3>IDLE from Python<a class="headerlink" href="#idle-from-python" title="Link to this heading"></a></h3>
+<p>The <abbr title="Integrated Development and Learning Environment">IDLE</abbr> provided by <em>Python</em> is a simple IDE. You can start it from your start menu by selecting <span class="menuselection">IDLE (Python 3.xx 32/64 bits)</span> (xx and 32 or 64 bits options depend on the version you installed on your machine).</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/python_idle.png"><img alt="../_images/python_idle.png" src="../_images/python_idle.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Start IDLE from Windows search bar.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You then access to an interactive <em>Python</em> console, where you can directly run instruction, using the REPL from <em>Python</em> (with syntax color highlighting), or execute a script by opening a file from the <span class="menuselection">File</span> menu.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/python_idle_hello.png"><img alt="../_images/python_idle_hello.png" src="../_images/python_idle_hello.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Example of execution of an instruction from the interactive REPL and a script from a file in the IDLE environment of <em>Python</em>.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="spyder-anaconda-distribution">
+<h3>Spyder / Anaconda distribution<a class="headerlink" href="#spyder-anaconda-distribution" title="Link to this heading"></a></h3>
+<p>TO DO !</p>
+</section>
+</section>
+<section id="jupyter-notebooks">
+<h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading"></a></h2>
+<p>Jupyter Notebooks are interactive documents that combine code, visualizations, and explanatory text. They’re great for data analysis, machine learning, and sharing code. You can run Python code in cells within the notebook.</p>
+<p>JupyterLab is a web-based interactive development environment for Jupyter notebooks.</p>
+</section>
 </section>
 
 
@@ -103,7 +169,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="python_install.html" class="btn btn-neutral float-left" title="Python requirements for Scientific use" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="python_data.html" class="btn btn-neutral float-right" title="Data types in Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python.html" class="btn btn-neutral float-right" title="First steps with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

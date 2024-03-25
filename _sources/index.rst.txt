@@ -60,6 +60,7 @@ Python for Science
    :maxdepth: 1
    :caption: Basics for Science
    
+	Preparing Python<contents/python_prepare>
 	Starting with Python<contents/python>
 	Good practices<contents/good_practices>
 	Numpy and Matplotlib Basics<contents/numpy_matplotlib>
