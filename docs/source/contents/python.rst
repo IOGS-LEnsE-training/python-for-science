@@ -1,29 +1,15 @@
-Starting with Python
-####################
+First steps with Python
+#######################
 
-**Python** is an **interpreted programming language** increasingly used in industry and research for **interfacing**, **simulation**, **data analysis**, and **application development**. It is available on all major platforms: Windows, Mac, Linux. 
+.. note::
 
-.. figure:: ../_static/images/python_logo.png
-	:align: center
-	:scale: 50%
-
-You can find more information about **Python** programming languages on the `Python.org website <https://www.python.org/>`_.
-
-It supports imperative, functional, and object-oriented programming paradigms. It includes automatic memory management and exception handling. Additionally, there is a large community around this language that develops a set of libraries for various uses."
+	In this section, you can use any of the working methods mentioned in the previous section :ref:`python_scripts`. It is even advisable to try several.
 
 
-
-
-See : https://astrofrog.github.io/py4sci/#
-
-See : https://scipy-lectures.org/intro/
 
 .. toctree::
    :maxdepth: 1
    
-	What is Python ? <python_gen>
-	Python installation<python_install>
-	Interactive or scripts<python_scripts>
 	Data types <python_data>
 	Flow control <python_control>
 	Functions <python_functions>

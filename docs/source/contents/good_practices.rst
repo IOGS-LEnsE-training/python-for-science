@@ -24,6 +24,9 @@ Using enumerate in lists
 Try / Except
 ************
 
+__main__
+********
+
 
 Creating functions
 ******************
