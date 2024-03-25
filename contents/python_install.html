@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python requirements for Scientific use &mdash; Python for Science / Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+      <link rel="stylesheet" type="text/css" href="https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interactive way or scripts" href="python_scripts.html" />
+    <link rel="prev" title="A programming tool for scientists" href="python_gen.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python for Science / Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="python.html">     Starting with Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_gen.html">     What is Python ?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">     Python installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-language">Python language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-interface-for-python">Development interface for Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-packages">Python packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-of-commonly-used-packages">Examples of commonly used packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-a-new-package">Install a new package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#distributions">Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommandation-for-beginners">Recommandation for beginners</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python_scripts.html">     Interactive or scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_data.html">     Data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_control.html">     Flow control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_functions.html">     Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_matplotlib.html">     Numpy and Matplotlib Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_array.html">     Lists vs Arrays</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="signal_scipy.html">     Scipy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python for Science / Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="python.html">Starting with Python</a></li>
+      <li class="breadcrumb-item active">Python requirements for Scientific use</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/python_install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-requirements-for-scientific-use">
+<h1>Python requirements for Scientific use<a class="headerlink" href="#python-requirements-for-scientific-use" title="Link to this heading"></a></h1>
+<p>As <strong>Python</strong> is a <strong>general-purpose language</strong>, there are several ways to install it:</p>
+<ul class="simple">
+<li><p>Using a <strong>standalone version</strong> of <em>Python</em> (such as version 3.11 or higher) and a <strong>development interface</strong> (such as <em>PyCharm</em>, <em>Spyder</em>, etc.)</p></li>
+<li><p>Using a <strong>distribution</strong> (such as <em>Anaconda</em>, <em>PySchool</em>, etc.)</p></li>
+<li><p>Using a <strong>server</strong> like Jupyter Lab/Hub</p></li>
+</ul>
+<p>It could be harder for beginners to find their way. We will try to explain you the difference between those solutions.</p>
+<p>If you are eager to dive into writing your first program, we suggest you to install the <strong>Anaconda distribution</strong> from its <a class="reference external" href="https://www.anaconda.com/">website</a>. And then to go to the next section of this tutorials : <a class="reference internal" href="python_scripts.html#python-scripts"><span class="std std-ref">Interactive way or scripts</span></a> .</p>
+<section id="python-language">
+<h2>Python language<a class="headerlink" href="#python-language" title="Link to this heading"></a></h2>
+<p>When you install Python from the <a class="reference external" href="https://www.python.org/">Python.org website</a>, you typically get the following components:</p>
+<ol class="arabic simple">
+<li><p><strong>Python Interpreter</strong>: This is the core component that executes <em>Python</em> code. It includes the Python runtime environment.</p></li>
+<li><p><strong>Standard Library</strong>: <em>Python</em> comes with a comprehensive standard library that provides modules and packages for various tasks such as file I/O, networking, regular expressions, data serialization, and more.</p></li>
+<li><p><strong>IDLE</strong>: It is an <em>Integrated Development and Learning Environment</em>. It provides a simple <em>Python</em> IDE with features like syntax highlighting, code completion, and an interactive shell.</p></li>
+<li><p><strong>pip</strong>: <cite>pip</cite> is the <strong>package installer</strong> for Python. It allows you to install third-party Python packages from the Python Package Index (PyPI) and other sources.</p></li>
+<li><p><strong>Documentation</strong>: Python installation includes documentation in various formats, including HTML and PDF, which covers the Python language, standard library modules, and various Python-related topics.</p></li>
+</ol>
+</section>
+<section id="development-interface-for-python">
+<h2>Development interface for Python<a class="headerlink" href="#development-interface-for-python" title="Link to this heading"></a></h2>
+<p>An <strong>IDE</strong>, or <em>Integrated Development Environment</em>, is a software application that provides comprehensive facilities to programmers for software development. It typically combines several tools into a single interface to streamline the development process.</p>
+<p>Some of the main IDEs for Python development include: <strong>PyCharm</strong> (developed by JetBrains), <strong>Visual Studio Code</strong> or VS Code (developed by Microsoft), <strong>Spyder</strong> (an open-source IDE designed for scientific computing and data analysis with Python), <strong>JupyterLab</strong> (a web-based interactive development environment for Jupyter notebooks).</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/ide_pycharm.png"><img alt="../_images/ide_pycharm.png" src="../_images/ide_pycharm.png" style="width: 607.5px; height: 324.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">PyCharm IDE. Community Edition. <a class="reference external" href="https://www.jetbrains.com/pycharm/">JetBrains/PyCharm website</a></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The choice of an IDE often comes down to <strong>personal preference</strong> and the specific requirements of your project.</p>
+</section>
+<section id="python-packages">
+<h2>Python packages<a class="headerlink" href="#python-packages" title="Link to this heading"></a></h2>
+<p>Python has a rich ecosystem of <strong>third-party packages</strong> that extend its functionality for various purposes.</p>
+<section id="examples-of-commonly-used-packages">
+<h3>Examples of commonly used packages<a class="headerlink" href="#examples-of-commonly-used-packages" title="Link to this heading"></a></h3>
+<p>Some of the main third-party packages in <em>Python</em> include:</p>
+<ul class="simple">
+<li><p><strong>NumPy</strong>: a fundamental package for numerical computing with Python. It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays.</p></li>
+<li><p><strong>Pandas</strong>: a powerful library for data manipulation and analysis in Python.</p></li>
+<li><p><strong>Matplotlib</strong>: a popular plotting library for creating static, interactive, and animated visualizations in Python.</p></li>
+<li><p><strong>Scikit-learn</strong>: a machine learning library for Python that provides simple and efficient tools for data mining and analysis.</p></li>
+<li><p><strong>TensorFlow / PyTorch</strong>: deep learning frameworks that allow developers to build and train neural networks for various machine learning tasks.</p></li>
+<li><p><strong>Pygame</strong>: a set of Python modules designed for writing video games. It provides functionality for handling graphics, sound, input devices, and other aspects of game development.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/packages_logos.png"><img alt="../_images/packages_logos.png" src="../_images/packages_logos.png" style="width: 778.0px; height: 200.0px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>There are thousands of other third-party packages available in the <strong>Python Package Index</strong> (<a class="reference external" href="https://pypi.org/">PyPI</a>) for various purposes, including web development, data analysis, scientific computing, natural language processing, image processing, and more.</p>
+</section>
+<section id="install-a-new-package">
+<span id="package-install"></span><h3>Install a new package<a class="headerlink" href="#install-a-new-package" title="Link to this heading"></a></h3>
+<p>To install a package using <strong>pip</strong> (the Python’s package installer), you can use the following command in your terminal or command prompt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>package_name
+</pre></div>
+</div>
+<p>Replace <cite>package_name</cite> with the name of the package you want to install. For example, to install the <em>NumPy</em> package, you would use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>If you want to install a <strong>specific version</strong> of a package, you can specify the version number after the package name. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.21.0
+</pre></div>
+</div>
+<p>This command installs version 1.21.0 of the <em>NumPy</em> package.</p>
+<p>Additionally, you can install packages from a requirements file by specifying the file with the <cite>-r</cite> flag. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>This command installs all the packages listed in the <cite>requirements.txt</cite> file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you have pip installed and added to your system’s PATH before using these commands.</p>
+</div>
+</section>
+</section>
+<section id="distributions">
+<h2>Distributions<a class="headerlink" href="#distributions" title="Link to this heading"></a></h2>
+<p>A distribution refers to a <strong>packaged bundle</strong> of <strong>Python software and libraries</strong> aimed at providing a comprehensive environment for Python development and execution. These distributions typically include the Python interpreter itself along with a selection of commonly used libraries and tools for various purposes such as data analysis, scientific computing, web development, and more.</p>
+<p>One of the <strong>most popular</strong> <em>Python distributions</em> is <strong>Anaconda</strong>, which is widely used in data science and scientific computing due to its extensive collection of pre-installed libraries and tools. You can find more informations about Anaconda distribution on its website <a class="reference external" href="https://www.anaconda.com/">www.anaconda.com</a>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/anaconda_logo.png"><img alt="../_images/anaconda_logo.png" src="../_images/anaconda_logo.png" style="width: 266.09999999999997px; height: 49.8px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="recommandation-for-beginners">
+<h2>Recommandation for beginners<a class="headerlink" href="#recommandation-for-beginners" title="Link to this heading"></a></h2>
+<p>If you want to start with Python for Scientist uses, we suggest you to install the last version of <strong>Anaconda</strong> distribution on the <a class="reference external" href="https://www.anaconda.com/">Anaconda Website</a>.</p>
+<p>This distribution includes <strong>Python 3</strong>, <strong>JupyterLab</strong> and <strong>Spyder</strong> IDEs, and lots of packages for science: <em>NumPy</em>, <em>Matplotlib</em>, <em>SciPy</em>, <em>Pandas</em>, <em>TensorFlow</em>, <em>PyTorch</em>…</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_gen.html" class="btn btn-neutral float-left" title="A programming tool for scientists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_scripts.html" class="btn btn-neutral float-right" title="Interactive way or scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
