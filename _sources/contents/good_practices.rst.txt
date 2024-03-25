@@ -7,6 +7,9 @@ Good practices with Python (and other langages)
 Naming objects
 **************
 
+To **make your code more understandable**, it's important to call your variables in a way that quickly identifies the information they contain.
+	
+Don't call a variable :code:`a` or :code:`b` if its content is the wavelength of a source. Call it :code:`wavelength`.
 
 
 Documenting methods and classes
@@ -27,6 +30,8 @@ Try / Except
 __main__
 ********
 
+Display with formatted method
+*****************************
 
 Creating functions
 ******************

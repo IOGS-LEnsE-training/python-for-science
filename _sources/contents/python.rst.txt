@@ -10,6 +10,6 @@ First steps with Python
 .. toctree::
    :maxdepth: 1
    
-	Data types <python_data>
+	Data types and display <python_data>
 	Flow control <python_control>
 	Functions <python_functions>

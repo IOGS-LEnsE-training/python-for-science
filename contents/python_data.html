@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data types in Python &mdash; Python for Science / Basics 0.1 documentation</title>
+  <title>Data types and display in Python &mdash; Python for Science / Basics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
@@ -52,7 +52,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="python.html">     Starting with Python</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">     Data types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">     Data types and display</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables-types-and-assignement">Variables, types and assignement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assignement">Assignement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-of-a-variable">Type of a variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-values-assignement">Multiple values assignement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#display-information-to-the-user">Display information to the user</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#display-a-string-of-characters">Display a string of characters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display-the-value-of-a-variable">Display the value of a variable</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#numbers">Numbers</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="python_control.html">     Flow control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_functions.html">     Functions</a></li>
 </ul>
@@ -81,7 +96,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="python.html">First steps with Python</a></li>
-      <li class="breadcrumb-item active">Data types in Python</li>
+      <li class="breadcrumb-item active">Data types and display in Python</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/contents/python_data.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,10 +106,112 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="data-types-in-python">
-<h1>Data types in Python<a class="headerlink" href="#data-types-in-python" title="Link to this heading"></a></h1>
+  <section id="data-types-and-display-in-python">
+<h1>Data types and display in Python<a class="headerlink" href="#data-types-and-display-in-python" title="Link to this heading"></a></h1>
+<p>There are lots of <strong>types of data</strong> and <strong>operations</strong> already implemented in Python.</p>
+<p>In this section, we will deal with variables and their type to store <strong>booleans</strong>, <strong>numbers</strong>, <strong>characters</strong> and <strong>strings of characters</strong>, which are basic types in <em>Python</em>.</p>
+<p>We will also present you a way to display their values and their types.</p>
+<section id="variables-types-and-assignement">
+<h2>Variables, types and assignement<a class="headerlink" href="#variables-types-and-assignement" title="Link to this heading"></a></h2>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h3>
+<p>A variable is a <strong>container for storing a data value</strong>. In <em>Python</em>, variables are created the moment you first assign them a value.</p>
+<p>There are some rules for naming a variable in Python:</p>
+<ul class="simple">
+<li><p>A variable name must <strong>start with a letter</strong> or the underscore character</p></li>
+<li><p>A variable name can <strong>only contain alpha-numeric characters</strong> and underscores (A-z, 0-9, and _ )</p></li>
+<li><p>Variable names are <strong>case-sensitive</strong> (age, Age and AGE are three different variables)</p></li>
+<li><p>A variable name cannot be any of the Python keywords.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To <strong>make your code more understandable</strong>, it’s important to call your variables in a way that quickly identifies the information they contain.</p>
+<p>Don’t call a variable <code class="code docutils literal notranslate"><span class="pre">a</span></code> or <code class="code docutils literal notranslate"><span class="pre">b</span></code> if its content is the wavelength of a source. Call it <code class="code docutils literal notranslate"><span class="pre">wavelength</span></code>.</p>
+</div>
+</section>
+<section id="assignement">
+<h3>Assignement<a class="headerlink" href="#assignement" title="Link to this heading"></a></h3>
+<p>Assignement of a variable is done with the equal ( = ) character.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mi">632</span>   <span class="c1"># nm</span>
+</pre></div>
+</div>
+<p>In this example, wavelength is the name of the variable and a value of 632 is assigned to it. The part of the line beginning by the <cite>#</cite> character is a comment (here to specify the unit).</p>
+<p>You can reaffect a variable during the execution of your program. In <em>Python</em>, you can also change its type.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mi">632</span>        <span class="c1"># nm - here wavelength is an integer</span>
+<span class="n">wavelength</span> <span class="o">=</span> <span class="s1">&#39;632&#39;</span>      <span class="c1"># Here wavelength is a string</span>
+<span class="n">wavelength</span> <span class="o">=</span> <span class="mf">632.0</span>      <span class="c1"># Here wavelength is a float number</span>
+</pre></div>
+</div>
+</section>
+<section id="type-of-a-variable">
+<h3>Type of a variable<a class="headerlink" href="#type-of-a-variable" title="Link to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">type</span></code> function from <em>Python</em> permits to know the type of the data stored in a variable.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;LEnsE&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your code is executed <strong>from a script</strong>, you need to put the return of the <code class="code docutils literal notranslate"><span class="pre">type</span></code> method as the argument of the <code class="code docutils literal notranslate"><span class="pre">print</span></code> method.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">632.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">wavelength</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This example gives: <code class="code docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The previous note is true for all the return object of a function you want to display inside a script file.</p>
+</div>
+</section>
+<section id="multiple-values-assignement">
+<h3>Multiple values assignement<a class="headerlink" href="#multiple-values-assignement" title="Link to this heading"></a></h3>
+<p>Python allows you to assign values to multiple variables in one line.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="s2">&quot;LEnsE&quot;</span><span class="p">,</span> <span class="s2">&quot;tech&quot;</span><span class="p">,</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">last_name</span><span class="p">)</span>
+<span class="go">tech</span>
+</pre></div>
+</div>
+<p>It’s also possible to affect the same value to differents variables.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">5.7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">5.7</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="display-information-to-the-user">
+<h2>Display information to the user<a class="headerlink" href="#display-information-to-the-user" title="Link to this heading"></a></h2>
+<section id="display-a-string-of-characters">
+<h3>Display a string of characters<a class="headerlink" href="#display-a-string-of-characters" title="Link to this heading"></a></h3>
+<p>To display information to the user, you can use the <code class="code docutils literal notranslate"><span class="pre">print</span></code> function from <em>Python</em>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello from LEnsE.tech&#39;</span><span class="p">)</span>
+<span class="go">Hello from LEnsE.tech</span>
+</pre></div>
+</div>
+<p>This method takes a string of characters as an argument.</p>
+</section>
+<section id="display-the-value-of-a-variable">
+<h3>Display the value of a variable<a class="headerlink" href="#display-the-value-of-a-variable" title="Link to this heading"></a></h3>
+<p>You can also give a variable or the return of a function to the <code class="code docutils literal notranslate"><span class="pre">print</span></code> function.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;LEnsE&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
+<span class="go">LEnsE</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_students</span> <span class="o">=</span> <span class="mi">158</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">number_of_students</span><span class="p">)</span>
+<span class="go">158</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="numbers">
+<h2>Numbers<a class="headerlink" href="#numbers" title="Link to this heading"></a></h2>
 <p>Numbers, strings, booleans</p>
 <p>Lists, tuples, dictionaries</p>
+</section>
 </section>
 
 
