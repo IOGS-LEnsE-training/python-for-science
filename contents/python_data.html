@@ -19,13 +19,14 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Flow control with Python" href="python_control.html" />
-    <link rel="prev" title="First steps with Python" href="python.html" /> 
+    <link rel="next" title="Functions in Python language" href="python_functions.html" />
+    <link rel="prev" title="Different ways to run Python code" href="python_scripts.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,30 +52,41 @@
               <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="python.html">     Starting with Python</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">     Data types and display</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#variables-types-and-assignement">Variables, types and assignement</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#variables">Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#assignement">Assignement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#type-of-a-variable">Type of a variable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#multiple-values-assignement">Multiple values assignement</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Data types and display</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#variables-types-and-assignement">Variables, types and assignement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assignement">Assignement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type-of-a-variable">Type of a variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-values-assignement">Multiple values assignement</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#display-information-to-the-user">Display information to the user</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#display-a-string-of-characters">Display a string of characters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#display-the-value-of-a-variable">Display the value of a variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#display-information-to-the-user">Display information to the user</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#display-a-string-of-characters">Display a string of characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-the-value-of-a-variable">Display the value of a variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formatted-display">Formatted display</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#format-method">Format method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatted-string-literals">Formatted string literals</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#numbers">Numbers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="python_control.html">     Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_functions.html">     Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numbers">Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#booleans">Booleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lists-tuples-dictionaries">Lists, tuples, dictionaries</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_matplotlib.html">     Numpy and Matplotlib Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="list_array.html">     Lists vs Arrays</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_variables.html">     Variables and data type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_functions.html">     Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_arrays.html">     Arrays (Numpy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_figures.html">     Figures (Matplotlib)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
 <ul>
@@ -95,7 +107,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="python.html">First steps with Python</a></li>
       <li class="breadcrumb-item active">Data types and display in Python</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/contents/python_data.rst.txt" rel="nofollow"> View page source</a>
@@ -108,6 +119,10 @@
              
   <section id="data-types-and-display-in-python">
 <h1>Data types and display in Python<a class="headerlink" href="#data-types-and-display-in-python" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this section, you can use any of the working methods mentioned in the previous section <a class="reference internal" href="python_scripts.html#python-scripts"><span class="std std-ref">Different ways to run Python code</span></a>. It is even advisable to try several.</p>
+</div>
 <p>There are lots of <strong>types of data</strong> and <strong>operations</strong> already implemented in Python.</p>
 <p>In this section, we will deal with variables and their type to store <strong>booleans</strong>, <strong>numbers</strong>, <strong>characters</strong> and <strong>strings of characters</strong>, which are basic types in <em>Python</em>.</p>
 <p>We will also present you a way to display their values and their types.</p>
@@ -154,7 +169,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If your code is executed <strong>from a script</strong>, you need to put the return of the <code class="code docutils literal notranslate"><span class="pre">type</span></code> method as the argument of the <code class="code docutils literal notranslate"><span class="pre">print</span></code> method.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">632.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">632.0</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">wavelength</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -206,11 +221,73 @@
 </pre></div>
 </div>
 </section>
+<section id="formatted-display">
+<h3>Formatted display<a class="headerlink" href="#formatted-display" title="Link to this heading"></a></h3>
+<p>If you want to display a string of character including variable values, you can use the <code class="code docutils literal notranslate"><span class="pre">format</span></code> method or <em>f-strings</em> (formatted string literals) to achieve formatted printing.</p>
+<section id="format-method">
+<h4>Format method<a class="headerlink" href="#format-method" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># meters per second</span>
+<span class="n">acceleration</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># meters per second squared</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># seconds</span>
+
+<span class="n">formatted_string</span> <span class="o">=</span> <span class="s2">&quot;Velocity: </span><span class="si">{}</span><span class="s2"> m/s, Acceleration: </span><span class="si">{}</span><span class="s2"> m/s^2&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="formatted-string-literals">
+<h4>Formatted string literals<a class="headerlink" href="#formatted-string-literals" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># meters per second</span>
+<span class="n">acceleration</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># meters per second squared</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># seconds</span>
+
+<span class="n">formatted_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Velocity: </span><span class="si">{</span><span class="n">velocity</span><span class="si">}</span><span class="s2"> m/s, Acceleration: </span><span class="si">{</span><span class="n">acceleration</span><span class="si">}</span><span class="s2"> m/s^2&quot;</span>
+</pre></div>
+</div>
+<p>Both of these methods will produce the same output:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">formatted_string</span><span class="p">)</span>
+<span class="go">Velocity: 20 m/s, Acceleration: 5 m/s^2</span>
+</pre></div>
+</div>
+<p>You can include any variables or expressions within the curly braces {} of the f-string or the placeholders within the format() method, and they will be replaced with their values when the string is formatted.</p>
+</section>
+</section>
 </section>
 <section id="numbers">
 <h2>Numbers<a class="headerlink" href="#numbers" title="Link to this heading"></a></h2>
-<p>Numbers, strings, booleans</p>
-<p>Lists, tuples, dictionaries</p>
+<p>In Python, numbers can be of different types:</p>
+<ul class="simple">
+<li><p><strong>Integers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>): whole numbers without any decimal point.</p></li>
+<li><p><strong>Floating-point numbers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>): numbers that have a decimal point or use exponential (scientific) notation.</p></li>
+<li><p><strong>Complex numbers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code>): consisting of a real part and an imaginary part. They are represented as <span class="math notranslate nohighlight">\(a + bj\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> is the real part, <span class="math notranslate nohighlight">\(b\)</span> is the imaginary part, and <span class="math notranslate nohighlight">\(j\)</span> represents the square root of -1 (imaginary unit).</p></li>
+</ul>
+<p>Here are some examples of using these numeric types in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integers</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Output: 42</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># Output: -10</span>
+
+<span class="c1"># Floating-point numbers</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mf">2.71828</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># Output: 3.14159</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c1"># Output: 2.71828</span>
+
+<span class="c1"># Complex numbers</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="n">j</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>  <span class="c1"># Output: (2+3j)</span>
+</pre></div>
+</div>
+<p>Python provides various arithmetic operations for working with numbers, including addition (+), subtraction (-), multiplication (*), division (/), exponentiation (**), and more. These operations work as you would expect, and you can mix different types of numbers in your expressions.</p>
+</section>
+<section id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Link to this heading"></a></h2>
+</section>
+<section id="booleans">
+<h2>Booleans<a class="headerlink" href="#booleans" title="Link to this heading"></a></h2>
+</section>
+<section id="lists-tuples-dictionaries">
+<h2>Lists, tuples, dictionaries<a class="headerlink" href="#lists-tuples-dictionaries" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -218,8 +295,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="python.html" class="btn btn-neutral float-left" title="First steps with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="python_control.html" class="btn btn-neutral float-right" title="Flow control with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_scripts.html" class="btn btn-neutral float-left" title="Different ways to run Python code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_functions.html" class="btn btn-neutral float-right" title="Functions in Python language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
