@@ -30,8 +30,6 @@ Try / Except
 __main__
 ********
 
-Display with formatted method
-*****************************
 
 Creating functions
 ******************

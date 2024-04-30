@@ -1,6 +1,11 @@
 Data types and display in Python 
 ################################
 
+.. note::
+
+	In this section, you can use any of the working methods mentioned in the previous section :ref:`python_scripts`. It is even advisable to try several.
+
+
 There are lots of **types of data** and **operations** already implemented in Python. 
 
 In this section, we will deal with variables and their type to store **booleans**, **numbers**, **characters** and **strings of characters**, which are basic types in *Python*.
@@ -61,7 +66,7 @@ The :code:`type` function from *Python* permits to know the type of the data sto
 
 	If your code is executed **from a script**, you need to put the return of the :code:`type` method as the argument of the :code:`print` method.
 	
-	.. code-block::
+	.. code-block:: python
 	
 		wavelength = 632.0
 		print(type(wavelength))
@@ -113,12 +118,82 @@ LEnsE
 >>> print(number_of_students)
 158
 
+Formatted display
+=================
+
+If you want to display a string of character including variable values, you can use the :code:`format` method or *f-strings* (formatted string literals) to achieve formatted printing. 
+
+Format method
+-------------
+.. code-block:: python
+	
+	velocity = 20  # meters per second
+	acceleration = 5  # meters per second squared
+	time = 3  # seconds
+	
+	formatted_string = "Velocity: {} m/s, Acceleration: {} m/s^2".format(velocity, acceleration)	
+	
+
+Formatted string literals
+-------------------------
+
+.. code-block:: python
+	
+	velocity = 20  # meters per second
+	acceleration = 5  # meters per second squared
+	time = 3  # seconds
+	
+	formatted_string = f"Velocity: {velocity} m/s, Acceleration: {acceleration} m/s^2"
+
+
+Both of these methods will produce the same output:
+
+>>> print(formatted_string)
+Velocity: 20 m/s, Acceleration: 5 m/s^2
+
+You can include any variables or expressions within the curly braces {} of the f-string or the placeholders within the format() method, and they will be replaced with their values when the string is formatted.
+
 
 Numbers
 *******
 
+In Python, numbers can be of different types:
 
-Numbers, strings, booleans
+- **Integers** (:class:`int`): whole numbers without any decimal point.
+- **Floating-point numbers** (:class:`float`): numbers that have a decimal point or use exponential (scientific) notation.
+- **Complex numbers** (:class:`complex`): consisting of a real part and an imaginary part. They are represented as :math:`a + bj`, where :math:`a` is the real part, :math:`b` is the imaginary part, and :math:`j` represents the square root of -1 (imaginary unit).
+
+Here are some examples of using these numeric types in Python:
+
+
+.. code-block:: python
+
+	# Integers
+	x = 42
+	y = -10
+	print(x)  # Output: 42
+	print(y)  # Output: -10
+
+	# Floating-point numbers
+	pi = 3.14159
+	e = 2.71828
+	print(pi)  # Output: 3.14159
+	print(e)   # Output: 2.71828
+
+	# Complex numbers
+	z = 2 + 3j
+	print(z)  # Output: (2+3j)
+	
+	
+Python provides various arithmetic operations for working with numbers, including addition (+), subtraction (-), multiplication (*), division (/), exponentiation (**), and more. These operations work as you would expect, and you can mix different types of numbers in your expressions.
+
+
+Strings
+*******
+
+Booleans
+********
 
 Lists, tuples, dictionaries
+***************************
 

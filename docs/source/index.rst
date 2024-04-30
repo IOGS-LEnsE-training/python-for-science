@@ -61,10 +61,21 @@ Python for Science
    :caption: Basics for Science
    
 	Preparing Python<contents/python_prepare>
-	Starting with Python<contents/python>
+	Data types and display<contents/python_data>
+	Functions with Python<contents/python_functions>
 	Good practices<contents/good_practices>
 	Numpy and Matplotlib Basics<contents/numpy_matplotlib>
 	Lists vs Arrays<contents/list_array>
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Examples
+
+	Variables and data type<contents/examples_variables>
+	Functions<contents/examples_functions>
+	Arrays (Numpy)<contents/examples_arrays>
+	Figures (Matplotlib)<contents/examples_figures>
 
 .. toctree::
    :maxdepth: 1
