@@ -98,8 +98,5 @@ http://lense.institutoptique.fr/mine/python-convertir-une-image-en-matrice/
 
 http://lense.institutoptique.fr/mine/python-comparatif-calcul-matriciel-et-calcul-iteratif/
 
-About the LEnsE
-###############
 
-This is a test.
 
