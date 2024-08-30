@@ -70,6 +70,12 @@ Spyder / Anaconda distribution
 
 TO DO !
 
+
+PyCharm / IDE
+=============
+
+TO DO !
+
 Jupyter Notebooks
 *****************
 

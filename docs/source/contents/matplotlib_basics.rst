@@ -1,14 +1,5 @@
-Numpy and Matplotlib
-####################
-
-Numpy
-*****
-
-http://lense.institutoptique.fr/mine/python-numpy/
-
-
-http://lense.institutoptique.fr/mine/python-numpy-matrices-et-calculs/
-
+Matplotlib Basics
+#################
 
 Matplotlib
 **********

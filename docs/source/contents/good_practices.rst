@@ -1,6 +1,10 @@
 Good practices with Python (and other langages)
 ###############################################
 
+.. warning::
+	
+	Under construction !
+
 * PEP 8 : https://peps.python.org/pep-0008/
 * PEP257 (docstring) : https://peps.python.org/pep-0257/
 

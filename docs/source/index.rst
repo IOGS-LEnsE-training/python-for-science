@@ -63,9 +63,10 @@ Python for Science
 	Preparing Python<contents/python_prepare>
 	Data types and display<contents/python_data>
 	Functions with Python<contents/python_functions>
+	Execution Time<contents/python_time>
 	Good practices<contents/good_practices>
-	Numpy and Matplotlib Basics<contents/numpy_matplotlib>
-	Lists vs Arrays<contents/list_array>
+	Numpy Basics<contents/numpy_basics>
+	Matplotlib Basics<contents/matplotlib_basics>
 
 
 .. toctree::
@@ -82,11 +83,6 @@ Python for Science
    :caption: Signal processing
    
 	Scipy<contents/signal_scipy>
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Data Analysis   
    
 .. toctree::
 	:maxdepth: 1
