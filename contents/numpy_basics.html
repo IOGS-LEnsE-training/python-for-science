@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Numpy Basics &mdash; Python for Science / Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+      <link rel="stylesheet" type="text/css" href="https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matplotlib Basics" href="matplotlib_basics.html" />
+    <link rel="prev" title="Good practices with Python (and other langages)" href="good_practices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python for Science / Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Numpy Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mathematical-functions">Mathematical Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-vectors">Using Vectors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-vectors">Creating Vectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vector-from-a-list">Vector from a List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linearly-spaced-vectors">Linearly Spaced Vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-filled-vectors-with-0-or-1">Pre-filled Vectors with 0 or 1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#operations-on-vectors">Operations on Vectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#number-of-elements">Number of Elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#element-wise-addition">Element-wise Addition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiplying-elements-by-a-scalar">Multiplying Elements by a Scalar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#element-wise-multiplication">Element-wise Multiplication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indexing-vectors">Indexing Vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concatenating-vectors">Concatenating Vectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#statistics-on-arrays">Statistics on arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-and-arrays">Functions and arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-matrices">Using matrices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-matrices">Create matrices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#matrix-from-lists">Matrix from lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-filled-matrix">Pre-filled Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#access-to-elements">Access to elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matrix-operations">Matrix Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Element-wise Addition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Element-wise Multiplication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dot-product-of-arrays">Dot product of arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matrix-transposition-and-inversion">Matrix Transposition and Inversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matrix-determinant-and-eigenvalues">Matrix Determinant and Eigenvalues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arrays-vs-lists">Arrays vs Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scipy">SciPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#specialized-matrix-functions">Specialized Matrix Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_variables.html">     Variables and data type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_functions.html">     Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_arrays.html">     Arrays (Numpy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_figures.html">     Figures (Matplotlib)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="signal_scipy.html">     Scipy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python for Science / Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Numpy Basics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/numpy_basics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="numpy-basics">
+<h1>Numpy Basics<a class="headerlink" href="#numpy-basics" title="Link to this heading"></a></h1>
+<p>Numpy is an essential <strong>library for scientists</strong>.</p>
+<p>The two main motivations for using it are:</p>
+<ul class="simple">
+<li><p>The implementation of the <strong>concept of vectors and matrices</strong> in Python</p></li>
+<li><p>Access to <strong>classical mathematical functions</strong> (such as trigonometric functions)</p></li>
+</ul>
+<p>This library facilitates <strong>data formatting</strong> for many other advanced scientific libraries: Pandas, Scipy, Scikit-image, OpenCV, Keras, TensorFlow…</p>
+<p>For more information about this library: <a class="reference external" href="https://numpy.org/">https://numpy.org/</a></p>
+<p>To use this library, you need to import it in your script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<section id="mathematical-functions">
+<h2>Mathematical Functions<a class="headerlink" href="#mathematical-functions" title="Link to this heading"></a></h2>
+<p>Numpy is primarily a <strong>library dedicated to mathematics</strong> and offers a set of basic functions: square root, power, exponential, trigonometric functions, etc. Some constants are also defined, such as <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pi :&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Square root :&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exponential :&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sine :&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The previous example gives the result:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Pi </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.141592653589793</span>
+<span class="nt">Square root </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.4142135623730951</span>
+<span class="nt">Exponential </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.718281828459045</span>
+<span class="nt">Sine </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1411200080598672</span>
+</pre></div>
+</div>
+</section>
+<section id="using-vectors">
+<h2>Using Vectors<a class="headerlink" href="#using-vectors" title="Link to this heading"></a></h2>
+<p>Numpy provides support for arrays, matrices, and a collection of mathematical functions to operate on these data structures.</p>
+<section id="creating-vectors">
+<h3>Creating Vectors<a class="headerlink" href="#creating-vectors" title="Link to this heading"></a></h3>
+<section id="vector-from-a-list">
+<h4>Vector from a List<a class="headerlink" href="#vector-from-a-list" title="Link to this heading"></a></h4>
+<p>To create a vector with Numpy, you use the <code class="code docutils literal notranslate"><span class="pre">array</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_vect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">b_vect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>You can then display these vectors using Python’s <cite>print</cite> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a_vect</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_vect</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These commands produce the following output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">1 2 3 4 5</span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">[</span><span class="nv">-1 -2 -3 -4 -5</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</section>
+<section id="linearly-spaced-vectors">
+<h4>Linearly Spaced Vectors<a class="headerlink" href="#linearly-spaced-vectors" title="Link to this heading"></a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">linspace</span></code> function generates a vector of predefined size from a start value to an end value, with a constant step that depends on the interval and the size of the vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># np.linspace(start, stop, size)</span>
+<span class="n">x_lin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>  <span class="c1"># Creates a vector of size 15 from 0 to 10 with a constant step</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;np.linspace:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x_lin</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>[ 0.          0.71428571  1.42857143  2.14285714  2.85714286  3.57142857   4.28571429  5.          5.71428571  6.42857143  7.14285714  7.85714286   8.57142857  9.28571429 10.        ]</p>
+<p>There is also the <code class="code docutils literal notranslate"><span class="pre">arange</span></code> function which generates a vector from a start value to an end value, with a predefined constant step.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># np.arange(start, stop, step)</span>
+<span class="n">x_ara</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">)</span>  <span class="c1"># Creates a vector from 0 to 18.9 with a step of 2.1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;np.arange:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x_ara</span><span class="p">)</span>
+<span class="go">[ 0.   2.1  4.2  6.3  8.4 10.5 12.6 14.7 16.8 18.9]</span>
+</pre></div>
+</div>
+<p>When the step is not provided to the <code class="code docutils literal notranslate"><span class="pre">arange</span></code> function, it uses a default value of 1.</p>
+</section>
+<section id="pre-filled-vectors-with-0-or-1">
+<h4>Pre-filled Vectors with 0 or 1<a class="headerlink" href="#pre-filled-vectors-with-0-or-1" title="Link to this heading"></a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">zeros</span></code> function generates a vector of a predefined size with all elements set to 0.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># np.zeros(size)</span>
+<span class="n">vect_zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Creates a vector of 3 elements, each with a value of 0</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># np.ones(size)</span>
+<span class="n">vect_ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Creates a vector of 3 elements, each with a value of 1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="operations-on-vectors">
+<h3>Operations on Vectors<a class="headerlink" href="#operations-on-vectors" title="Link to this heading"></a></h3>
+<section id="number-of-elements">
+<h4>Number of Elements<a class="headerlink" href="#number-of-elements" title="Link to this heading"></a></h4>
+<p>To find the number of elements in a vector, you can use one of the following commands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b_vect</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_vect</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_vect</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unlike Python native lists, Numpy array objects allow for vectorized operations.</p>
+</section>
+<section id="element-wise-addition">
+<h4>Element-wise Addition<a class="headerlink" href="#element-wise-addition" title="Link to this heading"></a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">+</span></code> operator allows for element-wise addition between two vectors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c_vect</span> <span class="o">=</span> <span class="n">a_vect</span> <span class="o">+</span> <span class="n">b_vect</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c_vect</span><span class="p">)</span>
+<span class="go">[0 0 0 0 0]</span>
+</pre></div>
+</div>
+</section>
+<section id="multiplying-elements-by-a-scalar">
+<h4>Multiplying Elements by a Scalar<a class="headerlink" href="#multiplying-elements-by-a-scalar" title="Link to this heading"></a></h4>
+<p>You can multiply all elements of a vector by a scalar using the <code class="code docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k_vect</span> <span class="o">=</span> <span class="n">a_vect</span> <span class="o">*</span> <span class="mf">2.1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k_vect</span><span class="p">)</span>
+<span class="go">[ 2.1  4.2  6.3  8.4 10.5]</span>
+</pre></div>
+</div>
+</section>
+<section id="element-wise-multiplication">
+<h4>Element-wise Multiplication<a class="headerlink" href="#element-wise-multiplication" title="Link to this heading"></a></h4>
+<p>It is also possible to perform element-wise multiplication of vectors using the <code class="code docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m_vect</span> <span class="o">=</span> <span class="n">a_vect</span> <span class="o">*</span> <span class="n">b_vect</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m_vect</span><span class="p">)</span>
+<span class="go">[ -1  -4  -9 -16 -25]</span>
+</pre></div>
+</div>
+</section>
+<section id="indexing-vectors">
+<h4>Indexing Vectors<a class="headerlink" href="#indexing-vectors" title="Link to this heading"></a></h4>
+<p>Indexing of Numpy vectors is the same as for native Python lists.</p>
+<p>In the following example, a vector named <code class="code docutils literal notranslate"><span class="pre">vect_1D</span></code> of 3 elements is generated, indexed from 0 to 2. You access the i-th element of this vector using the command <code class="code docutils literal notranslate"><span class="pre">vect_1D[i]</span></code>. In this example, the first element of this vector is accessed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vect_1D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">first_element</span> <span class="o">=</span> <span class="n">vect_1D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">first_element</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</section>
+<section id="concatenating-vectors">
+<h4>Concatenating Vectors<a class="headerlink" href="#concatenating-vectors" title="Link to this heading"></a></h4>
+<p>Vectors can be concatenated using the <code class="code docutils literal notranslate"><span class="pre">concatenate</span></code> function.</p>
+<p>In the following example, two vectors <code class="code docutils literal notranslate"><span class="pre">x1</span></code> and <code class="code docutils literal notranslate"><span class="pre">x2</span></code> of the same dimension are concatenated.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_concat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x_concat</span><span class="p">)</span>
+<span class="go">[ 0.   1.   2.   3.   4.  -2.5 -1.5 -0.5  0.5  1.5]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="statistics-on-arrays">
+<h3>Statistics on arrays<a class="headerlink" href="#statistics-on-arrays" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">std_dev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard Deviation:&quot;</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="functions-and-arrays">
+<h2>Functions and arrays<a class="headerlink" href="#functions-and-arrays" title="Link to this heading"></a></h2>
+<p>Functions can operate on arrays to perform element-wise operations or apply mathematical functions to array elements. NumPy functions are vectorized, meaning they operate on entire arrays at once.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_vect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">x_vect_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x_vect</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x_vect_exp</span><span class="p">)</span>
+<span class="go">[ 2.71828183  7.3890561  20.08553692 54.59815003]</span>
+</pre></div>
+</div>
+<p>This method can also be used with functions that you have defined yourself.</p>
+<p>In the following example, we provide a function <span class="math notranslate nohighlight">\(f(x) = 4 \cdot x^2 - 3 \cdot x + 9\)</span> and wish to calculate the value of this function for different values of <span class="math notranslate nohighlight">\(x\)</span>. These values are then stored in a vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">9</span>
+
+<span class="n">y_vect</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_vect</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y_vect</span><span class="p">)</span>
+<span class="go">[10 19 36 61]</span>
+</pre></div>
+</div>
+</section>
+<section id="using-matrices">
+<h2>Using matrices<a class="headerlink" href="#using-matrices" title="Link to this heading"></a></h2>
+<p>Numpy was created to handle matrices, called arrays.</p>
+<p><em>Other libraries such as SciPy and Pandas can also work with matrices in different contexts.</em></p>
+<section id="create-matrices">
+<h3>Create matrices<a class="headerlink" href="#create-matrices" title="Link to this heading"></a></h3>
+<section id="matrix-from-lists">
+<h4>Matrix from lists<a class="headerlink" href="#matrix-from-lists" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array (matrix)</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6]])</span>
+</pre></div>
+</div>
+</section>
+<section id="pre-filled-matrix">
+<h4>Pre-filled Matrix<a class="headerlink" href="#pre-filled-matrix" title="Link to this heading"></a></h4>
+<p>The functions seen for vectors can be used to create arrays of more than 1 dimension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a matrix of zeros</span>
+<span class="n">zeros_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># 3x3 matrix filled with zeros</span>
+
+<span class="c1"># Create a matrix of ones</span>
+<span class="n">ones_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 2x4 matrix filled with ones</span>
+</pre></div>
+</div>
+<p>There are also specific functions to create particular matrix.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an identity matrix</span>
+<span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3x3 identity matrix</span>
+</pre></div>
+</div>
+<p>For testing some algoritms, a matrix filled with random numbers can be useful.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a matrix with random values</span>
+<span class="n">random_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3x3 matrix with random values between 0 and 1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="access-to-elements">
+<h3>Access to elements<a class="headerlink" href="#access-to-elements" title="Link to this heading"></a></h3>
+<p>You can access to a specific element by its index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing elements</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Element in 2nd row, 3rd column</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>You can generate a new matrix based on a part of another one by slicing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Rows 0 to 1, Columns 1 to 2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sub_matrix</span><span class="p">)</span>
+<span class="go">array([[2, 3],</span>
+<span class="go">       [5, 6]])</span>
+</pre></div>
+</div>
+</section>
+<section id="matrix-operations">
+<h3>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Link to this heading"></a></h3>
+<section id="id1">
+<h4>Element-wise Addition<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">+</span></code> operator allows for element-wise addition between two matrices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">matrix2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">sum_matrix</span> <span class="o">=</span> <span class="n">matrix1</span> <span class="o">+</span> <span class="n">matrix2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sum_matrix</span><span class="p">)</span>
+<span class="go">array([[ 6,  8],</span>
+<span class="go">       [10, 12]])</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h4>Element-wise Multiplication<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">*</span></code> operator allows for element-wise multiplication between two matrices.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">matrix2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">product_matrix</span> <span class="o">=</span> <span class="n">matrix1</span> <span class="o">*</span> <span class="n">matrix2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">product_matrix</span><span class="p">)</span>
+<span class="go">array([[ 5, 12],</span>
+<span class="go">       [21, 32]])</span>
+</pre></div>
+</div>
+</section>
+<section id="dot-product-of-arrays">
+<h4>Dot product of arrays<a class="headerlink" href="#dot-product-of-arrays" title="Link to this heading"></a></h4>
+<p>The dot product or <strong>scalar product</strong> is given by the <code class="code docutils literal notranslate"><span class="pre">dot</span></code> function.</p>
+<p><strong>Using the `dot` Function:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">matrix2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">matrix1</span><span class="p">,</span> <span class="n">matrix2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">array([[19, 22],</span>
+<span class="go">       [43, 50]])</span>
+</pre></div>
+</div>
+</section>
+<section id="matrix-transposition-and-inversion">
+<h4>Matrix Transposition and Inversion<a class="headerlink" href="#matrix-transposition-and-inversion" title="Link to this heading"></a></h4>
+<p>The transposition of a matrix can be viewed by the <code class="code docutils literal notranslate"><span class="pre">T</span></code> attribute of an array.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transposed_matrix</span> <span class="o">=</span> <span class="n">matrix1</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">transposed_matrix</span><span class="p">)</span>
+<span class="go">array([[1, 3],</span>
+<span class="go">       [2, 4]])</span>
+</pre></div>
+</div>
+<p>The inversion of a matrix can be performed by the <code class="code docutils literal notranslate"><span class="pre">inv</span></code> method of the <code class="code docutils literal notranslate"><span class="pre">linalg</span></code> sublibrary of Numpy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inverse_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">inverse_matrix</span><span class="p">)</span>
+<span class="go">array([[-2. ,  1. ],</span>
+<span class="go">       [ 1.5, -0.5]])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix must be square (same number of rows and columns) and non-singular (determinant not equal to zero) to be invertible.</p>
+</div>
+</section>
+<section id="matrix-determinant-and-eigenvalues">
+<h4>Matrix Determinant and Eigenvalues<a class="headerlink" href="#matrix-determinant-and-eigenvalues" title="Link to this heading"></a></h4>
+<p>To calculate the determinant of a matrix, you can use the <code class="code docutils literal notranslate"><span class="pre">det</span></code> method of the <code class="code docutils literal notranslate"><span class="pre">linalg</span></code> sublibrary of Numpy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">det</span><span class="p">)</span>
+<span class="go">-2</span>
+</pre></div>
+</div>
+<p>To calculate the eigenvalues and the eigenvectors of a matrix, you can use the <code class="code docutils literal notranslate"><span class="pre">eig</span></code> method of the <code class="code docutils literal notranslate"><span class="pre">linalg</span></code> sublibrary of Numpy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+<span class="go">array([-0.37228132,  5.37228132])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">)</span>
+<span class="go">array([[-0.82456484, -0.41597356],</span>
+<span class="go">       [ 0.56576746, -0.90937671]])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="arrays-vs-lists">
+<h2>Arrays vs Lists<a class="headerlink" href="#arrays-vs-lists" title="Link to this heading"></a></h2>
+<p>Arrays and lists are both used to store collections of items, but they have distinct advantages depending on the context in which they are used. Below are the advantages of using arrays compared to lists, particularly focusing on numerical and scientific computing scenarios:</p>
+<ul class="simple">
+<li><p><strong>Memory Efficiency</strong>: Arrays are typically more memory-efficient than lists. In languages like Python (using libraries such as NumPy), arrays have a fixed size and type, which reduces overhead compared to lists that can store mixed data types.</p></li>
+<li><p><strong>Speed of Operations</strong>: Array operations are generally faster due to vectorization. Libraries like NumPy use optimized C and Fortran libraries, which means operations on arrays can be executed more quickly than the equivalent operations on lists.</p></li>
+<li><p><strong>Homogeneous Data Types</strong>: Arrays are designed to store elements of a single data type. This homogeneity allows for optimizations and reduces the complexity associated with type checking. Lists, on the other hand, can store mixed data types, which can introduce inefficiencies.</p></li>
+<li><p><strong>Vectorized Operations</strong>: Arrays support vectorized operations, meaning you can perform operations on entire arrays at once without explicit loops. This is particularly useful for mathematical and scientific computations. For instance, adding two arrays element-wise is a single operation with arrays but requires a loop with lists.</p></li>
+<li><p><strong>Linear Algebra</strong>: Libraries like NumPy provide extensive support for linear algebra operations on arrays, including matrix multiplication, eigenvalue computation, and more. Lists do not inherently support these operations.</p></li>
+</ul>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h4>
+<p>To illustrate the benefit of using vectors (or matrices later), here’s an example using classic lists. This example is not recommended…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Version with lists: not recommended!</span>
+<span class="n">x_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># Not recommended!</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x_list</span><span class="p">:</span>  <span class="c1"># Not recommended!</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;exp(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">) =&quot;</span><span class="p">{</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">i</span><span class="p">)}</span><span class="s2">&quot;)  # Not recommended!</span>
+</pre></div>
+</div>
+<p>This method produces the following results:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">exp(1) = 2.718281828459045</span>
+<span class="l l-Scalar l-Scalar-Plain">exp(2) = 7.38905609893065</span>
+<span class="l l-Scalar l-Scalar-Plain">exp(3) = 20.085536923187668</span>
+<span class="l l-Scalar l-Scalar-Plain">exp(4) = 54.598150033144236</span>
+</pre></div>
+</div>
+<p>A more robust and less time-consuming solution is the use of vectors (or matrices).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_vect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">x_vect_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x_vect</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x_vect_exp</span><span class="p">)</span>
+<span class="go">[ 2.71828183  7.3890561  20.08553692 54.59815003]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-numpy/">http://lense.institutoptique.fr/mine/python-numpy/</a></p>
+<p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-numpy-matrices-et-calculs/">http://lense.institutoptique.fr/mine/python-numpy-matrices-et-calculs/</a></p>
+</section>
+</section>
+</section>
+<section id="scipy">
+<h2>SciPy<a class="headerlink" href="#scipy" title="Link to this heading"></a></h2>
+<section id="specialized-matrix-functions">
+<h3>Specialized Matrix Functions<a class="headerlink" href="#specialized-matrix-functions" title="Link to this heading"></a></h3>
+<p>SciPy provides additional functionalities for matrix operations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">lu</span><span class="p">,</span> <span class="n">svd</span>
+
+<span class="c1"># LU Decomposition</span>
+<span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LU Decomposition:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+
+<span class="c1"># Singular Value Decomposition (SVD)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SVD:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Singular Values:&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vh:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Vh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="good_practices.html" class="btn btn-neutral float-left" title="Good practices with Python (and other langages)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="matplotlib_basics.html" class="btn btn-neutral float-right" title="Matplotlib Basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

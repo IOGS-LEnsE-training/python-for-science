@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Good practices with Python (and other langages)" href="good_practices.html" />
+    <link rel="next" title="Execution time of functions" href="python_time.html" />
     <link rel="prev" title="Data types and display in Python" href="python_data.html" /> 
 </head>
 
@@ -52,10 +52,32 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">     Functions with Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Functions with Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#goal-of-functions">Goal of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-define-a-function">How to Define a function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-a-function">How to Use a function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters-and-options">Parameters and options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#positional-parameters">Positional Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-value-for-parameters">Default Value for parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keyword-parameters">Keyword Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-annotations">Parameter annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-return-values-functions">Multiple Return Values Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lambda-functions">Lambda functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-examples">Some examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-function-without-parameters">Simple Function without Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-with-parameters">Function with Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-with-a-return-value">Function with a Return Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-with-default-parameter-values">Function with Default Parameter Values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_matplotlib.html">     Numpy and Matplotlib Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list_array.html">     Lists vs Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
@@ -95,6 +117,177 @@
              
   <section id="functions-in-python-language">
 <h1>Functions in Python language<a class="headerlink" href="#functions-in-python-language" title="Link to this heading"></a></h1>
+<p>Functions in Python are a fundamental concept in programming that allow you to <strong>group a set of statements</strong> so they can be <strong>reused</strong> and <strong>organized</strong> more effectively.</p>
+<section id="goal-of-functions">
+<h2>Goal of functions<a class="headerlink" href="#goal-of-functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Code Reusability:</strong> Functions allow you to write code once and reuse it multiple times throughout your program.</p></li>
+<li><p><strong>Modularity:</strong> They help break down a large program into smaller, manageable, and more understandable pieces.</p></li>
+<li><p><strong>Maintainability:</strong> Functions make the code easier to read, debug, and maintain.</p></li>
+<li><p><strong>Abstraction:</strong> They allow you to abstract complex operations and provide a simpler interface.</p></li>
+</ul>
+</section>
+<section id="how-to-define-a-function">
+<h2>How to Define a function<a class="headerlink" href="#how-to-define-a-function" title="Link to this heading"></a></h2>
+<p>Function names should be lowercase, with words separated by underscores as necessary to improve readability.</p>
+<ul class="simple">
+<li><p>Use the <cite>def</cite> keyword followed by the function name and parentheses <cite>()</cite>.</p></li>
+<li><p>Inside the parentheses, you can define parameters (optional) that the function can accept.</p></li>
+<li><p>The function body is indented and contains the code that performs the task.</p></li>
+<li><p>Optionally, you can return a value using the <cite>return</cite> keyword.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="c1"># function body</span>
+        <span class="c1"># optional return statement</span>
+        <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-use-a-function">
+<h2>How to Use a function<a class="headerlink" href="#how-to-use-a-function" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>To execute the function, call it by its name followed by parentheses.</p></li>
+<li><p>If the function requires parameters, pass the arguments inside the parentheses.</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">function_name</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="parameters-and-options">
+<h2>Parameters and options<a class="headerlink" href="#parameters-and-options" title="Link to this heading"></a></h2>
+<p>Functions can accept a variety of parameters, each serving a different purpose. Parameters allow a better <strong>reusability</strong>.</p>
+<section id="positional-parameters">
+<h3>Positional Parameters<a class="headerlink" href="#positional-parameters" title="Link to this heading"></a></h3>
+<p>These are the most common type of parameters. They must be provided in the <strong>correct order</strong> when the function is called.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="default-value-for-parameters">
+<h3>Default Value for parameters<a class="headerlink" href="#default-value-for-parameters" title="Link to this heading"></a></h3>
+<p>You can define <strong>default values for parameters</strong>, which will be used if no value is provided when the function is called.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Guest&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet</span><span class="p">()</span>
+<span class="go">Hello, Guest</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span> <span class="c1"># Overrides default value</span>
+<span class="go">Hello, Alice</span>
+</pre></div>
+</div>
+</section>
+<section id="keyword-parameters">
+<h3>Keyword Parameters<a class="headerlink" href="#keyword-parameters" title="Link to this heading"></a></h3>
+<p>Python allows you to pass arguments by specifying the parameter name, regardless of their position. This can make the function calls more readable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">greet</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Good morning&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="parameter-annotations">
+<h3>Parameter annotations<a class="headerlink" href="#parameter-annotations" title="Link to this heading"></a></h3>
+<p>Annotations are optional and provide a way to <strong>attach metadata to function parameters</strong> and return values. They don’t enforce type checking but are useful for documentation and tools.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Annotations suggest that &#39;a&#39; and &#39;b&#39; should be integers</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="multiple-return-values-functions">
+<h2>Multiple Return Values Functions<a class="headerlink" href="#multiple-return-values-functions" title="Link to this heading"></a></h2>
+<p>Functions can return <strong>multiple values</strong> by returning them as a <strong>tuple</strong>. This allows you to pack multiple values together and then unpack them when the function is called. This is particularly useful when a function needs to compute and return several related pieces of data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_min_max</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">numbers</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">get_min_max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, Max: </span><span class="si">{</span><span class="n">max_val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">Min: 1, Max: 5</span>
+</pre></div>
+</div>
+</section>
+<section id="lambda-functions">
+<h2>Lambda functions<a class="headerlink" href="#lambda-functions" title="Link to this heading"></a></h2>
+<p>A <strong>lambda function</strong> is a small, <strong>anonymous function</strong> defined using the <em>lambda</em> keyword. Unlike regular functions defined using the <em>def</em> keyword, lambda functions are typically used for short, simple operations. They can take any number of arguments but have only one expression.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">arguments</span><span class="p">:</span> <span class="n">expression</span>
+</pre></div>
+</div>
+<p>They are limited to a <strong>single expression</strong>, which is evaluated and returned. They cannot contain multiple statements or annotations.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</section>
+<section id="some-examples">
+<h2>Some examples<a class="headerlink" href="#some-examples" title="Link to this heading"></a></h2>
+<section id="simple-function-without-parameters">
+<h3>Simple Function without Parameters<a class="headerlink" href="#simple-function-without-parameters" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet</span><span class="p">()</span>
+<span class="go">Hello, World!</span>
+</pre></div>
+</div>
+</section>
+<section id="function-with-parameters">
+<h3>Function with Parameters<a class="headerlink" href="#function-with-parameters" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet_user</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="go">Hello, Alice!</span>
+</pre></div>
+</div>
+</section>
+<section id="function-with-a-return-value">
+<h3>Function with a Return Value<a class="headerlink" href="#function-with-a-return-value" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">add_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+</section>
+<section id="function-with-default-parameter-values">
+<h3>Function with Default Parameter Values<a class="headerlink" href="#function-with-default-parameter-values" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">greet_user</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s2">&quot;Guest&quot;</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="go">Hello, Alice!</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+<span class="go">Hello, Bob!</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -102,7 +295,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="python_data.html" class="btn btn-neutral float-left" title="Data types and display in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="good_practices.html" class="btn btn-neutral float-right" title="Good practices with Python (and other langages)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_time.html" class="btn btn-neutral float-right" title="Execution time of functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

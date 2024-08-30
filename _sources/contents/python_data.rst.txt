@@ -12,6 +12,96 @@ In this section, we will deal with variables and their type to store **booleans*
 
 We will also present you a way to display their values and their types.
 
+Comments
+********
+
+In Python, comments are used to annotate your code and provide explanations or notes that are not executed as part of the program. Comments are essential for making your code more understandable to yourself and others.
+
+Single-Line Comments
+====================
+
+Single-line comments start with the :code:`#` symbol. Everything following the :code:`#` on that line is considered a comment and is ignored by the Python interpreter.
+
+.. code-block:: python
+
+	# This is a single-line comment
+	print("Hello, World!")  # This is an inline comment
+
+
+Multi-Line Comments
+===================
+
+Python does not have a specific syntax for multi-line comments like some other programming languages. However, there are two common ways to create multi-line comments:
+
+* Using Multiple Single-Line Comments
+* Using Docstrings with triple quotes (:code:`"""` or :code:`'''`). 
+
+.. code-block:: python
+
+   # This is a multi-line comment.
+   # Each line starts with a # symbol.
+   # This method is often used for longer comments.
+
+
+.. code-block:: python
+
+   """
+   This is a multi-line comment using triple quotes.
+   It can span multiple lines.
+   """
+   
+.. note ::
+
+	When used outside of functions, classes, or modules, docstrings don't affect the execution of the code. However, if placed within a function, class, or module, they serve as documentation and are accessible via :code:`__doc__` attributes.
+
+
+.. code-block:: python
+
+	def example_function():
+		"""
+		This is a docstring that can also be used as a multi-line comment.
+		It provides information about the function.
+		"""
+		print("Example function")
+
+
+Best Practices for Writing Comments
+===================================
+
+- **Be Clear and Concise:** Write comments that are easy to understand and get straight to the point.
+- **Keep Comments Updated:** Ensure that comments accurately reflect the code they describe.
+- **Avoid Obvious Comments:** Don’t comment on things that are self-explanatory.
+
+**Example of Good Commenting:**
+
+.. code-block:: python
+
+	# Calculate the area of a rectangle
+	width = 10
+	height = 5
+
+	# Area formula: width * height
+	area = width * height
+
+	print(f"The area is {area}")
+
+
+**Example of Over-Commenting:**
+
+.. code-block:: python
+
+	# Assign 10 to width
+	width = 10
+	# Assign 5 to height
+	height = 5
+
+	# Multiply width by height and assign the result to area
+	area = width * height
+
+	# Print the value of area
+	print(f"The area is {area}")
+
+
 Variables, types and assignement
 ********************************
 
@@ -26,6 +116,8 @@ There are some rules for naming a variable in Python:
 * A variable name can **only contain alpha-numeric characters** and underscores (A-z, 0-9, and _ )
 * Variable names are **case-sensitive** (age, Age and AGE are three different variables)
 * A variable name cannot be any of the Python keywords.
+
+Variable names should be lowercase, with words separated by underscores as necessary to improve readability.
 
 .. note:: 
 
@@ -197,3 +289,354 @@ Booleans
 Lists, tuples, dictionaries
 ***************************
 
+Lists
+=====
+
+A **list** is a versatile and widely-used data structure that allows you to store an ordered collection of items. These items can be of any type, including integers, floats, strings, other lists, or even custom objects. Lists are mutable, meaning you can modify their contents after creation.
+
+Define a list
+-------------
+
+You can create an **empty list**:
+
+.. code-block:: python
+	
+	my_list = []
+
+You can also create a specific list with elements:
+
+.. code-block:: python
+
+	my_list = [1, 2, 3, 4, 5]
+   
+Lists can also contain elements of different types:
+
+.. code-block:: python
+
+   mixed_list = [1, "hello", 3.14, True, [1, 2, 3]]
+
+Finally, list comprehensions provide a concise way to create lists.
+
+
+.. code-block:: python
+
+    squares = [x**2 for x in range(1, 6)]
+    
+>>> print(squares) 
+[1, 4, 9, 16, 25]
+
+Access to an element or a part of elements
+------------------------------------------
+
+You can access to an element of a list by its index:
+
+.. code-block:: python
+
+	first_element = my_list[0]  # Accesses the first element
+	
+>>> print(first_element)
+1
+
+
+You can also use negative indices to access elements from the end of the list:
+
+.. code-block:: python
+
+	last_element = my_list[-1]  # Accesses the last element
+
+>>> print(last_element)
+5
+
+To access to a range of elements, you can use slicing method:
+
+.. code-block:: python
+
+	sub_list = my_list[1:4]  # Gets elements from index 1 to 3
+
+>>> print(sub_list)
+[2, 3, 4]
+
+
+Add Elements to a List
+----------------------
+
+You can add elements to a list with several methods.
+
+With the :code:`append` method, that adds an element to the end of the list:
+
+
+.. code-block:: python
+
+	my_list.append(6)
+
+>>> print(my_list)
+[1, 2, 3, 4, 5, 6]
+
+With the :code:`insert` method, that inserts an element at a specified position:
+
+.. code-block:: python
+
+	my_list.insert(2, 'a')
+
+>>> print(my_list)
+[1, 2, 'a', 4, 5, 6]
+
+With the :code:`extend` method, that adds elements from another list (or any iterable) to the end of the list:
+
+.. code-block:: python
+
+	my_list.extend([7, 8, 9])
+
+>>> print(my_list)
+[1, 2, 'a', 4, 5, 6, 7, 8, 9]
+
+Remove Elements to a List
+-------------------------
+
+You can remove elements of a list with several methods.
+
+With the :code:`remove` method, that removes the first occurrence of a specific element:
+
+.. code-block:: python
+
+	my_list.remove('a')
+    	
+>>> print(my_list)  
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+With the :code:`pop` method, that removes an element at a specified position and returns it. If no index is specified, it removes the last element:
+
+.. code-block:: python
+	
+	last_element = my_list.pop()
+	
+>>> print(my_list)       
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+With the :code:`clear` method, that removes all elements from the list:
+
+.. code-block:: python
+
+	my_list.clear()
+
+>>> print(my_list)
+[]
+
+Concatenate two lists
+---------------------
+
+The :code:`+` operator is the simplest way to concatenate two lists. It combines the elements of both lists into a new list.
+
+.. code-block:: python
+	
+	list1 = [1, 2, 3]
+	list2 = [4, 5, 6]
+
+	# Concatenate lists
+	result = list1 + list2
+
+>>> print(result)
+[1, 2, 3, 4, 5, 6]
+
+The :code:`extend` method can also add all elements of the second list to the end of the first list. This method modifies the original list in place and does not return a new list.
+
+Check membership
+----------------
+
+You can check if an element exists in the list with the :code:`in` keyworkd:
+
+.. code-block:: python
+	
+	if 3 in my_list:
+        print("3 is in the list")
+
+
+Length of a list
+----------------
+
+To find the number of elements in the list, you can use the :code:`len` method from Python:
+
+.. code-block:: python
+	
+	length = len(my_list)
+
+>>> print(length)
+5
+
+Iterate Over a List
+-------------------
+
+You can loop through the elements of a list using a :code:`for` loop.
+
+.. code-block:: python
+
+	for item in my_list:
+		print(item)
+
+
+Tuples
+======
+
+A tuple is an ordered, immutable **collection of elements**. Tuples are similar to lists in that they can store a sequence of items, but unlike lists, the elements of a tuple cannot be changed after the tuple is created. This immutability makes tuples useful in situations where a constant set of values is needed.
+
+Define a tuple
+--------------
+
+Tuples are defined by enclosing the elements in parentheses :code:`()` and separating them with commas :code:`,`.
+
+You can create an **empty tuple**:
+
+.. code-block:: python
+
+	empty_tuple = ()
+	
+Or with elements:
+
+
+.. code-block:: python
+	
+	mixed_tuple = (1, "hello", 3.14, True)
+	
+
+Access to an element of a Tuple
+-------------------------------
+
+You can access elements in a tuple using indexing, similar to lists. The index starts from 0.
+
+.. code-block:: python
+	
+	my_tuple = (10, 20, 30, 40, 50)
+
+	# Access the first element
+	first_element = my_tuple[0]  # Output: 10
+
+	# Access the last element using negative indexing
+	last_element = my_tuple[-1]  # Output: 50
+
+	# Slicing a tuple
+	sub_tuple = my_tuple[1:4]  # Output: (20, 30, 40)
+
+Concatenate tuples
+------------------
+
+You can concatenate two or more tuples using the :code:`+` operator.
+
+.. code-block:: python
+	
+	tuple1 = (1, 2, 3)
+	tuple2 = (4, 5, 6)
+	combined_tuple = tuple1 + tuple2  # Output: (1, 2, 3, 4, 5, 6)
+
+Unpack Tuples
+-------------
+
+You can unpack the elements of a tuple into variables.
+
+.. code-block:: python
+	
+	my_tuple = (1, 2, 3)
+	a, b, c = my_tuple
+	print(a)  # Output: 1
+	print(b)  # Output: 2
+	print(c)  # Output: 3
+
+Dictionaries
+============
+
+A **dictionary** is a built-in data structure that allows you to store and manage data in **key-value pairs**. Dictionaries are versatile and widely used for tasks that require a mapping of unique keys to values. 
+
+
+Define a dictionary
+-------------------
+
+Dictionaries are defined using curly braces :code:`{}`, with key-value pairs separated by commas. Each key and value is separated by a colon :code:`:`.
+
+.. code-block:: python
+
+	# Creating a dictionary
+	my_dict = {
+		"name": "Alice",
+		"age": 30,
+		"city": "New York"
+	}
+	
+
+Access to values
+----------------
+
+You can access values in a dictionary by referencing their keys using square brackets :code:`[]`.
+
+.. code-block:: python
+
+	name = my_dict["name"]  # Output: Alice
+	age = my_dict["age"]    # Output: 30
+
+Add a value
+-----------
+
+You can add new **key-value pairs** or update existing ones by assigning values to keys.
+
+**Example:**
+
+.. code-block:: python
+
+	# Adding a new key-value pair
+	my_dict["email"] = "alice@example.com"
+
+	# Modifying an existing key-value pair
+	my_dict["age"] = 31
+
+Remove a value
+--------------
+
+You can remove key-value pairs using the :code:`del` statement or the :code:`pop` method.
+
+.. code-block:: python
+
+	# Using del to remove a key-value pair
+	del my_dict["city"]
+
+	# Using pop() to remove a key-value pair and get the value
+	email = my_dict.pop("email")  # Output: alice@example.com
+
+
+Common Dictionary Methods
+-------------------------
+
+- :code:`keys()`: Returns a view object displaying a list of all keys in the dictionary.
+
+>>> print(my_dict.keys())  
+dict_keys(['name', 'age'])
+
+- :code:`values()`: Returns a view object displaying a list of all values in the dictionary.
+
+>>> print(my_dict.values())  
+dict_values(['Alice', 31])
+
+- :code:`items()`: Returns a view object displaying a list of all key-value pairs in the dictionary.
+
+>>> print(my_dict.items()) 
+dict_items([('name', 'Alice'), ('age', 31)])
+
+- :code:`clear()`: Removes all key-value pairs from the dictionary.
+
+>>> my_dict.clear()
+
+Nested Dictionaries
+-------------------
+
+Dictionaries can contain other dictionaries as values, allowing for complex data structures.
+
+.. code-block:: python
+
+	employees = {
+		"Alice": {"age": 30, "position": "Engineer"},
+		"Bob": {"age": 25, "position": "Designer"}
+	}
+
+You can access to nested values:
+
+.. code-block:: python
+
+	alice_age = employees["Alice"]["age"]  # Output: 30
+	bob_position = employees["Bob"]["position"]  # Output: Designer

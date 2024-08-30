@@ -21,7 +21,7 @@
         <script src="../_static/documentation_options.js?v=2709fde1"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -53,6 +53,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">     Data types and display</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-line-comments">Single-Line Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-line-comments">Multi-Line Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#best-practices-for-writing-comments">Best Practices for Writing Comments</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#variables-types-and-assignement">Variables, types and assignement</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#assignement">Assignement</a></li>
@@ -73,13 +79,43 @@
 <li class="toctree-l2"><a class="reference internal" href="#numbers">Numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#booleans">Booleans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lists-tuples-dictionaries">Lists, tuples, dictionaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lists-tuples-dictionaries">Lists, tuples, dictionaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lists">Lists</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#define-a-list">Define a list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-to-an-element-or-a-part-of-elements">Access to an element or a part of elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-elements-to-a-list">Add Elements to a List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-elements-to-a-list">Remove Elements to a List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concatenate-two-lists">Concatenate two lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-membership">Check membership</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#length-of-a-list">Length of a list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iterate-over-a-list">Iterate Over a List</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tuples">Tuples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#define-a-tuple">Define a tuple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-to-an-element-of-a-tuple">Access to an element of a Tuple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concatenate-tuples">Concatenate tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unpack-tuples">Unpack Tuples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dictionaries">Dictionaries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#define-a-dictionary">Define a dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-to-values">Access to values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-value">Add a value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-a-value">Remove a value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-dictionary-methods">Common Dictionary Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nested-dictionaries">Nested Dictionaries</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_matplotlib.html">     Numpy and Matplotlib Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list_array.html">     Lists vs Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
@@ -126,6 +162,81 @@
 <p>There are lots of <strong>types of data</strong> and <strong>operations</strong> already implemented in Python.</p>
 <p>In this section, we will deal with variables and their type to store <strong>booleans</strong>, <strong>numbers</strong>, <strong>characters</strong> and <strong>strings of characters</strong>, which are basic types in <em>Python</em>.</p>
 <p>We will also present you a way to display their values and their types.</p>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>In Python, comments are used to annotate your code and provide explanations or notes that are not executed as part of the program. Comments are essential for making your code more understandable to yourself and others.</p>
+<section id="single-line-comments">
+<h3>Single-Line Comments<a class="headerlink" href="#single-line-comments" title="Link to this heading"></a></h3>
+<p>Single-line comments start with the <code class="code docutils literal notranslate"><span class="pre">#</span></code> symbol. Everything following the <code class="code docutils literal notranslate"><span class="pre">#</span></code> on that line is considered a comment and is ignored by the Python interpreter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a single-line comment</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>  <span class="c1"># This is an inline comment</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-line-comments">
+<h3>Multi-Line Comments<a class="headerlink" href="#multi-line-comments" title="Link to this heading"></a></h3>
+<p>Python does not have a specific syntax for multi-line comments like some other programming languages. However, there are two common ways to create multi-line comments:</p>
+<ul class="simple">
+<li><p>Using Multiple Single-Line Comments</p></li>
+<li><p>Using Docstrings with triple quotes (<code class="code docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or <code class="code docutils literal notranslate"><span class="pre">'''</span></code>).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a multi-line comment.</span>
+<span class="c1"># Each line starts with a # symbol.</span>
+<span class="c1"># This method is often used for longer comments.</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is a multi-line comment using triple quotes.</span>
+<span class="sd">It can span multiple lines.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When used outside of functions, classes, or modules, docstrings don’t affect the execution of the code. However, if placed within a function, class, or module, they serve as documentation and are accessible via <code class="code docutils literal notranslate"><span class="pre">__doc__</span></code> attributes.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">example_function</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is a docstring that can also be used as a multi-line comment.</span>
+<span class="sd">        It provides information about the function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example function&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="best-practices-for-writing-comments">
+<h3>Best Practices for Writing Comments<a class="headerlink" href="#best-practices-for-writing-comments" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Be Clear and Concise:</strong> Write comments that are easy to understand and get straight to the point.</p></li>
+<li><p><strong>Keep Comments Updated:</strong> Ensure that comments accurately reflect the code they describe.</p></li>
+<li><p><strong>Avoid Obvious Comments:</strong> Don’t comment on things that are self-explanatory.</p></li>
+</ul>
+<p><strong>Example of Good Commenting:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the area of a rectangle</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Area formula: width * height</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The area is </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example of Over-Commenting:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign 10 to width</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Assign 5 to height</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Multiply width by height and assign the result to area</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="c1"># Print the value of area</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The area is </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="variables-types-and-assignement">
 <h2>Variables, types and assignement<a class="headerlink" href="#variables-types-and-assignement" title="Link to this heading"></a></h2>
 <section id="variables">
@@ -138,6 +249,7 @@
 <li><p>Variable names are <strong>case-sensitive</strong> (age, Age and AGE are three different variables)</p></li>
 <li><p>A variable name cannot be any of the Python keywords.</p></li>
 </ul>
+<p>Variable names should be lowercase, with words separated by underscores as necessary to improve readability.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To <strong>make your code more understandable</strong>, it’s important to call your variables in a way that quickly identifies the information they contain.</p>
@@ -288,6 +400,303 @@
 </section>
 <section id="lists-tuples-dictionaries">
 <h2>Lists, tuples, dictionaries<a class="headerlink" href="#lists-tuples-dictionaries" title="Link to this heading"></a></h2>
+<section id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading"></a></h3>
+<p>A <strong>list</strong> is a versatile and widely-used data structure that allows you to store an ordered collection of items. These items can be of any type, including integers, floats, strings, other lists, or even custom objects. Lists are mutable, meaning you can modify their contents after creation.</p>
+<section id="define-a-list">
+<h4>Define a list<a class="headerlink" href="#define-a-list" title="Link to this heading"></a></h4>
+<p>You can create an <strong>empty list</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>You can also create a specific list with elements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Lists can also contain elements of different types:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Finally, list comprehensions provide a concise way to create lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+<span class="go">[1, 4, 9, 16, 25]</span>
+</pre></div>
+</div>
+</section>
+<section id="access-to-an-element-or-a-part-of-elements">
+<h4>Access to an element or a part of elements<a class="headerlink" href="#access-to-an-element-or-a-part-of-elements" title="Link to this heading"></a></h4>
+<p>You can access to an element of a list by its index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_element</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Accesses the first element</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">first_element</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>You can also use negative indices to access elements from the end of the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_element</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Accesses the last element</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">last_element</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>To access to a range of elements, you can use slicing method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sub_list</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># Gets elements from index 1 to 3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sub_list</span><span class="p">)</span>
+<span class="go">[2, 3, 4]</span>
+</pre></div>
+</div>
+</section>
+<section id="add-elements-to-a-list">
+<h4>Add Elements to a List<a class="headerlink" href="#add-elements-to-a-list" title="Link to this heading"></a></h4>
+<p>You can add elements to a list with several methods.</p>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">append</span></code> method, that adds an element to the end of the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+</div>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">insert</span></code> method, that inserts an element at a specified position:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="go">[1, 2, &#39;a&#39;, 4, 5, 6]</span>
+</pre></div>
+</div>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">extend</span></code> method, that adds elements from another list (or any iterable) to the end of the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="go">[1, 2, &#39;a&#39;, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-elements-to-a-list">
+<h4>Remove Elements to a List<a class="headerlink" href="#remove-elements-to-a-list" title="Link to this heading"></a></h4>
+<p>You can remove elements of a list with several methods.</p>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">remove</span></code> method, that removes the first occurrence of a specific element:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">pop</span></code> method, that removes an element at a specified position and returns it. If no index is specified, it removes the last element:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_element</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7, 8]</span>
+</pre></div>
+</div>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">clear</span></code> method, that removes all elements from the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</section>
+<section id="concatenate-two-lists">
+<h4>Concatenate two lists<a class="headerlink" href="#concatenate-two-lists" title="Link to this heading"></a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">+</span></code> operator is the simplest way to concatenate two lists. It combines the elements of both lists into a new list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="c1"># Concatenate lists</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">list1</span> <span class="o">+</span> <span class="n">list2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">extend</span></code> method can also add all elements of the second list to the end of the first list. This method modifies the original list in place and does not return a new list.</p>
+</section>
+<section id="check-membership">
+<h4>Check membership<a class="headerlink" href="#check-membership" title="Link to this heading"></a></h4>
+<p>You can check if an element exists in the list with the <code class="code docutils literal notranslate"><span class="pre">in</span></code> keyworkd:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">3</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3 is in the list&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="length-of-a-list">
+<h4>Length of a list<a class="headerlink" href="#length-of-a-list" title="Link to this heading"></a></h4>
+<p>To find the number of elements in the list, you can use the <code class="code docutils literal notranslate"><span class="pre">len</span></code> method from Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</section>
+<section id="iterate-over-a-list">
+<h4>Iterate Over a List<a class="headerlink" href="#iterate-over-a-list" title="Link to this heading"></a></h4>
+<p>You can loop through the elements of a list using a <code class="code docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tuples">
+<h3>Tuples<a class="headerlink" href="#tuples" title="Link to this heading"></a></h3>
+<p>A tuple is an ordered, immutable <strong>collection of elements</strong>. Tuples are similar to lists in that they can store a sequence of items, but unlike lists, the elements of a tuple cannot be changed after the tuple is created. This immutability makes tuples useful in situations where a constant set of values is needed.</p>
+<section id="define-a-tuple">
+<h4>Define a tuple<a class="headerlink" href="#define-a-tuple" title="Link to this heading"></a></h4>
+<p>Tuples are defined by enclosing the elements in parentheses <code class="code docutils literal notranslate"><span class="pre">()</span></code> and separating them with commas <code class="code docutils literal notranslate"><span class="pre">,</span></code>.</p>
+<p>You can create an <strong>empty tuple</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">empty_tuple</span> <span class="o">=</span> <span class="p">()</span>
+</pre></div>
+</div>
+<p>Or with elements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="access-to-an-element-of-a-tuple">
+<h4>Access to an element of a Tuple<a class="headerlink" href="#access-to-an-element-of-a-tuple" title="Link to this heading"></a></h4>
+<p>You can access elements in a tuple using indexing, similar to lists. The index starts from 0.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Access the first element</span>
+<span class="n">first_element</span> <span class="o">=</span> <span class="n">my_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Output: 10</span>
+
+<span class="c1"># Access the last element using negative indexing</span>
+<span class="n">last_element</span> <span class="o">=</span> <span class="n">my_tuple</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Output: 50</span>
+
+<span class="c1"># Slicing a tuple</span>
+<span class="n">sub_tuple</span> <span class="o">=</span> <span class="n">my_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># Output: (20, 30, 40)</span>
+</pre></div>
+</div>
+</section>
+<section id="concatenate-tuples">
+<h4>Concatenate tuples<a class="headerlink" href="#concatenate-tuples" title="Link to this heading"></a></h4>
+<p>You can concatenate two or more tuples using the <code class="code docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tuple1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">tuple2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">combined_tuple</span> <span class="o">=</span> <span class="n">tuple1</span> <span class="o">+</span> <span class="n">tuple2</span>  <span class="c1"># Output: (1, 2, 3, 4, 5, 6)</span>
+</pre></div>
+</div>
+</section>
+<section id="unpack-tuples">
+<h4>Unpack Tuples<a class="headerlink" href="#unpack-tuples" title="Link to this heading"></a></h4>
+<p>You can unpack the elements of a tuple into variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">my_tuple</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># Output: 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Output: 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># Output: 3</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dictionaries">
+<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading"></a></h3>
+<p>A <strong>dictionary</strong> is a built-in data structure that allows you to store and manage data in <strong>key-value pairs</strong>. Dictionaries are versatile and widely used for tasks that require a mapping of unique keys to values.</p>
+<section id="define-a-dictionary">
+<h4>Define a dictionary<a class="headerlink" href="#define-a-dictionary" title="Link to this heading"></a></h4>
+<p>Dictionaries are defined using curly braces <code class="code docutils literal notranslate"><span class="pre">{}</span></code>, with key-value pairs separated by commas. Each key and value is separated by a colon <code class="code docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a dictionary</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;New York&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="access-to-values">
+<h4>Access to values<a class="headerlink" href="#access-to-values" title="Link to this heading"></a></h4>
+<p>You can access values in a dictionary by referencing their keys using square brackets <code class="code docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>  <span class="c1"># Output: Alice</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>    <span class="c1"># Output: 30</span>
+</pre></div>
+</div>
+</section>
+<section id="add-a-value">
+<h4>Add a value<a class="headerlink" href="#add-a-value" title="Link to this heading"></a></h4>
+<p>You can add new <strong>key-value pairs</strong> or update existing ones by assigning values to keys.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding a new key-value pair</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;alice@example.com&quot;</span>
+
+<span class="c1"># Modifying an existing key-value pair</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-value">
+<h4>Remove a value<a class="headerlink" href="#remove-a-value" title="Link to this heading"></a></h4>
+<p>You can remove key-value pairs using the <code class="code docutils literal notranslate"><span class="pre">del</span></code> statement or the <code class="code docutils literal notranslate"><span class="pre">pop</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using del to remove a key-value pair</span>
+<span class="k">del</span> <span class="n">my_dict</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">]</span>
+
+<span class="c1"># Using pop() to remove a key-value pair and get the value</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span>  <span class="c1"># Output: alice@example.com</span>
+</pre></div>
+</div>
+</section>
+<section id="common-dictionary-methods">
+<h4>Common Dictionary Methods<a class="headerlink" href="#common-dictionary-methods" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">keys()</span></code>: Returns a view object displaying a list of all keys in the dictionary.</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">dict_keys([&#39;name&#39;, &#39;age&#39;])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">values()</span></code>: Returns a view object displaying a list of all values in the dictionary.</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="go">dict_values([&#39;Alice&#39;, 31])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">items()</span></code>: Returns a view object displaying a list of all key-value pairs in the dictionary.</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="go">dict_items([(&#39;name&#39;, &#39;Alice&#39;), (&#39;age&#39;, 31)])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">clear()</span></code>: Removes all key-value pairs from the dictionary.</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_dict</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-dictionaries">
+<h4>Nested Dictionaries<a class="headerlink" href="#nested-dictionaries" title="Link to this heading"></a></h4>
+<p>Dictionaries can contain other dictionaries as values, allowing for complex data structures.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Alice&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineer&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;Bob&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;Designer&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can access to nested values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alice_age</span> <span class="o">=</span> <span class="n">employees</span><span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">][</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>  <span class="c1"># Output: 30</span>
+<span class="n">bob_position</span> <span class="o">=</span> <span class="n">employees</span><span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">][</span><span class="s2">&quot;position&quot;</span><span class="p">]</span>  <span class="c1"># Output: Designer</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 

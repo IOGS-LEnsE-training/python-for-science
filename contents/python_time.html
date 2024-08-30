@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lists vs Arrays &mdash; Python for Science / Basics 0.1 documentation</title>
+  <title>Execution time of functions &mdash; Python for Science / Basics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Examples" href="examples_variables.html" />
-    <link rel="prev" title="Numpy and Matplotlib" href="numpy_matplotlib.html" /> 
+    <link rel="next" title="Good practices with Python (and other langages)" href="good_practices.html" />
+    <link rel="prev" title="Functions in Python language" href="python_functions.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,12 +53,10 @@
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Execution Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_matplotlib.html">     Numpy and Matplotlib Basics</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">     Lists vs Arrays</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#histogram-of-an-array">Histogram of an array</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
@@ -86,9 +84,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Lists vs Arrays</li>
+      <li class="breadcrumb-item active">Execution time of functions</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/contents/list_array.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/contents/python_time.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -96,20 +94,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="lists-vs-arrays">
-<h1>Lists vs Arrays<a class="headerlink" href="#lists-vs-arrays" title="Link to this heading"></a></h1>
-<section id="histogram-of-an-array">
-<h2>Histogram of an array<a class="headerlink" href="#histogram-of-an-array" title="Link to this heading"></a></h2>
-<p>Loops in Python vs hist function from Numpy.</p>
-</section>
+  <section id="execution-time-of-functions">
+<h1>Execution time of functions<a class="headerlink" href="#execution-time-of-functions" title="Link to this heading"></a></h1>
+<p>The <code class="code docutils literal notranslate"><span class="pre">timeit</span></code> module is a handy tool for measuring the <strong>execution time of small code snippets</strong>, including functions. It provides a simple way to time how long it takes for a function to run, which is useful for performance testing and optimization.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here is how you can use <code class="code docutils literal notranslate"><span class="pre">timeit</span></code> to measure the execution time of a function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="c1"># Define a function</span>
+<span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+
+<span class="c1"># Measure the execution time of the function</span>
+<span class="n">execution_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s2">&quot;my_function()&quot;</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first parameter is the name of the function to test.</p>
+<p>This second one ensures that the <code class="code docutils literal notranslate"><span class="pre">my_function</span></code> defined in the global scope is accessible within the <code class="code docutils literal notranslate"><span class="pre">timeit</span></code> call.</p>
+<p>The last one, called <code class="code docutils literal notranslate"><span class="pre">number</span></code>, specifies how many times to run the code. The default is 1, but running it multiple times helps average out any fluctuations.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Execution time: </span><span class="si">{</span><span class="n">execution_time</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="go">Execution time: 0.01500284999999168 seconds</span>
+</pre></div>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="numpy_matplotlib.html" class="btn btn-neutral float-left" title="Numpy and Matplotlib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="examples_variables.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_functions.html" class="btn btn-neutral float-left" title="Functions in Python language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="good_practices.html" class="btn btn-neutral float-right" title="Good practices with Python (and other langages)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
