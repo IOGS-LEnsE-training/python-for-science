@@ -10,8 +10,9 @@ Comparison between a double loop or numpy array meshgrid
 
 Created on 13/May/2024
 
-@author: LEnsE / IOGS / Palaiseau
-@author: Julien Villemejane
+.. note:: LEnsE - Institut d'Optique - version 1.0
+
+.. moduleauthor:: Julien VILLEMEJANE <julien.villemejane@institutoptique.fr>
 """
 
 import time
