@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meshgrid for numerical computations &mdash; Python for Science / Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+      <link rel="stylesheet" type="text/css" href="https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="examples_variables.html" />
+    <link rel="prev" title="Matplotlib Basics" href="matplotlib_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python for Science / Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_conditions.html">     Conditionals and loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Meshgrid and matrix calculation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#advantages-of-meshgrid">Advantages of <cite>meshgrid</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-meshgrid-produces">What meshgrid produces ?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_variables.html">     Variables and data type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_functions.html">     Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_arrays.html">     Arrays (Numpy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_figures.html">     Figures (Matplotlib)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="signal_scipy.html">     Scipy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python for Science / Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Meshgrid for numerical computations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/python_meshgrid.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="meshgrid-for-numerical-computations">
+<h1>Meshgrid for numerical computations<a class="headerlink" href="#meshgrid-for-numerical-computations" title="Link to this heading"></a></h1>
+<p>The <cite>meshgrid</cite> function in NumPy is a powerful tool for creating coordinate matrices from coordinate vectors, and it has several important advantages, especially in the context of numerical computations and visualizations. Here’s an overview of the advantages and typical use cases of <cite>meshgrid</cite>:</p>
+<section id="advantages-of-meshgrid">
+<h2>Advantages of <cite>meshgrid</cite><a class="headerlink" href="#advantages-of-meshgrid" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Creating Coordinate Grids</strong>:
+- <cite>meshgrid</cite> generates coordinate matrices from coordinate vectors, which are useful for evaluating functions over a grid in 2D or 3D space. This is particularly important in numerical simulations, data visualization, and mathematical computations.</p></li>
+<li><p><strong>Simplifies Function Evaluation</strong>:
+- When you have a function of two variables (e.g., ( f(x, y) )), <cite>meshgrid</cite> helps you evaluate this function over a grid of ((x, y)) pairs, making it easier to compute and visualize functions over a domain.</p></li>
+<li><p><strong>Facilitates Visualization</strong>:
+- It is commonly used for creating surface plots and contour plots. By generating a grid of points, you can evaluate a function over that grid and then plot the results, which is essential for understanding the behavior of multivariate functions.</p></li>
+<li><p><strong>Vectorized Operations</strong>:
+- <cite>meshgrid</cite> allows for vectorized computations, which are typically faster than using nested loops. This leverages NumPy’s efficient array operations to perform calculations over the entire grid at once.</p></li>
+<li><p><strong>Supports Multi-Dimensional Grids</strong>:
+- Although commonly used for 2D grids, <cite>meshgrid</cite> can also be extended to higher dimensions, allowing for the creation of coordinate grids in 3D and beyond.</p></li>
+</ol>
+</section>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
+<p>Here’s how <code class="code docutils literal notranslate"><span class="pre">meshgrid</span></code> works in practice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define the coordinate vectors</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Create coordinate matrices</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define a function to evaluate</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Plot the result using a contour plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Contour Plot of $Z = \sin(\sqrt{X^2 + Y^2})$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This example give this figure:</p>
+<figure class="align-center">
+<img alt="../_images/numpy_meshgrid_example.png" src="../_images/numpy_meshgrid_example.png" />
+</figure>
+<ol class="arabic simple">
+<li><p><strong>Coordinate Vectors</strong>:
+- <cite>x</cite> and <cite>y</cite> are the coordinate vectors defining the range and spacing for the grid.</p></li>
+<li><p><strong>Generate Coordinate Matrices</strong>:
+- <cite>np.meshgrid(x, y)</cite> produces two 2D arrays, <cite>X</cite> and <cite>Y</cite>, where each element of <cite>X</cite> and <cite>Y</cite> corresponds to a grid point in the Cartesian plane.</p></li>
+<li><p><strong>Function Evaluation</strong>:
+- <cite>Z</cite> is computed as a function of <cite>X</cite> and <cite>Y</cite>, producing a matrix of function values over the grid.</p></li>
+<li><p><strong>Visualization</strong>:
+- <cite>plt.contourf</cite> creates a filled contour plot of the function values over the grid, providing a visual representation of the function.</p></li>
+</ol>
+</section>
+<section id="what-meshgrid-produces">
+<h2>What meshgrid produces ?<a class="headerlink" href="#what-meshgrid-produces" title="Link to this heading"></a></h2>
+<p>To understand how the <code class="code docutils literal notranslate"><span class="pre">meshgrid</span></code> function works, you can read this ressource: <a class="reference external" href="./_static/docs/numpy_meshgrid.pdf">Numpy / Meshgrid PDF</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="matplotlib_basics.html" class="btn btn-neutral float-left" title="Matplotlib Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples_variables.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

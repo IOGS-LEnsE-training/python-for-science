@@ -283,8 +283,202 @@ Python provides various arithmetic operations for working with numbers, includin
 Strings
 *******
 
+Strings are a **sequence of characters** used to represent text. They can include letters, numbers, symbols, and whitespace. Strings are one of the most commonly used data types in Python, and they are enclosed in either single quotes ('...'), double quotes ("...").
+
+Create strings
+==============
+
+You can create a string by enclosing text in single quotes (:code:`'`), double quotes (:code:`"`).
+
+.. code-block:: python
+	
+	my_string = "Hello, World!"
+
+Access characters
+=================
+
+You can access individual characters in a string using indexing, as in a list. Python uses zero-based indexing.
+
+.. code-block:: python
+	
+	first_char = my_string[0]  # 'H'
+	last_char = my_string[-1]  # '!'
+
+String Length
+=============
+
+You can find the length of a string using the `len()` function.
+
+.. code-block:: python
+	
+	text = "Hello, World!"
+	length = len(text)  # 13
+
+Operations on strings
+=====================
+
+Concatenation
+-------------
+
+You can concatenate strings using the :code:`+` operator.
+
+.. code-block:: python
+	
+	greeting = "Hello"
+	name = "Alice"
+	message = greeting + ", " + name + "!"  # 'Hello, Alice!'
+
+
+Repetition
+----------
+
+You can repeat a string using the :code:`*` operator.
+
+.. code-block:: python
+	
+	laugh = "ha" * 3  # 'hahaha'
+
+
+Formatting (f-Strings - Python 3.6+)
+------------------------------------
+
+.. code-block:: python
+	
+	name = "Alice"
+	age = 30
+	formatted_string = f"My name is {name} and I am {age} years old."
+	# 'My name is Alice and I am 30 years old.'
+
+
+Changing Case
+-------------
+
+- **`upper()`**: Converts all characters to uppercase.
+- **`lower()`**: Converts all characters to lowercase.
+- **`capitalize()`**: Capitalizes the first character.
+- **`title()`**: Capitalizes the first character of each word.
+- **`swapcase()`**: Swaps the case of each character.
+
+.. code-block:: python
+	
+	text = "hello world"
+	print(text.upper())       # 'HELLO WORLD'
+	print(text.capitalize())  # 'Hello world'
+	print(text.title())       # 'Hello World'
+
+Stripping Whitespace
+--------------------
+
+- **`strip()`**: Removes leading and trailing whitespace.
+- **`lstrip()`**: Removes leading (left-side) whitespace.
+- **`rstrip()`**: Removes trailing (right-side) whitespace.
+
+.. code-block:: python
+	
+	text = "   Hello, World!   "
+	print(text.strip())   # 'Hello, World!'
+	print(text.lstrip())  # 'Hello, World!   '
+	print(text.rstrip())  # '   Hello, World!'
+
+
+Splitting and Joining Strings
+-----------------------------
+
+- **`split()`**: Splits a string into a list of substrings based on a delimiter.
+- **`join()`**: Joins a list of strings into a single string with a specified delimiter.
+
+.. code-block:: python
+	
+	text = "Hello, World!"
+	words = text.split(", ")  # ['Hello', 'World!']
+	joined_text = " - ".join(words)  # 'Hello - World!'
+
+Finding and Replacing Substrings
+--------------------------------
+
+- **`find()`**: Returns the lowest index of the substring if found, otherwise returns `-1`.
+- **`replace()`**: Replaces occurrences of a substring with another substring.
+
+.. code-block:: python
+	
+	text = "Hello, World!"
+	index = text.find("World")  # 7
+	new_text = text.replace("World", "Python")  # 'Hello, Python!'
+
+
+Checking String Properties
+--------------------------
+
+- **`startswith()`**: Checks if the string starts with a specified substring.
+- **`endswith()`**: Checks if the string ends with a specified substring.
+- **`isalpha()`**: Checks if the string consists only of alphabetic characters.
+- **`isdigit()`**: Checks if the string consists only of digits.
+- **`isalnum()`**: Checks if the string consists only of alphanumeric characters.
+
+.. code-block:: python
+	
+	text = "Hello123"
+	print(text.startswith("Hell"))  # True
+	print(text.isalpha())           # False (because it contains digits)
+	print(text.isalnum())           # True (because it contains only letters and digits)
+
 Booleans
 ********
+
+Booleans in Python are a fundamental data type that can have one of two values: :code:`True` or :code:`False`. Booleans are used to represent the truth values in logic and are the backbone of conditional expressions and control flow in programming.
+
+These values are case-sensitive and must be written with an uppercase :code:`T` and :code:`F`.
+
+The boolean type in Python is :code:`bool`.
+
+.. code-block:: python
+
+	is_sunny = True
+	is_raining = False
+	
+	print(type(is_sunny))  # Output: <class 'bool'>
+	print(is_sunny)        # Output: True
+	print(is_raining)      # Output: False
+
+
+Boolean values are often manipulated using boolean operators:
+
+Logical Operators
+=================
+
+- :code:`and`: Returns :code:`True` if both operands are :code:`True`.
+- :code:`or`: Returns :code:`True` if at least one operand is :code:`True`.
+- :code:`not`: Returns :code:`True` if the operand is :code:`False`, and vice versa.
+
+.. code-block:: python
+	
+	a = True
+	b = False
+	
+	print(a and b)  # Output: False
+	print(a or b)   # Output: True
+	print(not a)    # Output: False
+
+
+Comparison Operators
+====================
+
+These operators compare two values and return :code:`True` or :code:`False`.
+
+- :code:`==` : Equal to
+- :code:`!=` : Not equal to
+- :code:`>`  : Greater than
+- :code:`<`  : Less than
+- :code:`>=` : Greater than or equal to
+- :code:`<=` : Less than or equal to
+
+
+.. code-block:: python
+	
+	print(5 > 3)   # Output: True
+	print(5 == 5)  # Output: True
+	print(5 != 5)  # Output: False
+
 
 Lists, tuples, dictionaries
 ***************************

@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Examples" href="examples_variables.html" />
+    <link rel="next" title="Meshgrid for numerical computations" href="python_meshgrid.html" />
     <link rel="prev" title="Numpy Basics" href="numpy_basics.html" /> 
 </head>
 
@@ -48,18 +48,37 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
-<ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_conditions.html">     Conditionals and loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">     Matplotlib Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#matplotlib">Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-example">Basic example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scientist-figure">Scientist figure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#result">Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#about-the-code">About the code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-to-display">Data to display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-the-plot">Set Up the Plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plot-the-data">Plot the Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enhance-the-plot">Enhance the Plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display-the-plot">Display the Plot</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#add-curve-to-a-plot">Add curve to a plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#figure-with-subplots">Figure with subplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d-figures">3D figures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_meshgrid.html">     Meshgrid and matrix calculation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
@@ -99,8 +118,120 @@
              
   <section id="matplotlib-basics">
 <h1>Matplotlib Basics<a class="headerlink" href="#matplotlib-basics" title="Link to this heading"></a></h1>
-<section id="matplotlib">
-<h2>Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading"></a></h2>
+<p>Matplotlib is a comprehensive and widely-used Python library for creating <strong>static, interactive, and animated visualizations</strong>. It is particularly known for its ability to produce publication-quality plots and graphs.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/matplotlib_examples.png" src="../_images/matplotlib_examples.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Examples from the Matplotlib website.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>For more information about this library: <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p>
+<p>To use this library, you need to import it in your script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<section id="basic-example">
+<h2>Basic example<a class="headerlink" href="#basic-example" title="Link to this heading"></a></h2>
+<p>Here’s a simple example of how to use Matplotlib to create a basic line plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
+
+<span class="c1"># Create a plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This example displays this figure:</p>
+<figure class="align-center">
+<img alt="../_images/matplotlib_basic_example.png" src="../_images/matplotlib_basic_example.png" />
+</figure>
+</section>
+<section id="scientist-figure">
+<h2>Scientist figure<a class="headerlink" href="#scientist-figure" title="Link to this heading"></a></h2>
+<p>Displaying a “perfect” scientist figure involves creating a clean, well-formatted plot with clear labels, titles, and appropriate styling.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Example ndarray data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># x values from 0 to 10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># y values as the sine of x</span>
+
+<span class="c1"># Create the figure and axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Adjust size and resolution</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add title and labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;A Perfect Scientist Plot: Sine Wave&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X-axis (radians)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-axis (amplitude)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Add grid and legend</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Customize ticks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Set limits (optional, to ensure proper scaling)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Adjust layout to avoid overlap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="result">
+<h3>Result<a class="headerlink" href="#result" title="Link to this heading"></a></h3>
+<p>This approach will give you a clean, professional-quality plot that adheres to scientific standards, making it suitable for publication or presentation. Adjust the parameters as needed to fit your specific requirements.</p>
+<p>This example displays this figure:</p>
+<figure class="align-center">
+<img alt="../_images/matplotlib_scientist_example.png" src="../_images/matplotlib_scientist_example.png" />
+</figure>
+</section>
+<section id="about-the-code">
+<h3>About the code<a class="headerlink" href="#about-the-code" title="Link to this heading"></a></h3>
+<section id="data-to-display">
+<h4>Data to display<a class="headerlink" href="#data-to-display" title="Link to this heading"></a></h4>
+<p>First, ensure that your data is organized into two vectors of equal length. In this example, the <code class="code docutils literal notranslate"><span class="pre">y</span></code> vector represents the data to be displayed on the Y-axis, while the <code class="code docutils literal notranslate"><span class="pre">x</span></code> vector provides the corresponding values for the X-axis.</p>
+</section>
+<section id="set-up-the-plot">
+<h4>Set Up the Plot<a class="headerlink" href="#set-up-the-plot" title="Link to this heading"></a></h4>
+<p><code class="code docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(...)</span></code> creates a figure (<code class="code docutils literal notranslate"><span class="pre">fig</span></code>) and a set of subplots (<code class="code docutils literal notranslate"><span class="pre">ax</span></code>). <code class="code docutils literal notranslate"><span class="pre">figsize</span></code> adjusts the plot size, and <code class="code docutils literal notranslate"><span class="pre">dpi</span></code> adjusts the resolution. This two parameters are optional.</p>
+</section>
+<section id="plot-the-data">
+<h4>Plot the Data<a class="headerlink" href="#plot-the-data" title="Link to this heading"></a></h4>
+<p><code class="code docutils literal notranslate"><span class="pre">ax.plot(...)</span></code> plots <code class="code docutils literal notranslate"><span class="pre">x</span></code> against <code class="code docutils literal notranslate"><span class="pre">y</span></code>. Customize the line with <code class="code docutils literal notranslate"><span class="pre">label</span></code>, <code class="code docutils literal notranslate"><span class="pre">color</span></code>, <code class="code docutils literal notranslate"><span class="pre">linewidth</span></code> and <code class="code docutils literal notranslate"><span class="pre">marker</span></code> options.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">label</span></code> options correspond to the legend of the plot.</p>
+</section>
+<section id="enhance-the-plot">
+<h4>Enhance the Plot<a class="headerlink" href="#enhance-the-plot" title="Link to this heading"></a></h4>
+<p><code class="code docutils literal notranslate"><span class="pre">ax.set_title</span></code>, <code class="code docutils literal notranslate"><span class="pre">ax.set_xlabel</span></code>, and <code class="code docutils literal notranslate"><span class="pre">ax.set_ylabel</span></code> add a title and axis labels with appropriate font sizes.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">ax.grid(True)</span></code> adds a grid for better readability.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">ax.legend(...)</span></code> adds a legend to the plot.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">ax.tick_params(...)</span></code> adjusts tick marks and labels for clarity.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">ax.set_xlim</span></code> and <cite>ax.set_ylim</cite> set the limits for the x and y axes, ensuring proper scaling.</p>
+</section>
+<section id="display-the-plot">
+<h4>Display the Plot<a class="headerlink" href="#display-the-plot" title="Link to this heading"></a></h4>
+<p><code class="code docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> optimizes the layout to avoid overlapping labels.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">plt.show()</span></code> displays the plot.</p>
+</section>
+</section>
+</section>
+<section id="add-curve-to-a-plot">
+<h2>Add curve to a plot<a class="headerlink" href="#add-curve-to-a-plot" title="Link to this heading"></a></h2>
+</section>
+<section id="figure-with-subplots">
+<h2>Figure with subplots<a class="headerlink" href="#figure-with-subplots" title="Link to this heading"></a></h2>
+</section>
+<section id="d-figures">
+<h2>3D figures<a class="headerlink" href="#d-figures" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-matplotlib-premiers-pas/">http://lense.institutoptique.fr/mine/python-matplotlib-premiers-pas/</a></p>
 <p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-matplotlib-animations/">http://lense.institutoptique.fr/mine/python-matplotlib-animations/</a></p>
 <p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-matplotlib-graphiques-3d/">http://lense.institutoptique.fr/mine/python-matplotlib-graphiques-3d/</a></p>
@@ -112,7 +243,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="numpy_basics.html" class="btn btn-neutral float-left" title="Numpy Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="examples_variables.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_meshgrid.html" class="btn btn-neutral float-right" title="Meshgrid for numerical computations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

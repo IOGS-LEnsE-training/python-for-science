@@ -58,15 +58,21 @@ Python for Science
 
 .. toctree::
    :maxdepth: 1
-   :caption: Basics for Science
    
 	Preparing Python<contents/python_prepare>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Basics for Science
+	
 	Data types and display<contents/python_data>
+	Conditionals and loops<contents/python_conditions>
 	Functions with Python<contents/python_functions>
 	Execution Time<contents/python_time>
 	Good practices<contents/good_practices>
 	Numpy Basics<contents/numpy_basics>
 	Matplotlib Basics<contents/matplotlib_basics>
+	Meshgrid and matrix calculation<contents/python_meshgrid>
 
 
 .. toctree::

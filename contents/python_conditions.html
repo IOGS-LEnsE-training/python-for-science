@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditionals and loops &mdash; Python for Science / Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+      <link rel="stylesheet" type="text/css" href="https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions in Python language" href="python_functions.html" />
+    <link rel="prev" title="Data types and display in Python" href="python_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python for Science / Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Conditionals and loops</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#boolean-conditions">Boolean conditions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-conditional-expressions">Common Conditional Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#comparison-operators">Comparison Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logical-operators">Logical Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#membership-operators">Membership Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#identity-operators">Identity Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conditionals">Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loops">Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-loop"><cite>for</cite> Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#range-with-for-loop"><cite>range()</cite> with <cite>for</cite> Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerate-with-for-loop"><cite>enumerate()</cite> with <cite>for</cite> Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while-loop"><cite>while</cite> Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#break-and-continue"><cite>break</cite> and <cite>continue</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_meshgrid.html">     Meshgrid and matrix calculation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_variables.html">     Variables and data type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_functions.html">     Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_arrays.html">     Arrays (Numpy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_figures.html">     Figures (Matplotlib)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="signal_scipy.html">     Scipy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python for Science / Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Conditionals and loops</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/python_conditions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conditionals-and-loops">
+<h1>Conditionals and loops<a class="headerlink" href="#conditionals-and-loops" title="Link to this heading"></a></h1>
+<p>In Python, conditionals and loops are fundamental constructs that control the flow of a program.</p>
+<section id="boolean-conditions">
+<h2>Boolean conditions<a class="headerlink" href="#boolean-conditions" title="Link to this heading"></a></h2>
+<p>In Python, a <strong>condition</strong> is an expression that evaluates to either <code class="code docutils literal notranslate"><span class="pre">True</span></code> or <code class="code docutils literal notranslate"><span class="pre">False</span></code>. Conditions are used to make decisions in the code, such as whether to execute a certain block of code, repeat a loop, or choose between different options.</p>
+<section id="common-conditional-expressions">
+<h3>Common Conditional Expressions<a class="headerlink" href="#common-conditional-expressions" title="Link to this heading"></a></h3>
+<p>Here are some common ways to create conditions in Python.</p>
+<section id="comparison-operators">
+<h4>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Link to this heading"></a></h4>
+<p>These operators compare two values and return <code class="code docutils literal notranslate"><span class="pre">True</span></code> or <code class="code docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">==</span></code> : Equal to</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">!=</span></code> : Not equal to</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&gt;</span></code>  : Greater than</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&lt;</span></code>  : Less than</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&gt;=</span></code> : Greater than or equal to</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&lt;=</span></code> : Less than or equal to</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># True, because 10 is greater than 5</span>
+</pre></div>
+</div>
+</section>
+<section id="logical-operators">
+<h4>Logical Operators<a class="headerlink" href="#logical-operators" title="Link to this heading"></a></h4>
+<p>These operators are used to combine multiple conditions.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">and</span></code> : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if both conditions are <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">or</span></code>  : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if at least one condition is <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">not</span></code> : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if the condition is <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">z</span><span class="p">))</span>  <span class="c1"># True, because both x &gt; y and y &gt; z are True</span>
+</pre></div>
+</div>
+</section>
+<section id="membership-operators">
+<h4>Membership Operators<a class="headerlink" href="#membership-operators" title="Link to this heading"></a></h4>
+<p>These operators are used to check if a value is in a sequence (like a list, tuple, or string).</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">in</span></code> : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if the value is found in the sequence</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if the value is not found in the sequence</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">)</span>  <span class="c1"># True, because 3 is in the list</span>
+</pre></div>
+</div>
+</section>
+<section id="identity-operators">
+<h4>Identity Operators<a class="headerlink" href="#identity-operators" title="Link to this heading"></a></h4>
+<p>These operators compare the memory locations of two objects.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">is</span></code> : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if both variables point to the same object</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code> : Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if the variables point to different objects</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># True, because b refers to the same object as a</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="conditionals">
+<h2>Conditionals<a class="headerlink" href="#conditionals" title="Link to this heading"></a></h2>
+<p>Conditionals are used to execute certain pieces of code based on whether a condition is <code class="code docutils literal notranslate"><span class="pre">True</span></code> or <code class="code docutils literal notranslate"><span class="pre">False</span></code>. Python provides <code class="code docutils literal notranslate"><span class="pre">if</span></code>, <code class="code docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="code docutils literal notranslate"><span class="pre">else</span></code> statements for conditional execution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+        <span class="c1"># code block to execute if condition1 is True</span>
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+        <span class="c1"># code block to execute if condition2 is True</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="c1"># code block to execute if none of the above conditions are True</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is greater than 10&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is greater than 5 but less than or equal to 10&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is 5 or less&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you test this code for <code class="code docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">7</span></code>, the result is : <code class="code docutils literal notranslate"><span class="pre">&quot;x</span> <span class="pre">is</span> <span class="pre">greater</span> <span class="pre">than</span> <span class="pre">5</span> <span class="pre">but</span> <span class="pre">less</span> <span class="pre">than</span> <span class="pre">or</span> <span class="pre">equal</span> <span class="pre">to</span> <span class="pre">10&quot;</span></code>.</p>
+</section>
+<section id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Link to this heading"></a></h2>
+<p>Loops are used to repeatedly execute a block of code as long as a condition is true or for a specified number of iterations.</p>
+<section id="for-loop">
+<h3><cite>for</cite> Loop<a class="headerlink" href="#for-loop" title="Link to this heading"></a></h3>
+<p>A <code class="code docutils literal notranslate"><span class="pre">for</span></code> loop is used to iterate over a sequence (such as a list, tuple, dictionary, set, or string).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+        <span class="c1"># code block to execute for each item in the sequence</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example give this output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+</section>
+<section id="range-with-for-loop">
+<h3><cite>range()</cite> with <cite>for</cite> Loop<a class="headerlink" href="#range-with-for-loop" title="Link to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">range()</span></code> function generates a sequence of numbers, which is often used with a <code class="code docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="c1"># code block to execute for each value in the range</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example give this output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+</section>
+<section id="enumerate-with-for-loop">
+<h3><cite>enumerate()</cite> with <cite>for</cite> Loop<a class="headerlink" href="#enumerate-with-for-loop" title="Link to this heading"></a></h3>
+<p>When you use <code class="code docutils literal notranslate"><span class="pre">enumerate()</span></code> in a <code class="code docutils literal notranslate"><span class="pre">for</span></code> loop, it provides two values: the index (which starts from 0 by default) and the item from the iterable. This is particularly useful when you need both the element and its position in the iterable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="c1"># Code block that uses index and item</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`iterable`</strong>: The sequence you want to loop over (e.g., a list, tuple, string).</p></li>
+<li><p><strong>`start`</strong>: The index value at which to start counting (default is 0).</p></li>
+</ul>
+<p>Example with a List:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fruits</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">, Fruit: </span><span class="si">{</span><span class="n">fruit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example give this output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0, Fruit</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apple</span>
+<span class="nt">Index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1, Fruit</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">banana</span>
+<span class="nt">Index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2, Fruit</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cherry</span>
+</pre></div>
+</div>
+</section>
+<section id="while-loop">
+<h3><cite>while</cite> Loop<a class="headerlink" href="#while-loop" title="Link to this heading"></a></h3>
+<p>A <code class="code docutils literal notranslate"><span class="pre">while</span></code> loop repeatedly executes a block of code as long as the condition is <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+        <span class="c1"># code block to execute while the condition is True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This example give this output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+</section>
+<section id="break-and-continue">
+<h3><cite>break</cite> and <cite>continue</cite><a class="headerlink" href="#break-and-continue" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>`break`</strong>: Exits the loop prematurely, regardless of the loop’s condition.</p></li>
+<li><p><strong>`continue`</strong>: Skips the rest of the current iteration and moves on to the next iteration.</p></li>
+</ul>
+<p>Example using <strong>break</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example give this output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="l l-Scalar l-Scalar-Plain">4</span>
+</pre></div>
+</div>
+<p>Example using <strong>continue</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example give this output:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_data.html" class="btn btn-neutral float-left" title="Data types and display in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_functions.html" class="btn btn-neutral float-right" title="Functions in Python language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Functions in Python language" href="python_functions.html" />
+    <link rel="next" title="Conditionals and loops" href="python_conditions.html" />
     <link rel="prev" title="Different ways to run Python code" href="python_scripts.html" /> 
 </head>
 
@@ -49,9 +49,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
-<ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">     Data types and display</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#single-line-comments">Single-Line Comments</a></li>
@@ -77,8 +79,28 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#numbers">Numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#booleans">Booleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-strings">Create strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-characters">Access characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-length">String Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operations-on-strings">Operations on strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#concatenation">Concatenation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repetition">Repetition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatting-f-strings-python-3-6">Formatting (f-Strings - Python 3.6+)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-case">Changing Case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stripping-whitespace">Stripping Whitespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#splitting-and-joining-strings">Splitting and Joining Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finding-and-replacing-substrings">Finding and Replacing Substrings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-string-properties">Checking String Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#booleans">Booleans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logical-operators">Logical Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-operators">Comparison Operators</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#lists-tuples-dictionaries">Lists, tuples, dictionaries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#lists">Lists</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#define-a-list">Define a list</a></li>
@@ -111,11 +133,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="python_conditions.html">     Conditionals and loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_meshgrid.html">     Meshgrid and matrix calculation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
@@ -394,9 +418,176 @@
 </section>
 <section id="strings">
 <h2>Strings<a class="headerlink" href="#strings" title="Link to this heading"></a></h2>
+<p>Strings are a <strong>sequence of characters</strong> used to represent text. They can include letters, numbers, symbols, and whitespace. Strings are one of the most commonly used data types in Python, and they are enclosed in either single quotes (’…’), double quotes (”…”).</p>
+<section id="create-strings">
+<h3>Create strings<a class="headerlink" href="#create-strings" title="Link to this heading"></a></h3>
+<p>You can create a string by enclosing text in single quotes (<code class="code docutils literal notranslate"><span class="pre">'</span></code>), double quotes (<code class="code docutils literal notranslate"><span class="pre">&quot;</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="access-characters">
+<h3>Access characters<a class="headerlink" href="#access-characters" title="Link to this heading"></a></h3>
+<p>You can access individual characters in a string using indexing, as in a list. Python uses zero-based indexing.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_char</span> <span class="o">=</span> <span class="n">my_string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># &#39;H&#39;</span>
+<span class="n">last_char</span> <span class="o">=</span> <span class="n">my_string</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># &#39;!&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="string-length">
+<h3>String Length<a class="headerlink" href="#string-length" title="Link to this heading"></a></h3>
+<p>You can find the length of a string using the <cite>len()</cite> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># 13</span>
+</pre></div>
+</div>
+</section>
+<section id="operations-on-strings">
+<h3>Operations on strings<a class="headerlink" href="#operations-on-strings" title="Link to this heading"></a></h3>
+<section id="concatenation">
+<h4>Concatenation<a class="headerlink" href="#concatenation" title="Link to this heading"></a></h4>
+<p>You can concatenate strings using the <code class="code docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span>  <span class="c1"># &#39;Hello, Alice!&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="repetition">
+<h4>Repetition<a class="headerlink" href="#repetition" title="Link to this heading"></a></h4>
+<p>You can repeat a string using the <code class="code docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">laugh</span> <span class="o">=</span> <span class="s2">&quot;ha&quot;</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c1"># &#39;hahaha&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="formatting-f-strings-python-3-6">
+<h4>Formatting (f-Strings - Python 3.6+)<a class="headerlink" href="#formatting-f-strings-python-3-6" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">formatted_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and I am </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
+<span class="c1"># &#39;My name is Alice and I am 30 years old.&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="changing-case">
+<h4>Changing Case<a class="headerlink" href="#changing-case" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>`upper()`</strong>: Converts all characters to uppercase.</p></li>
+<li><p><strong>`lower()`</strong>: Converts all characters to lowercase.</p></li>
+<li><p><strong>`capitalize()`</strong>: Capitalizes the first character.</p></li>
+<li><p><strong>`title()`</strong>: Capitalizes the first character of each word.</p></li>
+<li><p><strong>`swapcase()`</strong>: Swaps the case of each character.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>       <span class="c1"># &#39;HELLO WORLD&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>  <span class="c1"># &#39;Hello world&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>       <span class="c1"># &#39;Hello World&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="stripping-whitespace">
+<h4>Stripping Whitespace<a class="headerlink" href="#stripping-whitespace" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>`strip()`</strong>: Removes leading and trailing whitespace.</p></li>
+<li><p><strong>`lstrip()`</strong>: Removes leading (left-side) whitespace.</p></li>
+<li><p><strong>`rstrip()`</strong>: Removes trailing (right-side) whitespace.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;   Hello, World!   &quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>   <span class="c1"># &#39;Hello, World!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span>  <span class="c1"># &#39;Hello, World!   &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>  <span class="c1"># &#39;   Hello, World!&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="splitting-and-joining-strings">
+<h4>Splitting and Joining Strings<a class="headerlink" href="#splitting-and-joining-strings" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>`split()`</strong>: Splits a string into a list of substrings based on a delimiter.</p></li>
+<li><p><strong>`join()`</strong>: Joins a list of strings into a single string with a specified delimiter.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>  <span class="c1"># [&#39;Hello&#39;, &#39;World!&#39;]</span>
+<span class="n">joined_text</span> <span class="o">=</span> <span class="s2">&quot; - &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>  <span class="c1"># &#39;Hello - World!&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="finding-and-replacing-substrings">
+<h4>Finding and Replacing Substrings<a class="headerlink" href="#finding-and-replacing-substrings" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>`find()`</strong>: Returns the lowest index of the substring if found, otherwise returns <cite>-1</cite>.</p></li>
+<li><p><strong>`replace()`</strong>: Replaces occurrences of a substring with another substring.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;World&quot;</span><span class="p">)</span>  <span class="c1"># 7</span>
+<span class="n">new_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;World&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>  <span class="c1"># &#39;Hello, Python!&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-string-properties">
+<h4>Checking String Properties<a class="headerlink" href="#checking-string-properties" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>`startswith()`</strong>: Checks if the string starts with a specified substring.</p></li>
+<li><p><strong>`endswith()`</strong>: Checks if the string ends with a specified substring.</p></li>
+<li><p><strong>`isalpha()`</strong>: Checks if the string consists only of alphabetic characters.</p></li>
+<li><p><strong>`isdigit()`</strong>: Checks if the string consists only of digits.</p></li>
+<li><p><strong>`isalnum()`</strong>: Checks if the string consists only of alphanumeric characters.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello123&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Hell&quot;</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>           <span class="c1"># False (because it contains digits)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">isalnum</span><span class="p">())</span>           <span class="c1"># True (because it contains only letters and digits)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 <section id="booleans">
 <h2>Booleans<a class="headerlink" href="#booleans" title="Link to this heading"></a></h2>
+<p>Booleans in Python are a fundamental data type that can have one of two values: <code class="code docutils literal notranslate"><span class="pre">True</span></code> or <code class="code docutils literal notranslate"><span class="pre">False</span></code>. Booleans are used to represent the truth values in logic and are the backbone of conditional expressions and control flow in programming.</p>
+<p>These values are case-sensitive and must be written with an uppercase <code class="code docutils literal notranslate"><span class="pre">T</span></code> and <code class="code docutils literal notranslate"><span class="pre">F</span></code>.</p>
+<p>The boolean type in Python is <code class="code docutils literal notranslate"><span class="pre">bool</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_sunny</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_raining</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">is_sunny</span><span class="p">))</span>  <span class="c1"># Output: &lt;class &#39;bool&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_sunny</span><span class="p">)</span>        <span class="c1"># Output: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_raining</span><span class="p">)</span>      <span class="c1"># Output: False</span>
+</pre></div>
+</div>
+<p>Boolean values are often manipulated using boolean operators:</p>
+<section id="logical-operators">
+<h3>Logical Operators<a class="headerlink" href="#logical-operators" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">and</span></code>: Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if both operands are <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">or</span></code>: Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if at least one operand is <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">not</span></code>: Returns <code class="code docutils literal notranslate"><span class="pre">True</span></code> if the operand is <code class="code docutils literal notranslate"><span class="pre">False</span></code>, and vice versa.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">b</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Output: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># Output: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">a</span><span class="p">)</span>    <span class="c1"># Output: False</span>
+</pre></div>
+</div>
+</section>
+<section id="comparison-operators">
+<h3>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Link to this heading"></a></h3>
+<p>These operators compare two values and return <code class="code docutils literal notranslate"><span class="pre">True</span></code> or <code class="code docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">==</span></code> : Equal to</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">!=</span></code> : Not equal to</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&gt;</span></code>  : Greater than</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&lt;</span></code>  : Less than</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&gt;=</span></code> : Greater than or equal to</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&lt;=</span></code> : Less than or equal to</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># Output: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Output: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Output: False</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="lists-tuples-dictionaries">
 <h2>Lists, tuples, dictionaries<a class="headerlink" href="#lists-tuples-dictionaries" title="Link to this heading"></a></h2>
@@ -705,7 +896,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="python_scripts.html" class="btn btn-neutral float-left" title="Different ways to run Python code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="python_functions.html" class="btn btn-neutral float-right" title="Functions in Python language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_conditions.html" class="btn btn-neutral float-right" title="Conditionals and loops" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
