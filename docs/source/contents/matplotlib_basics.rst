@@ -128,8 +128,8 @@ Display the Plot
 
 :code:`plt.show()` displays the plot.
 
-Add curve to a plot
-*******************
+Adding curve to a plot
+**********************
 
 
 Figure with subplots

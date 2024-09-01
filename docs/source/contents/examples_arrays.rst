@@ -5,8 +5,8 @@ Create vectors
 **************
 
 
-Create matrix
-*************
+Create matrices
+***************
 
 
 Lists versus arrays
