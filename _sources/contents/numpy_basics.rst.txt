@@ -212,6 +212,7 @@ Statistics on arrays
 	print("Standard Deviation:", std_dev)
 
 
+
 Functions and arrays
 ********************
 
@@ -417,6 +418,78 @@ array([-0.37228132,  5.37228132])
 array([[-0.82456484, -0.41597356],
        [ 0.56576746, -0.90937671]])
 
+Conditionals on arrays
+**********************
+
+Conditionals on arrays allow you to perform element-wise operations based on certain conditions. This is useful for filtering, modifying, or performing calculations on specific elements within an array.
+
+Findind Array Elements
+======================
+
+You can find array elements based on a condition. The output is a boolean vector containing :code:`True` if the condition is true for this element or :code:`False` otherwise.
+
+.. code-block:: python
+	
+	v = np.array([1, 5, 10, 6, 8])
+	k = (v >= 6)
+
+>>> print(k)
+array([False, False,  True,  True,  True])
+
+
+Filtering an Array
+==================
+   
+You can use a condition to filter elements of an array.
+
+.. code-block:: python
+	
+	arr = np.array([1, 2, 3, 4, 5, 6])
+	filtered_arr = arr[arr > 3]
+
+>>> print(filtered_arr)  # Output: 
+[4 5 6]
+
+
+Using `np.where`
+================
+
+The :code:`np.where()` function is very powerful for applying conditions. It returns elements chosen from two arrays based on a condition or can be used to get indices where a condition is met.
+
+.. code-block:: python
+	
+	arr = np.array([1, 2, 3, 4, 5, 6])
+	
+	# Replace elements greater than 3 with 10, others with 0
+	result = np.where(arr > 3, 10, 0)
+
+>>> print(result) 
+[ 0  0  0 10 10 10]
+
+You can also use the :code:`np.where()` function to get the indices of elements that meet a condition:
+
+.. code-block:: python
+	
+	indices = np.where(arr > 3)
+
+>>> print(indices)
+array([3, 4, 5]),)
+
+
+Combining Conditions
+====================
+
+You can combine multiple conditions using logical operators such as :code:`&` (and), :code:`|` (or), and :code:`~` (not).
+
+.. code-block:: python
+	
+	arr = np.array([1, 2, 3, 4, 5, 6])
+
+   # Elements greater than 2 and less than 5
+   result = arr[(arr > 2) & (arr < 5)]
+
+>>> print(result)  
+[3 4]
 
 Arrays vs Lists
 ***************

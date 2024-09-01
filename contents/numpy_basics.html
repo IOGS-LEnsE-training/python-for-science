@@ -98,6 +98,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#conditionals-on-arrays">Conditionals on arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#findind-array-elements">Findind Array Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-an-array">Filtering an Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-np-where">Using <cite>np.where</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-conditions">Combining Conditions</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#arrays-vs-lists">Arrays vs Lists</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
@@ -505,6 +512,70 @@
 </pre></div>
 </div>
 </section>
+</section>
+</section>
+<section id="conditionals-on-arrays">
+<h2>Conditionals on arrays<a class="headerlink" href="#conditionals-on-arrays" title="Link to this heading"></a></h2>
+<p>Conditionals on arrays allow you to perform element-wise operations based on certain conditions. This is useful for filtering, modifying, or performing calculations on specific elements within an array.</p>
+<section id="findind-array-elements">
+<h3>Findind Array Elements<a class="headerlink" href="#findind-array-elements" title="Link to this heading"></a></h3>
+<p>You can find array elements based on a condition. The output is a boolean vector containing <code class="code docutils literal notranslate"><span class="pre">True</span></code> if the condition is true for this element or <code class="code docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="go">array([False, False,  True,  True,  True])</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering-an-array">
+<h3>Filtering an Array<a class="headerlink" href="#filtering-an-array" title="Link to this heading"></a></h3>
+<p>You can use a condition to filter elements of an array.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">filtered_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">filtered_arr</span><span class="p">)</span>  <span class="c1"># Output:</span>
+<span class="go">[4 5 6]</span>
+</pre></div>
+</div>
+</section>
+<section id="using-np-where">
+<h3>Using <cite>np.where</cite><a class="headerlink" href="#using-np-where" title="Link to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">np.where()</span></code> function is very powerful for applying conditions. It returns elements chosen from two arrays based on a condition or can be used to get indices where a condition is met.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Replace elements greater than 3 with 10, others with 0</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">[ 0  0  0 10 10 10]</span>
+</pre></div>
+</div>
+<p>You can also use the <code class="code docutils literal notranslate"><span class="pre">np.where()</span></code> function to get the indices of elements that meet a condition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+<span class="go">array([3, 4, 5]),)</span>
+</pre></div>
+</div>
+</section>
+<section id="combining-conditions">
+<h3>Combining Conditions<a class="headerlink" href="#combining-conditions" title="Link to this heading"></a></h3>
+<p>You can combine multiple conditions using logical operators such as <code class="code docutils literal notranslate"><span class="pre">&amp;</span></code> (and), <code class="code docutils literal notranslate"><span class="pre">|</span></code> (or), and <code class="code docutils literal notranslate"><span class="pre">~</span></code> (not).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Elements greater than 2 and less than 5</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">arr</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">[3 4]</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="arrays-vs-lists">
