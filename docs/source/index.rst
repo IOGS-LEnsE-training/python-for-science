@@ -67,7 +67,7 @@ Python for Science
 	
 	Data types and display<contents/python_data>
 	Conditionals and loops<contents/python_conditions>
-	Functions with Python<contents/python_functions>
+	Functions<contents/python_functions>
 	Execution Time<contents/python_time>
 	Good practices<contents/good_practices>
 	Numpy Basics<contents/numpy_basics>
