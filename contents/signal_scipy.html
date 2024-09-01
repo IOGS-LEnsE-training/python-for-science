@@ -70,7 +70,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">     Scipy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Scipy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#specialized-matrix-functions">Specialized Matrix Functions</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -102,6 +105,27 @@
 <p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-scipy-premiers-pas/">http://lense.institutoptique.fr/mine/python-scipy-premiers-pas/</a></p>
 <p>FFT : <a class="reference external" href="http://lense.institutoptique.fr/mine/python-scipy-transformee-de-fourier/">http://lense.institutoptique.fr/mine/python-scipy-transformee-de-fourier/</a></p>
 <p>Régression : <a class="reference external" href="http://lense.institutoptique.fr/mine/python-scipy-regressions/">http://lense.institutoptique.fr/mine/python-scipy-regressions/</a></p>
+<section id="specialized-matrix-functions">
+<h2>Specialized Matrix Functions<a class="headerlink" href="#specialized-matrix-functions" title="Link to this heading"></a></h2>
+<p>SciPy provides additional functionalities for matrix operations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">lu</span><span class="p">,</span> <span class="n">svd</span>
+
+<span class="c1"># LU Decomposition</span>
+<span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LU Decomposition:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+
+<span class="c1"># Singular Value Decomposition (SVD)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SVD:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Singular Values:&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vh:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Vh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 

@@ -187,8 +187,8 @@ It's also possible to affect the same value to differents variables.
 Display information to the user
 *******************************
 
-Display a string of characters
-==============================
+String of characters
+====================
 
 To display information to the user, you can use the :code:`print` function from *Python*.
 
@@ -197,8 +197,8 @@ Hello from LEnsE.tech
 
 This method takes a string of characters as an argument.
 
-Display the value of a variable
-===============================
+Value of a variable
+===================
 
 You can also give a variable or the return of a function to the :code:`print` function.
 

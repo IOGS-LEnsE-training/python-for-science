@@ -249,8 +249,8 @@ Numpy was created to handle matrices, called arrays.
 
 *Other libraries such as SciPy and Pandas can also work with matrices in different contexts.*
 
-Create matrices
-=============== 
+Creating matrices
+================= 
 
 Matrix from lists
 -----------------
@@ -292,8 +292,8 @@ For testing some algoritms, a matrix filled with random numbers can be useful.
 	# Create a matrix with random values
 	random_matrix = np.random.rand(3, 3)  # 3x3 matrix with random values between 0 and 1
 
-Access to elements
-==================
+Accessing to elements
+=====================
 
 You can access to a specific element by its index:
 
@@ -549,30 +549,3 @@ http://lense.institutoptique.fr/mine/python-numpy/
 
 http://lense.institutoptique.fr/mine/python-numpy-matrices-et-calculs/
 
-
-
-SciPy
-*****
-
-Specialized Matrix Functions
-============================
-
-SciPy provides additional functionalities for matrix operations.
-
-.. code-block:: python
-
-	from scipy.linalg import lu, svd
-
-	# LU Decomposition
-	P, L, U = lu(matrix1)
-	print("LU Decomposition:")
-	print("P:\n", P)
-	print("L:\n", L)
-	print("U:\n", U)
-
-	# Singular Value Decomposition (SVD)
-	U, s, Vh = svd(matrix1)
-	print("SVD:")
-	print("U:\n", U)
-	print("Singular Values:", s)
-	print("Vh:\n", Vh)

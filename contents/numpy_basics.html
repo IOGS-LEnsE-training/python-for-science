@@ -82,12 +82,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#functions-and-arrays">Functions and arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-matrices">Using matrices</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-matrices">Create matrices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-matrices">Creating matrices</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#matrix-from-lists">Matrix from lists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pre-filled-matrix">Pre-filled Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#access-to-elements">Access to elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-to-elements">Accessing to elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#matrix-operations">Matrix Operations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Element-wise Addition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Element-wise Multiplication</a></li>
@@ -110,10 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#scipy">SciPy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#specialized-matrix-functions">Specialized Matrix Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -360,8 +356,8 @@
 <h2>Using matrices<a class="headerlink" href="#using-matrices" title="Link to this heading"></a></h2>
 <p>Numpy was created to handle matrices, called arrays.</p>
 <p><em>Other libraries such as SciPy and Pandas can also work with matrices in different contexts.</em></p>
-<section id="create-matrices">
-<h3>Create matrices<a class="headerlink" href="#create-matrices" title="Link to this heading"></a></h3>
+<section id="creating-matrices">
+<h3>Creating matrices<a class="headerlink" href="#creating-matrices" title="Link to this heading"></a></h3>
 <section id="matrix-from-lists">
 <h4>Matrix from lists<a class="headerlink" href="#matrix-from-lists" title="Link to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array (matrix)</span>
@@ -397,8 +393,8 @@
 </div>
 </section>
 </section>
-<section id="access-to-elements">
-<h3>Access to elements<a class="headerlink" href="#access-to-elements" title="Link to this heading"></a></h3>
+<section id="accessing-to-elements">
+<h3>Accessing to elements<a class="headerlink" href="#accessing-to-elements" title="Link to this heading"></a></h3>
 <p>You can access to a specific element by its index:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing elements</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Element in 2nd row, 3rd column</span>
@@ -618,30 +614,6 @@
 <p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-numpy/">http://lense.institutoptique.fr/mine/python-numpy/</a></p>
 <p><a class="reference external" href="http://lense.institutoptique.fr/mine/python-numpy-matrices-et-calculs/">http://lense.institutoptique.fr/mine/python-numpy-matrices-et-calculs/</a></p>
 </section>
-</section>
-</section>
-<section id="scipy">
-<h2>SciPy<a class="headerlink" href="#scipy" title="Link to this heading"></a></h2>
-<section id="specialized-matrix-functions">
-<h3>Specialized Matrix Functions<a class="headerlink" href="#specialized-matrix-functions" title="Link to this heading"></a></h3>
-<p>SciPy provides additional functionalities for matrix operations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">lu</span><span class="p">,</span> <span class="n">svd</span>
-
-<span class="c1"># LU Decomposition</span>
-<span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LU Decomposition:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
-
-<span class="c1"># Singular Value Decomposition (SVD)</span>
-<span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">matrix1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SVD:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Singular Values:&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vh:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Vh</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 </section>
 </section>
