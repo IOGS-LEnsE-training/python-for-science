@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FFT with Python &mdash; Python for Science / Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+      <link rel="stylesheet" type="text/css" href="https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SciPy" href="signal_scipy.html" />
+    <link rel="prev" title="Examples" href="examples_figures.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python for Science / Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_conditions.html">     Conditionals and loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_meshgrid.html">     Meshgrid and matrix calculation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_functions.html">     Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_arrays.html">     Arrays (Numpy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_figures.html">     Figures (Matplotlib)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Signal processing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     FFT with Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fourier-transform">Fourier Transform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-concepts">Key Concepts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#time-domain-vs-frequency-domain">Time Domain vs. Frequency Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sinusoids-as-building-blocks">Sinusoids as Building Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-definition">Mathematical Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverse-fourier-transform">Inverse Fourier Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discrete-fourier-transform-dft">Discrete Fourier Transform (DFT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fourier-transform-properties">Fourier Transform Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sampled-signal">Sampled signal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sampling-frequency">Sampling frequency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#number-of-samples">Number of samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#periodicity-of-the-spectrum">Periodicity of the spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fast-fourier-transform">Fast Fourier Transform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-representation">Mathematical Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-data-of-the-fft">Output data of the FFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frequency-axis">Frequency axis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-resolution">Frequency Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-bins">Frequency bins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#physical-representation">Physical representation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ensure-to-respect-the-sampling-theorem">Ensure to respect the sampling theorem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calculate-the-fft-of-a-signal">Calculate the FFT of a signal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#define-the-function">Define the function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compute-the-fft">Compute the FFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#construct-frequency-axis">Construct Frequency Axis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#display-the-fft-of-a-signal">Display the FFT of a signal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signal_scipy.html">     Scipy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python for Science / Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FFT with Python</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/signal_process_fft.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fft-with-python">
+<h1>FFT with Python<a class="headerlink" href="#fft-with-python" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The mathematical concepts covered in this section are not addressed in a formal manner.</p>
+<p>They are presented only as a reminder, and shortcuts have been intentionally taken to facilitate the understanding of these concepts.</p>
+</div>
+<section id="fourier-transform">
+<h2>Fourier Transform<a class="headerlink" href="#fourier-transform" title="Link to this heading"></a></h2>
+<p>The <strong>Fourier Transform</strong> is a mathematical operation that transforms a <strong>time-domain signal</strong> (a signal that varies over time) into a <strong>frequency-domain representation</strong>. It breaks down a complex signal into its constituent sinusoidal components, essentially showing how much of each frequency is present in the original signal.</p>
+<section id="key-concepts">
+<h3>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h3>
+<section id="time-domain-vs-frequency-domain">
+<h4>Time Domain vs. Frequency Domain<a class="headerlink" href="#time-domain-vs-frequency-domain" title="Link to this heading"></a></h4>
+<p>The Fourier Transform converts a time-domain signal into this frequency-domain representation.</p>
+<ul class="simple">
+<li><p><strong>Time Domain</strong>: Describes how a signal changes over time.</p></li>
+<li><p><strong>Frequency Domain</strong>: Describes how much of the signal lies within each given frequency band.</p></li>
+</ul>
+</section>
+<section id="sinusoids-as-building-blocks">
+<h4>Sinusoids as Building Blocks<a class="headerlink" href="#sinusoids-as-building-blocks" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Any complex signal can be thought of as being made up of simpler sinusoidal waves (sines and cosines) of different frequencies, amplitudes, and phases.</p></li>
+<li><p>The Fourier Transform identifies these components and tells you their frequencies and amplitudes.</p></li>
+</ul>
+</section>
+</section>
+<section id="mathematical-definition">
+<h3>Mathematical Definition<a class="headerlink" href="#mathematical-definition" title="Link to this heading"></a></h3>
+<p>For a continuous-time signal <span class="math notranslate nohighlight">\(f(t)\)</span>, the <strong>Fourier Transform</strong> <span class="math notranslate nohighlight">\(F(\omega)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[F(\omega) = \int_{-\infty}^{\infty} f(t) \cdot e^{-j\omega t} \, dt\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F(\omega)\)</span> is the frequency-domain representation of the signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span> (omega) is the angular frequency (in radians per second).</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(t)\)</span> is the original time-domain signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-j\omega t}\)</span> is a complex exponential function representing sinusoids.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>For animated explanations, refer to this YouTube video from the <strong>3Blue1Brown</strong> channel: <a class="reference external" href="https://www.youtube.com/watch?v=spUNpyF58BY">https://www.youtube.com/watch?v=spUNpyF58BY</a></p>
+<p>For a better mathematical approach, refer to this website: <a class="reference external" href="https://www.thefouriertransform.com/">https://www.thefouriertransform.com/</a></p>
+</section>
+<section id="inverse-fourier-transform">
+<h3>Inverse Fourier Transform<a class="headerlink" href="#inverse-fourier-transform" title="Link to this heading"></a></h3>
+<p>The process can be reversed using the <strong>Inverse Fourier Transform</strong> to convert the frequency-domain representation back to the time domain:</p>
+<div class="math notranslate nohighlight">
+\[f(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) \cdot e^{j\omega t} \, d\omega\]</div>
+</section>
+<section id="discrete-fourier-transform-dft">
+<h3>Discrete Fourier Transform (DFT)<a class="headerlink" href="#discrete-fourier-transform-dft" title="Link to this heading"></a></h3>
+<p>When working with digital signals (discrete samples), we use the <strong>Discrete Fourier Transform (DFT)</strong>, which operates on discrete data points. The DFT is defined as:</p>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j2\pi kn/N}, \quad k = 0, 1, \dots, N-1\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X[k]\)</span> is the frequency-domain representation of the signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x[n]\)</span> is the time-domain signal sampled at <span class="math notranslate nohighlight">\(N\)</span> points.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the total number of samples.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> corresponds to the frequency index.</p></li>
+</ul>
+</section>
+<section id="fourier-transform-properties">
+<h3>Fourier Transform Properties<a class="headerlink" href="#fourier-transform-properties" title="Link to this heading"></a></h3>
+<p>The Fourier Transform has several important properties:</p>
+<ul class="simple">
+<li><p><strong>Linearity</strong>: The transform of a sum of signals is the sum of their transforms.</p></li>
+<li><p><strong>Time Shifting</strong>: Shifting a signal in time corresponds to a phase shift in the frequency domain.</p></li>
+<li><p><strong>Frequency Shifting</strong>: Shifting a signal in frequency corresponds to multiplying by a complex exponential in the time domain.</p></li>
+<li><p><strong>Convolution</strong>: Convolution in the time domain corresponds to multiplication in the frequency domain, and vice versa.</p></li>
+</ul>
+</section>
+<section id="sampled-signal">
+<h3>Sampled signal<a class="headerlink" href="#sampled-signal" title="Link to this heading"></a></h3>
+<p>The DFT, and by extension the FFT, operates on <strong>a finite set of samples</strong>. This transforms a finite time-domain signal into a finite frequency-domain representation.</p>
+<section id="sampling-frequency">
+<h4>Sampling frequency<a class="headerlink" href="#sampling-frequency" title="Link to this heading"></a></h4>
+<p>The <strong>Sampling Rate</strong> (<span class="math notranslate nohighlight">\(fs\)</span>) or frequency is the number of samples taken per second from the continuous signal. It defines the upper limit of the frequencies that can be accurately captured.</p>
+</section>
+<section id="number-of-samples">
+<h4>Number of samples<a class="headerlink" href="#number-of-samples" title="Link to this heading"></a></h4>
+<p>The <strong>Number of Points</strong>  (<span class="math notranslate nohighlight">\(N\)</span>) is the number of stored samples of the signal. If the FFT is computed over <span class="math notranslate nohighlight">\(N\)</span> points (i.e., if your time-domain signal has <span class="math notranslate nohighlight">\(N\)</span> samples), the result will contain <span class="math notranslate nohighlight">\(N\)</span> frequency bins.</p>
+</section>
+<section id="periodicity-of-the-spectrum">
+<h4>Periodicity of the spectrum<a class="headerlink" href="#periodicity-of-the-spectrum" title="Link to this heading"></a></h4>
+<p>When you perform a DFT on a sampled signal, the resulting <strong>frequency-domain representation is inherently periodic</strong>.</p>
+<p>This means that the frequency spectrum repeats itself every <span class="math notranslate nohighlight">\(fs\)</span>.</p>
+<p>The result <span class="math notranslate nohighlight">\(X[k]\)</span> is periodic with period <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>This periodicity means:</p>
+<div class="math notranslate nohighlight">
+\[X[k] = X[k + N]\]</div>
+</section>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<p>Consider a simple sine wave:</p>
+<div class="math notranslate nohighlight">
+\[g(t) = \sin(2\pi ft)\]</div>
+<p>When applying the Fourier Transform to this sine wave, the result is two spikes (delta function) in the frequency domain at the frequency <span class="math notranslate nohighlight">\(-f\)</span> and <span class="math notranslate nohighlight">\(f\)</span> of the sine wave, indicating that the sine wave consists of only one frequency component.</p>
+</section>
+</section>
+<section id="fast-fourier-transform">
+<h2>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Link to this heading"></a></h2>
+<p>The <strong>Fast Fourier Transform (FFT)</strong> is an algorithm that efficiently computes the <strong>Discrete Fourier Transform (DFT)</strong> of a sequence or its inverse (IDFT). The FFT is a critical tool in digital signal processing, image processing, and many other fields that involve the analysis of signals and data.</p>
+<p>The direct computation of the DFT involves <span class="math notranslate nohighlight">\(O(N^2)\)</span> operations for <span class="math notranslate nohighlight">\(N\)</span> data points, which can be computationally expensive, especially for large <span class="math notranslate nohighlight">\(N\)</span>. The FFT reduces this complexity to <span class="math notranslate nohighlight">\(O(N \log N)\)</span>, making it much faster and more practical for real-world applications, especially when dealing with large datasets.</p>
+<section id="mathematical-representation">
+<h3>Mathematical Representation<a class="headerlink" href="#mathematical-representation" title="Link to this heading"></a></h3>
+<p>The DFT of a sequence <span class="math notranslate nohighlight">\(x[n]\)</span> of length <span class="math notranslate nohighlight">\(N\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j2\pi kn/N}, \quad k = 0, 1, \dots, N-1\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X[k]\)</span> is the output of the DFT, representing the amplitude and phase of the frequency component at <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x[n]\)</span> is the input sequence (time-domain signal).</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-j2\pi kn/N}\)</span> represents the complex sinusoidal basis functions.</p></li>
+</ul>
+</section>
+<section id="output-data-of-the-fft">
+<h3>Output data of the FFT<a class="headerlink" href="#output-data-of-the-fft" title="Link to this heading"></a></h3>
+<p>When you compute the Fast Fourier Transform (FFT) of a signal, the output is a <strong>set of complex numbers</strong> that represent the frequency components of the signal. These numbers provide information about both the amplitude (magnitude) and the phase of each frequency component present in the signal.</p>
+<p>…</p>
+</section>
+<section id="frequency-axis">
+<h3>Frequency axis<a class="headerlink" href="#frequency-axis" title="Link to this heading"></a></h3>
+<p>The frequency axis in the Fast Fourier Transform (FFT) represents the range of frequencies that are present in the signal being analyzed. Understanding how this axis is constructed and interpreted is crucial for analyzing the frequency content of a signal.</p>
+<p>The FFT process divides the frequency range from 0 Hz to <span class="math notranslate nohighlight">\(f_s\)</span> into <span class="math notranslate nohighlight">\(N\)</span> <strong>equally spaced points</strong>.</p>
+<section id="frequency-resolution">
+<h4>Frequency Resolution<a class="headerlink" href="#frequency-resolution" title="Link to this heading"></a></h4>
+<p>The frequency difference between consecutive bins is given by:</p>
+<div class="math notranslate nohighlight">
+\[\Delta f = \frac{f_s}{N}\]</div>
+<p>This is the smallest frequency difference that the FFT can resolve.</p>
+</section>
+<section id="frequency-bins">
+<h4>Frequency bins<a class="headerlink" href="#frequency-bins" title="Link to this heading"></a></h4>
+<p>The FFT output is organized into “bins”, each corresponding to a specific frequency. The <strong>number of bins</strong> is equal to the <strong>number of samples</strong> <span class="math notranslate nohighlight">\(N\)</span> used in the FFT. Each bin represents a specific frequency, calculated as:</p>
+<div class="math notranslate nohighlight">
+\[f_k = \frac{k \cdot f_s}{N}, \quad \text{for} \ k = 0, 1, 2, \dots, N-1\]</div>
+<p>Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_k\)</span> is the frequency corresponding to the <span class="math notranslate nohighlight">\(k\)</span>-th bin.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_s\)</span> is the sampling rate.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of samples or the size of the FFT.</p></li>
+</ul>
+</section>
+<section id="physical-representation">
+<h4>Physical representation<a class="headerlink" href="#physical-representation" title="Link to this heading"></a></h4>
+<p>Physicians and engineers often prefer to display the frequency range from negative to positive to provide a complete view of the signal’s frequency content.</p>
+<p>This centered frequency spectrum allows for easier interpretation of certain phenomena, such as symmetry, phase shifts, and frequency modulation effects, which are crucial in many physical systems.</p>
+<p>But, the standard FFT algorithm, when applied to <em>a real-valued signal</em>, typically outputs a frequency spectrum from 0 to <span class="math notranslate nohighlight">\(fs\)</span>.</p>
+<p>We assume that the frequency spectrum computed by a FFT on a sampled signal repeats itself every <span class="math notranslate nohighlight">\(fs\)</span> (the sampling frequency). For real signals, the Fourier Transform exhibits conjugate symmetry. This means that the positive and negative frequency components are mirror images of each other.
+​
+So, the second half of the FFT output, corresponding to frequencies from <span class="math notranslate nohighlight">\(\frac{fs}{2}\)</span> to <span class="math notranslate nohighlight">\(fs\)</span>, mirrors the first half because of the symmetry of real signals.</p>
+</section>
+</section>
+<section id="ensure-to-respect-the-sampling-theorem">
+<h3>Ensure to respect the sampling theorem<a class="headerlink" href="#ensure-to-respect-the-sampling-theorem" title="Link to this heading"></a></h3>
+<p>It is very important to ensure that the Nyquist-Shannon sampling theorem is respected when using the Fast Fourier Transform (FFT).</p>
+<p>Respecting the Nyquist-Shannon criterion when using FFT is crucial for:</p>
+<ul class="simple">
+<li><p>Preventing aliasing and ensuring that the signal is accurately captured.</p></li>
+<li><p>Obtaining a true and interpretable frequency-domain representation of the signal.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The <strong>Nyquist-Shannon sampling theorem</strong> states that for accurate representation and reconstruction of a continuous-time signal from its samples, the signal must be sampled at a rate that is at least twice the highest frequency present in the signal. This rate is known as the <strong>Nyquist rate</strong>.</p>
+<p>Mathematically, if the highest frequency in a signal is <span class="math notranslate nohighlight">\(f_{\text{max}}\)</span>, the sampling frequency <span class="math notranslate nohighlight">\(f_s\)</span> must satisfy:</p>
+<div class="math notranslate nohighlight">
+\[f_s \geq 2 \times f_{\text{max}}\]</div>
+</section>
+</section>
+<section id="calculate-the-fft-of-a-signal">
+<h2>Calculate the FFT of a signal<a class="headerlink" href="#calculate-the-fft-of-a-signal" title="Link to this heading"></a></h2>
+<p>Calculating the Fast Fourier Transform (FFT) of a function in Python can be done using the <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy</span></code> library.</p>
+<section id="define-the-function">
+<h3>Define the function<a class="headerlink" href="#define-the-function" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step is optional if your data is already stored in an appropriate object (an <code class="code docutils literal notranslate"><span class="pre">ndarray</span></code> for example).</p>
+</div>
+<p>Let’s define a simple function, such as a sine wave, and create an array of sample points.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The code of this example is in the <code class="file docutils literal notranslate"><span class="pre">\progs\numpy\numpy_fft.py</span></code> file of the repository.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sampling parameters</span>
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Samples per second</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">sampling_rate</span>  <span class="c1"># Sampling interval</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Number of sample points</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">N</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Time vector</span>
+
+<span class="c1"># Define the function (e.g., sine wave with frequency 50 Hz)</span>
+<span class="n">frequency</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Frequency in Hz</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Amplitude of the sine wave</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example produces a sine signal at 50Hz shown in the following figure:</p>
+<figure class="align-center">
+<img alt="../_images/numpy_sinewave.png" src="../_images/numpy_sinewave.png" />
+</figure>
+</section>
+<section id="compute-the-fft">
+<h3>Compute the FFT<a class="headerlink" href="#compute-the-fft" title="Link to this heading"></a></h3>
+<p>The FFT can be computed using <code class="code docutils literal notranslate"><span class="pre">numpy.fft.fft()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the FFT</span>
+<span class="n">fft_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+
+<span class="c1"># Take the magnitude of the FFT result and normalize</span>
+<span class="n">fft_magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_result</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
+</pre></div>
+</div>
+</section>
+<section id="construct-frequency-axis">
+<h3>Construct Frequency Axis<a class="headerlink" href="#construct-frequency-axis" title="Link to this heading"></a></h3>
+<p>The frequency axis can be computed using <code class="code docutils literal notranslate"><span class="pre">numpy.fft.fftfreq()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the frequency axis</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method requires the <strong>number of sample points</strong> (<span class="math notranslate nohighlight">\(N\)</span>) and the interval between two samples (or the sampling interval <span class="math notranslate nohighlight">\(T_s = \frac{1}{f_s}\)</span>).</p>
+<p>With this two parameters, the frequency axis can be reconstructed.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">fftfreq()</span></code> method gives a frequency axis range from negative to positive value, i.e. from <span class="math notranslate nohighlight">\(-\frac{f_s}{2}\)</span> to <span class="math notranslate nohighlight">\(\frac{f_s}{2}\)</span>.</p>
+</section>
+</section>
+<section id="display-the-fft-of-a-signal">
+<h2>Display the FFT of a signal<a class="headerlink" href="#display-the-fft-of-a-signal" title="Link to this heading"></a></h2>
+<p>Displaying the Fast Fourier Transform (FFT) of a function can be done <code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib</span></code> for visualization.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the figure and axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Original Signal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time [s]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">fft_magnitude</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;FFT of the Signal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This example produces the following figure, showing the original signal (sine wave at 50Hz sampled at 1kHz) and its FFT:</p>
+<figure class="align-center">
+<img alt="../_images/numpy_sinewave_fft.png" src="../_images/numpy_sinewave_fft.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="examples_figures.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="signal_scipy.html" class="btn btn-neutral float-right" title="SciPy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

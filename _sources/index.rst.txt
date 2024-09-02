@@ -79,7 +79,6 @@ Python for Science
    :maxdepth: 1
    :caption: Examples
 
-	Variables and data type<contents/examples_variables>
 	Functions<contents/examples_functions>
 	Arrays (Numpy)<contents/examples_arrays>
 	Figures (Matplotlib)<contents/examples_figures>
@@ -88,6 +87,7 @@ Python for Science
    :maxdepth: 1
    :caption: Signal processing
    
+	FFT with Python<contents/signal_process_fft>
 	Scipy<contents/signal_scipy>
    
 .. toctree::
