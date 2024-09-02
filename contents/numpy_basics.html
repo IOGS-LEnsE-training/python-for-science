@@ -105,6 +105,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#combining-conditions">Combining Conditions</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#array-type-and-conversion">Array type and conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-the-data-type-of-a-ndarray">Accessing the Data Type of a <cite>ndarray</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forcing-a-data-type-in-a-ndarray">Forcing a Data Type in a <cite>ndarray</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specify-data-type-during-array-creation">Specify Data Type During Array Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#convert-an-existing-array-to-a-different-data-type">Convert an Existing Array to a Different Data Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#arrays-vs-lists">Arrays vs Lists</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
@@ -572,6 +581,49 @@
 <span class="go">[3 4]</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="array-type-and-conversion">
+<h2>Array type and conversion<a class="headerlink" href="#array-type-and-conversion" title="Link to this heading"></a></h2>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code> (N-dimensional array) is a powerful data structure that can hold data of a specific type.</p>
+<section id="accessing-the-data-type-of-a-ndarray">
+<h3>Accessing the Data Type of a <cite>ndarray</cite><a class="headerlink" href="#accessing-the-data-type-of-a-ndarray" title="Link to this heading"></a></h3>
+<p>To access the data type of the elements in a NumPy array, you use the <code class="code docutils literal notranslate"><span class="pre">.dtype</span></code> attribute.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">type_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">type_arr</span><span class="p">)</span>
+<span class="go">int64 (or int32 depending on your system)</span>
+</pre></div>
+</div>
+</section>
+<section id="forcing-a-data-type-in-a-ndarray">
+<h3>Forcing a Data Type in a <cite>ndarray</cite><a class="headerlink" href="#forcing-a-data-type-in-a-ndarray" title="Link to this heading"></a></h3>
+<p>You can enforce a specific data type when creating a NumPy array using the <code class="code docutils literal notranslate"><span class="pre">dtype</span></code> parameter.</p>
+<section id="specify-data-type-during-array-creation">
+<h4>Specify Data Type During Array Creation<a class="headerlink" href="#specify-data-type-during-array-creation" title="Link to this heading"></a></h4>
+<p>You can specify the data type directly when you create the array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>       <span class="c1"># Output: [1. 2. 3. 4.]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="c1"># Output: float64</span>
+</pre></div>
+</div>
+</section>
+<section id="convert-an-existing-array-to-a-different-data-type">
+<h4>Convert an Existing Array to a Different Data Type<a class="headerlink" href="#convert-an-existing-array-to-a-different-data-type" title="Link to this heading"></a></h4>
+<p>You can change the data type of an existing array using the <code class="code docutils literal notranslate"><span class="pre">.astype()</span></code> method. This method returns a copy of the array with the specified data type.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="c1"># Convert to a different data type</span>
+<span class="n">arr_float</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">arr_float</span><span class="p">)</span>     <span class="c1"># Output: [1. 2. 3. 4.]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr_float</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># Output: float64</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 <section id="arrays-vs-lists">

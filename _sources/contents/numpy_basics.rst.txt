@@ -491,6 +491,59 @@ You can combine multiple conditions using logical operators such as :code:`&` (a
 >>> print(result)  
 [3 4]
 
+Array type and conversion
+*************************
+
+A :class:`ndarray` (N-dimensional array) is a powerful data structure that can hold data of a specific type.
+
+Accessing the Data Type of a `ndarray`
+======================================
+
+To access the data type of the elements in a NumPy array, you use the :code:`.dtype` attribute.
+
+.. code-block:: python
+	
+	arr = np.array([1, 2, 3, 4])
+	type_arr = arr.dtype
+
+>>> print(type_arr)  
+int64 (or int32 depending on your system)
+
+
+Forcing a Data Type in a `ndarray`
+==================================
+
+You can enforce a specific data type when creating a NumPy array using the :code:`dtype` parameter.
+
+Specify Data Type During Array Creation
+---------------------------------------
+
+You can specify the data type directly when you create the array:
+
+.. code-block:: python
+	
+	arr = np.array([1, 2, 3, 4], dtype=float)
+
+	print(arr)       # Output: [1. 2. 3. 4.]
+	print(arr.dtype) # Output: float64
+
+
+Convert an Existing Array to a Different Data Type
+--------------------------------------------------
+
+You can change the data type of an existing array using the :code:`.astype()` method. This method returns a copy of the array with the specified data type.
+
+.. code-block:: python
+	
+	arr = np.array([1, 2, 3, 4])
+	
+	# Convert to a different data type
+	arr_float = arr.astype(float)
+	
+	print(arr_float)     # Output: [1. 2. 3. 4.]
+	print(arr_float.dtype)  # Output: float64
+
+
 Arrays vs Lists
 ***************
 
