@@ -135,6 +135,98 @@ Adding curve to a plot
 Figure with subplots
 ********************
 
+In Matplotlib, the :code:`subplot()` function is used to create multiple subplots within a single figure, allowing for the organization and comparison of multiple plots in one window. 
+
+
+
+2. **Create a Figure and Subplots**
+
+   Use `plt.subplots()` to create a figure and a grid of subplots. This function returns a `figure` object and an array of `axes` objects.
+
+   ```python
+   fig, ax = plt.subplots(nrows=2, ncols=2)  # 2x2 grid of subplots
+   ```
+
+   - `nrows` and `ncols` define the number of rows and columns of subplots.
+   - `fig` is the `Figure` object.
+   - `ax` is a 2D numpy array of `Axes` objects (one for each subplot).
+
+3. **Plot Data in Each Subplot**
+
+   You can now use each `Axes` object in `ax` to plot data. For example:
+
+   ```python
+   # First subplot (top-left)
+   ax[0, 0].plot([1, 2, 3], [4, 5, 6])
+   ax[0, 0].set_title('Plot 1')
+
+   # Second subplot (top-right)
+   ax[0, 1].scatter([1, 2, 3], [4, 5, 6])
+   ax[0, 1].set_title('Plot 2')
+
+   # Third subplot (bottom-left)
+   ax[1, 0].bar([1, 2, 3], [4, 5, 6])
+   ax[1, 0].set_title('Plot 3')
+
+   # Fourth subplot (bottom-right)
+   ax[1, 1].hist([1, 2, 3, 1, 2, 3], bins=3)
+   ax[1, 1].set_title('Plot 4')
+   ```
+
+4. **Adjust Layout and Display**
+
+   Use `plt.tight_layout()` to automatically adjust subplot parameters to give specified padding and prevent overlap.
+
+   ```python
+   plt.tight_layout()
+   plt.show()
+   ```
+
+### Complete Example
+
+Here's a complete example putting it all together:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create a figure and a 2x2 grid of subplots
+fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
+
+# Data for plotting
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+y3 = np.sin(2 * x)
+y4 = np.cos(2 * x)
+
+# Plot data in each subplot
+ax[0, 0].plot(x, y1, 'r-')
+ax[0, 0].set_title('Sine Wave')
+
+ax[0, 1].plot(x, y2, 'b--')
+ax[0, 1].set_title('Cosine Wave')
+
+ax[1, 0].bar(x[::10], y3[::10])
+ax[1, 0].set_title('Bar Plot')
+
+ax[1, 1].hist(y4, bins=20)
+ax[1, 1].set_title('Histogram')
+
+# Adjust layout and display the plot
+plt.tight_layout()
+plt.show()
+```
+
+### Explanation
+
+- `plt.subplots()` creates a grid of subplots, returning a figure and an array of axes.
+- `ax[i, j]` accesses the subplot at row `i` and column `j`.
+- The plotting methods (`plot`, `scatter`, `bar`, `hist`, etc.) are called on individual `Axes` objects.
+- `plt.tight_layout()` adjusts the subplot parameters for a clean layout.
+
+By using `fig` and `ax`, you have full control over the appearance and layout of your subplots, making it easy to create organized and informative visualizations.
+
 3D figures
 **********
 
