@@ -71,4 +71,4 @@ This example give this figure:
 What meshgrid produces ?
 ************************
 
-To understand how the :code:`meshgrid` function works, you can read this ressource: `Numpy / Meshgrid PDF <./_static/docs/numpy_meshgrid.pdf>`_
+To understand how the :code:`meshgrid` function works, you can read this ressource: `Numpy / Meshgrid PDF <https://lense.institutoptique.fr/ressources/Annee1/ONIP/Notions/ONIP_Python_Notions_Meshgrid.pdf>`_
