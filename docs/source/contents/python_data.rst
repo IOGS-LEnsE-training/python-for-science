@@ -251,8 +251,8 @@ Numbers
 
 In Python, numbers can be of different types:
 
-- **Integers** (:class:`int`): whole numbers without any decimal point.
-- **Floating-point numbers** (:class:`float`): numbers that have a decimal point or use exponential (scientific) notation.
+- **Integers** (:class:`int` or :class:`int32` or :class:`int64`): whole numbers without any decimal point.
+- **Floating-point numbers** (:class:`float` or :class:`float32` or :class:`float64`): numbers that have a decimal point or use exponential (scientific) notation.
 - **Complex numbers** (:class:`complex`): consisting of a real part and an imaginary part. They are represented as :math:`a + bj`, where :math:`a` is the real part, :math:`b` is the imaginary part, and :math:`j` represents the square root of -1 (imaginary unit).
 
 Here are some examples of using these numeric types in Python:
