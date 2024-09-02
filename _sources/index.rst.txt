@@ -74,7 +74,13 @@ Python for Science
 	Matplotlib Basics<contents/matplotlib_basics>
 	Meshgrid and matrix calculation<contents/python_meshgrid>
 
-
+.. toctree::
+   :maxdepth: 1
+   :caption: Signal processing
+   
+	FFT with Python<contents/signal_process_fft>
+	Scipy<contents/signal_scipy>
+	
 .. toctree::
    :maxdepth: 1
    :caption: Examples
@@ -82,13 +88,8 @@ Python for Science
 	Functions<contents/examples_functions>
 	Arrays (Numpy)<contents/examples_arrays>
 	Figures (Matplotlib)<contents/examples_figures>
+	Signal processing<contents/examples_signal>
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Signal processing
-   
-	FFT with Python<contents/signal_process_fft>
-	Scipy<contents/signal_scipy>
    
 .. toctree::
 	:maxdepth: 1

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Good practices with Python (and other langages) &mdash; Python for Science / Basics 0.1 documentation</title>
+  <title>Examples &mdash; Python for Science / Basics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
@@ -24,8 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Numpy Basics" href="numpy_basics.html" />
-    <link rel="prev" title="Execution time of functions" href="python_time.html" /> 
+    <link rel="prev" title="Examples" href="examples_figures.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,22 +51,12 @@
 <li class="toctree-l1"><a class="reference internal" href="python_prepare.html">     Preparing Python</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Basics for Science</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="python_data.html">     Data types and display</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_conditions.html">     Conditionals and loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_functions.html">     Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">     Good practices</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#naming-objects">Naming objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documenting-methods-and-classes">Documenting methods and classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-separators-in-numbers">Adding separators in numbers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-enumerate-in-lists">Using enumerate in lists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#try-except">Try / Except</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#main">__main__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-functions">Creating functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-modules">Creating modules</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="good_practices.html">     Good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_basics.html">     Numpy Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matplotlib_basics.html">     Matplotlib Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_meshgrid.html">     Meshgrid and matrix calculation</a></li>
@@ -78,11 +67,11 @@
 <li class="toctree-l1"><a class="reference internal" href="signal_scipy.html">     Scipy</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="examples_functions.html">     Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples_arrays.html">     Arrays (Numpy)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples_figures.html">     Figures (Matplotlib)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples_signal.html">     Signal processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Signal processing</a></li>
 </ul>
 
         </div>
@@ -99,9 +88,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Good practices with Python (and other langages)</li>
+      <li class="breadcrumb-item active">Examples</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/contents/good_practices.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/contents/examples_signal.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -109,51 +98,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="good-practices-with-python-and-other-langages">
-<h1>Good practices with Python (and other langages)<a class="headerlink" href="#good-practices-with-python-and-other-langages" title="Link to this heading"></a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Under construction !</p>
-</div>
-<ul class="simple">
-<li><p>PEP 8 : <a class="reference external" href="https://peps.python.org/pep-0008/">https://peps.python.org/pep-0008/</a></p></li>
-<li><p>PEP257 (docstring) : <a class="reference external" href="https://peps.python.org/pep-0257/">https://peps.python.org/pep-0257/</a></p></li>
-</ul>
-<section id="naming-objects">
-<h2>Naming objects<a class="headerlink" href="#naming-objects" title="Link to this heading"></a></h2>
-<p>To <strong>make your code more understandable</strong>, it’s important to call your variables in a way that quickly identifies the information they contain.</p>
-<p>Don’t call a variable <code class="code docutils literal notranslate"><span class="pre">a</span></code> or <code class="code docutils literal notranslate"><span class="pre">b</span></code> if its content is the wavelength of a source. Call it <code class="code docutils literal notranslate"><span class="pre">wavelength</span></code>.</p>
-</section>
-<section id="documenting-methods-and-classes">
-<h2>Documenting methods and classes<a class="headerlink" href="#documenting-methods-and-classes" title="Link to this heading"></a></h2>
-</section>
-<section id="adding-separators-in-numbers">
-<h2>Adding separators in numbers<a class="headerlink" href="#adding-separators-in-numbers" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=C-gEQdGVXbk&amp;ab_channel=CoreySchafer">https://www.youtube.com/watch?v=C-gEQdGVXbk&amp;ab_channel=CoreySchafer</a></p>
-</section>
-<section id="using-enumerate-in-lists">
-<h2>Using enumerate in lists<a class="headerlink" href="#using-enumerate-in-lists" title="Link to this heading"></a></h2>
-</section>
-<section id="try-except">
-<h2>Try / Except<a class="headerlink" href="#try-except" title="Link to this heading"></a></h2>
-</section>
-<section id="main">
-<h2>__main__<a class="headerlink" href="#main" title="Link to this heading"></a></h2>
-</section>
-<section id="creating-functions">
-<h2>Creating functions<a class="headerlink" href="#creating-functions" title="Link to this heading"></a></h2>
-</section>
-<section id="creating-modules">
-<h2>Creating modules<a class="headerlink" href="#creating-modules" title="Link to this heading"></a></h2>
-</section>
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="python_time.html" class="btn btn-neutral float-left" title="Execution time of functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="numpy_basics.html" class="btn btn-neutral float-right" title="Numpy Basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples_figures.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
