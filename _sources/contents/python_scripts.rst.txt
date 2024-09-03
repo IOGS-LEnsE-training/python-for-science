@@ -74,7 +74,89 @@ TO DO !
 PyCharm / IDE
 =============
 
-TO DO !
+**PyCharm** is a popular integrated development environment (IDE) specifically designed for Python programming. Developed by *JetBrains*, **PyCharm** offers a comprehensive set of tools that streamline the process of writing, debugging, and testing Python code. It is widely used by developers due to its powerful features, ease of use, and support for various Python frameworks and libraries.
+
+.. figure:: ../_static/images/pycharm/pycharm_main_window.png
+	:align: center
+	
+	Main window of PyCharm
+	
+More details on the PyCharm website: https://www.jetbrains.com/pycharm/
+
+Create a project
+----------------
+
+To create a new project:
+
+- Start the PyCharm software
+- Click on :file:`New Project` or :file:`File / New Project`
+
+.. figure:: ../_static/images/pycharm/pycharm_new_project.png
+	:align: center
+
+In the new window:
+
+- select the **folder** where the project will be saved in the :file:`Location` box
+- in the :file:`Python Interpreter` area, check on the :file:`Previously configured` choice
+- and select your local interpreter. If no interpreter is set up, see the section below, otherwise:
+- check the :file:`create a main.py welcome script` choice
+- finally, click on :file:`Create`
+
+
+Choose an interpreter
+---------------------
+
+In the :file:`Python Interpreter` area:
+
+- click on :file:`Add Interpreter` and :file:`Add Local Interpreter`
+
+.. figure:: ../_static/images/pycharm/pycharm_add_interpreter.png
+	:align: center
+
+- select :file:`System Interpreter` and choose a **Python 3** version
+
+.. figure:: ../_static/images/pycharm/pycharm_add_interpreter_system.png
+	:align: center
+	
+- click :file:`OK`
+
+Run a program
+-------------
+
+Before running your code, you need to select a configuration to interprete your program.
+
+In the top of the window, click on the option located to the left of the play button (Run).
+
+.. figure:: ../_static/images/pycharm/pycharm_configuration.png
+	:align: center
+	
+In the :file:`Run/Debug configurations` window, click on :file:`Add new` in the left part.
+
+.. figure:: ../_static/images/pycharm/pycharm_configuration_new.png
+	:align: center
+
+Enter a **name** for your configuration and select the python script in the :file:`Scrip file` option box.
+
+Select a Python 3 interpreter and then click :file:`OK`.
+
+.. figure:: ../_static/images/pycharm/pycharm_configuration_new_python.png
+	:align: center
+
+You're ready to run your first script with PyCharm... Click on the play button (Run).
+
+Debug a program
+---------------
+
+PyCharm comes with a built-in debugging tool that offers a user-friendly interface for debugging Python code. To run PyCharm in a debug mode, you have to click on the **bug button** located to the right of the play button (Run).
+
+You can easily set **breakpoints** by clicking next to the line number in the editor. When the code execution reaches a breakpoint, it pauses, allowing you to inspect the state of the program.
+
+You can also **"watch" variables**, meaning you can track the values of specific variables as your code executes, which helps in diagnosing issues, in the :file:`Threads & Variables` section (bottom of the main window).
+
+.. figure:: ../_static/images/pycharm/pycharm_debug.png
+	:align: center
+
+|
 
 Jupyter Notebooks
 *****************

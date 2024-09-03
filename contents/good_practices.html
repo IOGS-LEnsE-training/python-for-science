@@ -59,7 +59,18 @@
 <li class="toctree-l1"><a class="reference internal" href="python_time.html">     Execution Time</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">     Good practices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#naming-objects">Naming objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documenting-methods-and-classes">Documenting methods and classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documenting-methods-and-classes">Documenting methods and classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docstring-format">Docstring format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documenting-methods">Documenting methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#one-liner-docstring">One-liner Docstring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-line-docstring">Multi-line Docstring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-docstring">Detailed Docstring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docstring-in-rst-format">Docstring in rst format</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#documenting-classes">Documenting classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#adding-separators-in-numbers">Adding separators in numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-enumerate-in-lists">Using enumerate in lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#try-except">Try / Except</a></li>
@@ -126,6 +137,182 @@
 </section>
 <section id="documenting-methods-and-classes">
 <h2>Documenting methods and classes<a class="headerlink" href="#documenting-methods-and-classes" title="Link to this heading"></a></h2>
+<p>Documenting methods and classes in Python is crucial for:</p>
+<ul class="simple">
+<li><p><strong>Clarity and Readability</strong>: Documenting makes your code more understandable for others (and for yourself when you revisit the code later). They explain what a method does, what arguments it takes, and what it returns.</p></li>
+<li><p><strong>Maintenance and Debugging</strong>: Clear documentation reduces the time needed to maintain or debug code. When the functionality is well-documented, it’s easier to identify and fix issues.</p></li>
+<li><p><strong>Collaboration</strong>: In team environments, docstrings allow team members to quickly understand each part of the code, facilitating collaboration.</p></li>
+<li><p><strong>IDE Support</strong>: Many IDEs use docstrings to provide inline help and autocompletion, enhancing the coding experience.</p></li>
+</ul>
+<section id="docstring-format">
+<h3>Docstring format<a class="headerlink" href="#docstring-format" title="Link to this heading"></a></h3>
+<p>A <strong>docstring</strong> (short for “documentation string”) is a special type of comment in Python used to document modules, classes, methods, and functions. Unlike regular comments, which are usually placed above or beside code and are intended to be ignored by Python, a docstring is stored as an attribute of the object it documents and can be accessed at runtime.</p>
+<p>Python uses triple quotes (<code class="code docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or <code class="code docutils literal notranslate"><span class="pre">'''</span></code>) to create docstrings. There are different styles for writing docstrings, but the most common formats are the <strong>PEP 257</strong> and <strong>NumPy/SciPy</strong> styles.</p>
+</section>
+<section id="documenting-methods">
+<h3>Documenting methods<a class="headerlink" href="#documenting-methods" title="Link to this heading"></a></h3>
+<section id="one-liner-docstring">
+<h4>One-liner Docstring<a class="headerlink" href="#one-liner-docstring" title="Link to this heading"></a></h4>
+<p>For <strong>very simple methods</strong>, a single line docstring may suffice.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the sum of a and b.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-line-docstring">
+<h4>Multi-line Docstring<a class="headerlink" href="#multi-line-docstring" title="Link to this heading"></a></h4>
+<p><strong>When more detail is required</strong>, use a multi-line docstring.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Multiply two numbers and return the result.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        a (int, float): The first number.</span>
+<span class="sd">        b (int, float): The second number.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        int, float: The product of a and b.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="detailed-docstring">
+<h4>Detailed Docstring<a class="headerlink" href="#detailed-docstring" title="Link to this heading"></a></h4>
+<p>For <strong>methods with multiple parameters</strong>, optional arguments, or complex behaviors, a detailed docstring is useful. This style often follows the NumPy/SciPy convention.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Divide one number by another.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a : int, float</span>
+<span class="sd">                The numerator.</span>
+<span class="sd">        b : int, float</span>
+<span class="sd">                The denominator. Must be non-zero.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">                The result of the division.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ZeroDivisionError</span>
+<span class="sd">                If `b` is zero.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">                If either `a` or `b` is not a number.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ZeroDivisionError</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="docstring-in-rst-format">
+<h4>Docstring in rst format<a class="headerlink" href="#docstring-in-rst-format" title="Link to this heading"></a></h4>
+<p>Tools like Sphinx or Doxygen can automatically generate documentation from docstrings. This makes it easier to maintain up-to-date documentation. Sphinx uses the <strong>reStructuredText</strong> (reST) format.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the area of a rectangle.</span>
+
+<span class="sd">        :param length: The length of the rectangle.</span>
+<span class="sd">        :type length: float or int</span>
+<span class="sd">        :param width: The width of the rectangle.</span>
+<span class="sd">        :type width: float or int</span>
+
+<span class="sd">        :return: The area of the rectangle.</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documenting-classes">
+<h3>Documenting classes<a class="headerlink" href="#documenting-classes" title="Link to this heading"></a></h3>
+<p>A class docstring typically includes the following sections:</p>
+<ul class="simple">
+<li><p><strong>Class Summary</strong>: A brief description of what the class represents or does.</p></li>
+<li><p><strong>Attributes</strong>: A list and description of the class attributes.</p></li>
+<li><p><strong>Methods</strong>: Optionally, a summary of the methods, especially if some methods are crucial to understanding the class’s functionality.</p></li>
+<li><p><strong>Examples</strong>: Optionally, examples of how to use the class.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A class used to represent a Car.</span>
+
+<span class="sd">        Attributes</span>
+<span class="sd">        ----------</span>
+<span class="sd">        make : str</span>
+<span class="sd">                The manufacturer of the car.</span>
+<span class="sd">        model : str</span>
+<span class="sd">                The model of the car.</span>
+<span class="sd">        year : int</span>
+<span class="sd">                The year the car was manufactured.</span>
+<span class="sd">        color : str, optional</span>
+<span class="sd">                The color of the car (default is &#39;white&#39;).</span>
+
+<span class="sd">        Methods</span>
+<span class="sd">        -------</span>
+<span class="sd">        start_engine():</span>
+<span class="sd">                Starts the car&#39;s engine.</span>
+<span class="sd">        stop_engine():</span>
+<span class="sd">                Stops the car&#39;s engine.</span>
+<span class="sd">        drive(distance):</span>
+<span class="sd">                Drives the car a certain distance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">make</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">):</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Constructs all the necessary attributes for the car object.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                make : str</span>
+<span class="sd">                        The manufacturer of the car.</span>
+<span class="sd">                model : str</span>
+<span class="sd">                        The model of the car.</span>
+<span class="sd">                year : int</span>
+<span class="sd">                        The year the car was manufactured.</span>
+<span class="sd">                color : str, optional</span>
+<span class="sd">                        The color of the car (default is &#39;white&#39;).</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">make</span> <span class="o">=</span> <span class="n">make</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+        <span class="k">def</span> <span class="nf">start_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;Starts the car&#39;s engine.&quot;&quot;&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Engine started.&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">stop_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;Stops the car&#39;s engine.&quot;&quot;&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Engine stopped.&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">drive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Drives the car a certain distance.</span>
+
+<span class="sd">                Parameters</span>
+<span class="sd">                ----------</span>
+<span class="sd">                distance : float</span>
+<span class="sd">                        The distance to drive in miles.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Car is driving for </span><span class="si">{</span><span class="n">distance</span><span class="si">}</span><span class="s2"> miles.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also add an example section:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">Examples</span>
+<span class="o">--------</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s1">&#39;Toyota&#39;</span><span class="p">,</span> <span class="s1">&#39;Corolla&#39;</span><span class="p">,</span> <span class="mi">2020</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_car</span><span class="o">.</span><span class="n">start_engine</span><span class="p">()</span>
+<span class="n">Engine</span> <span class="n">started</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="adding-separators-in-numbers">
 <h2>Adding separators in numbers<a class="headerlink" href="#adding-separators-in-numbers" title="Link to this heading"></a></h2>

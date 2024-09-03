@@ -173,7 +173,82 @@
 </section>
 <section id="pycharm-ide">
 <h3>PyCharm / IDE<a class="headerlink" href="#pycharm-ide" title="Link to this heading"></a></h3>
-<p>TO DO !</p>
+<p><strong>PyCharm</strong> is a popular integrated development environment (IDE) specifically designed for Python programming. Developed by <em>JetBrains</em>, <strong>PyCharm</strong> offers a comprehensive set of tools that streamline the process of writing, debugging, and testing Python code. It is widely used by developers due to its powerful features, ease of use, and support for various Python frameworks and libraries.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/pycharm_main_window.png" src="../_images/pycharm_main_window.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Main window of PyCharm</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>More details on the PyCharm website: <a class="reference external" href="https://www.jetbrains.com/pycharm/">https://www.jetbrains.com/pycharm/</a></p>
+<section id="create-a-project">
+<h4>Create a project<a class="headerlink" href="#create-a-project" title="Link to this heading"></a></h4>
+<p>To create a new project:</p>
+<ul class="simple">
+<li><p>Start the PyCharm software</p></li>
+<li><p>Click on <code class="file docutils literal notranslate"><span class="pre">New</span> <span class="pre">Project</span></code> or <code class="file docutils literal notranslate"><span class="pre">File</span> <span class="pre">/</span> <span class="pre">New</span> <span class="pre">Project</span></code></p></li>
+</ul>
+<figure class="align-center">
+<img alt="../_images/pycharm_new_project.png" src="../_images/pycharm_new_project.png" />
+</figure>
+<p>In the new window:</p>
+<ul class="simple">
+<li><p>select the <strong>folder</strong> where the project will be saved in the <code class="file docutils literal notranslate"><span class="pre">Location</span></code> box</p></li>
+<li><p>in the <code class="file docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Interpreter</span></code> area, check on the <code class="file docutils literal notranslate"><span class="pre">Previously</span> <span class="pre">configured</span></code> choice</p></li>
+<li><p>and select your local interpreter. If no interpreter is set up, see the section below, otherwise:</p></li>
+<li><p>check the <code class="file docutils literal notranslate"><span class="pre">create</span> <span class="pre">a</span> <span class="pre">main.py</span> <span class="pre">welcome</span> <span class="pre">script</span></code> choice</p></li>
+<li><p>finally, click on <code class="file docutils literal notranslate"><span class="pre">Create</span></code></p></li>
+</ul>
+</section>
+<section id="choose-an-interpreter">
+<h4>Choose an interpreter<a class="headerlink" href="#choose-an-interpreter" title="Link to this heading"></a></h4>
+<p>In the <code class="file docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Interpreter</span></code> area:</p>
+<ul class="simple">
+<li><p>click on <code class="file docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Interpreter</span></code> and <code class="file docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Local</span> <span class="pre">Interpreter</span></code></p></li>
+</ul>
+<figure class="align-center">
+<img alt="../_images/pycharm_add_interpreter.png" src="../_images/pycharm_add_interpreter.png" />
+</figure>
+<ul class="simple">
+<li><p>select <code class="file docutils literal notranslate"><span class="pre">System</span> <span class="pre">Interpreter</span></code> and choose a <strong>Python 3</strong> version</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../_images/pycharm_add_interpreter_system.png" src="../_images/pycharm_add_interpreter_system.png" />
+</figure>
+<ul class="simple">
+<li><p>click <code class="file docutils literal notranslate"><span class="pre">OK</span></code></p></li>
+</ul>
+</section>
+<section id="run-a-program">
+<h4>Run a program<a class="headerlink" href="#run-a-program" title="Link to this heading"></a></h4>
+<p>Before running your code, you need to select a configuration to interprete your program.</p>
+<p>In the top of the window, click on the option located to the left of the play button (Run).</p>
+<figure class="align-center">
+<img alt="../_images/pycharm_configuration.png" src="../_images/pycharm_configuration.png" />
+</figure>
+<p>In the <code class="file docutils literal notranslate"><span class="pre">Run/Debug</span> <span class="pre">configurations</span></code> window, click on <code class="file docutils literal notranslate"><span class="pre">Add</span> <span class="pre">new</span></code> in the left part.</p>
+<figure class="align-center">
+<img alt="../_images/pycharm_configuration_new.png" src="../_images/pycharm_configuration_new.png" />
+</figure>
+<p>Enter a <strong>name</strong> for your configuration and select the python script in the <code class="file docutils literal notranslate"><span class="pre">Scrip</span> <span class="pre">file</span></code> option box.</p>
+<p>Select a Python 3 interpreter and then click <code class="file docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<figure class="align-center">
+<img alt="../_images/pycharm_configuration_new_python.png" src="../_images/pycharm_configuration_new_python.png" />
+</figure>
+<p>You’re ready to run your first script with PyCharm… Click on the play button (Run).</p>
+</section>
+<section id="debug-a-program">
+<h4>Debug a program<a class="headerlink" href="#debug-a-program" title="Link to this heading"></a></h4>
+<p>PyCharm comes with a built-in debugging tool that offers a user-friendly interface for debugging Python code. To run PyCharm in a debug mode, you have to click on the <strong>bug button</strong> located to the right of the play button (Run).</p>
+<p>You can easily set <strong>breakpoints</strong> by clicking next to the line number in the editor. When the code execution reaches a breakpoint, it pauses, allowing you to inspect the state of the program.</p>
+<p>You can also <strong>“watch” variables</strong>, meaning you can track the values of specific variables as your code executes, which helps in diagnosing issues, in the <code class="file docutils literal notranslate"><span class="pre">Threads</span> <span class="pre">&amp;</span> <span class="pre">Variables</span></code> section (bottom of the main window).</p>
+<figure class="align-center">
+<img alt="../_images/pycharm_debug.png" src="../_images/pycharm_debug.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 </section>
 <section id="jupyter-notebooks">
