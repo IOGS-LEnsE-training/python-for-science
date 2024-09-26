@@ -27,3 +27,17 @@ The last one, called :code:`number`, specifies how many times to run the code. T
 >>> print(f"Execution time: {execution_time} seconds")
 Execution time: 0.01500284999999168 seconds
 
+It is also possible to test a function with parameters.
+
+.. code-block:: python
+
+	import timeit
+
+	# Define a function
+	def my_function(a, b):
+		return a + b
+
+	# Measure the execution time of the function
+	execution_time = timeit.timeit(lambda: my_function(2, 3), globals=globals(), number=1000)
+
+
