@@ -42,7 +42,7 @@ Here’s how :code:`meshgrid` works in practice:
 	Z = np.sin(np.sqrt(X**2 + Y**2))
 
 	# Plot the result using a contour plot
-	plt.contourf(X, Y, Z, cmap='viridis')
+	plt.imshow(Z, cmap='viridis')
 	plt.colorbar()
 	plt.title('Contour Plot of $Z = \sin(\sqrt{X^2 + Y^2})$')
 	plt.xlabel('X')
