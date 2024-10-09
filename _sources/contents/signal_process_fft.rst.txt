@@ -161,14 +161,23 @@ Output data of the FFT
 
 When you compute the Fast Fourier Transform (FFT) of a signal, the output is a **set of complex numbers** that represent the frequency components of the signal. These numbers provide information about both the amplitude (magnitude) and the phase of each frequency component present in the signal. 
 
-...
+.. figure:: ../_static/images/dtf_samples.png
+	:align: center
+	:scale: 80%
+
+	Example of a discrete Fourier Transform output.
+
+The output of the Fast Fourier Transform (FFT) process is a **vector** of the same size as the original input vector, consisting of :math:`N` samples. Each sample in this output is spaced by :math:`\Delta{}f = \frac{f_S}{N}`, where :math:`f_S` denotes the sampling frequency.
+
+The :math:`k^{th}` sample in the FFT output corresponds to the frequency component of the signal at the frequency :math:`k*\Delta{}f`. 
+
 
 Frequency axis
 ==============
 
 The frequency axis in the Fast Fourier Transform (FFT) represents the range of frequencies that are present in the signal being analyzed. Understanding how this axis is constructed and interpreted is crucial for analyzing the frequency content of a signal.
 
-The FFT process divides the frequency range from 0 Hz to :math:`f_s` into :math:`N` **equally spaced points**.
+The FFT process partitions the **frequency range from 0 Hz to :math:`f_S`** into :math:`N` equally spaced points. It is important to note that the frequency value **:math:`f_S` itself is excluded** from this interval due to the periodic nature of the Fourier transform applied to a sampled signal. Consequently, the frequency components are represented in the range :math:`\[0, f_s\[`, ensuring that the highest frequency is :math:`f_S - \Delta{}f`, where :math:`\Delta{}f = \frac{f_S}{N}`.
 
 Frequency Resolution
 --------------------
@@ -196,8 +205,8 @@ Where
 - :math:`f_s` is the sampling rate.
 - :math:`N` is the number of samples or the size of the FFT.
 
-Physical representation
------------------------
+Representation for physicians
+-----------------------------
 
 Physicians and engineers often prefer to display the frequency range from negative to positive to provide a complete view of the signal's frequency content.
 
@@ -281,8 +290,47 @@ The FFT can be computed using :code:`numpy.fft.fft()` method.
 	fft_magnitude = np.abs(fft_result) / N
 
 
+
+
 Construct Frequency Axis
 ========================
+
+
+Homemade Version
+----------------
+
+The goal is to create a vector representing the frequency axis, where the frequencies are given by this expression:
+
+
+.. math::
+
+	f_k = \frac{k \cdot f_s}{N}, \quad \text{for} \ k = 0, 1, 2, \dots, N-1
+
+It's possible to use the :code:`numpy.linspace()` method.
+
+.. code-block:: python
+	
+	xf = np.linspace(0, 1, N) * Fs
+
+To change the frequency higher than :math:`f_s/2` to the negative part of the spectrum, you can use this code:
+
+.. code-block:: python
+	
+	condition = xf > Fs/2
+	xf[condition] = -(Fs - xf[condition])
+	
+And finally, to obtain a vector from :math:`-f_s/2` to :math:`f_s/2`, it's possible to use the :code:`numpy.fft.fftshift()` method.
+
+.. code-block:: python
+
+	xf = np.fft.fftshift(xf)
+	
+.. warning::
+	
+	If you want to display the FFT result using the latest version of :code:`xf`, you also need to shift the FFT data to obtain a relevant graph.
+
+fftfreq function
+----------------
 
 The frequency axis can be computed using :code:`numpy.fft.fftfreq()` method.
 
@@ -295,7 +343,11 @@ This method requires the **number of sample points** (:math:`N`) and the interva
 
 With this two parameters, the frequency axis can be reconstructed. 
 
-The :code:`fftfreq()` method gives a frequency axis range from negative to positive value, i.e. from :math:`-\frac{f_s}{2}` to :math:`\frac{f_s}{2}`.
+.. warning::
+	
+	The :code:`fftfreq()` method gives a frequency axis range from negative to positive value, i.e. from :math:`-\frac{f_s}{2}` to :math:`\frac{f_s}{2}`, but in a vector starting with the positive frequencies followed by the negative ones.
+	
+	frequencies = [0, ... N/2-1, -N/2... -1] * Fs
 
 
 Display the FFT of a signal
@@ -314,7 +366,7 @@ Displaying the Fast Fourier Transform (FFT) of a function can be done :class:`ma
     ax[0].set_ylabel("Amplitude")
     ax[0].grid(True)
 
-    ax[1].plot(frequencies, fft_magnitude)
+    ax[1].plot(np.fft.fftshift(frequencies), np.fft.fftshift(fft_magnitude))
     ax[1].set_title("FFT of the Signal")
     ax[1].set_xlabel("Frequency [Hz]")
     ax[1].set_ylabel("Magnitude")

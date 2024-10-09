@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,22 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FFT with Python &mdash; Python for Science / Basics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
       <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
       <link rel="stylesheet" type="text/css" href="https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -91,7 +89,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#frequency-axis">Frequency axis</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#frequency-resolution">Frequency Resolution</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#frequency-bins">Frequency bins</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#physical-representation">Physical representation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#representation-for-physicians">Representation for physicians</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#ensure-to-respect-the-sampling-theorem">Ensure to respect the sampling theorem</a></li>
@@ -100,7 +98,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#calculate-the-fft-of-a-signal">Calculate the FFT of a signal</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#define-the-function">Define the function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compute-the-fft">Compute the FFT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#construct-frequency-axis">Construct Frequency Axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#construct-frequency-axis">Construct Frequency Axis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#homemade-version">Homemade Version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fftfreq-function">fftfreq function</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#display-the-fft-of-a-signal">Display the FFT of a signal</a></li>
@@ -263,12 +265,20 @@
 <section id="output-data-of-the-fft">
 <h3>Output data of the FFT<a class="headerlink" href="#output-data-of-the-fft" title="Link to this heading"></a></h3>
 <p>When you compute the Fast Fourier Transform (FFT) of a signal, the output is a <strong>set of complex numbers</strong> that represent the frequency components of the signal. These numbers provide information about both the amplitude (magnitude) and the phase of each frequency component present in the signal.</p>
-<p>…</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/dtf_samples.png"><img alt="../_images/dtf_samples.png" src="../_images/dtf_samples.png" style="width: 642.4000000000001px; height: 382.40000000000003px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of a discrete Fourier Transform output.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The output of the Fast Fourier Transform (FFT) process is a <strong>vector</strong> of the same size as the original input vector, consisting of <span class="math notranslate nohighlight">\(N\)</span> samples. Each sample in this output is spaced by <span class="math notranslate nohighlight">\(\Delta{}f = \frac{f_S}{N}\)</span>, where <span class="math notranslate nohighlight">\(f_S\)</span> denotes the sampling frequency.</p>
+<p>The <span class="math notranslate nohighlight">\(k^{th}\)</span> sample in the FFT output corresponds to the frequency component of the signal at the frequency <span class="math notranslate nohighlight">\(k*\Delta{}f\)</span>.</p>
 </section>
 <section id="frequency-axis">
 <h3>Frequency axis<a class="headerlink" href="#frequency-axis" title="Link to this heading"></a></h3>
 <p>The frequency axis in the Fast Fourier Transform (FFT) represents the range of frequencies that are present in the signal being analyzed. Understanding how this axis is constructed and interpreted is crucial for analyzing the frequency content of a signal.</p>
-<p>The FFT process divides the frequency range from 0 Hz to <span class="math notranslate nohighlight">\(f_s\)</span> into <span class="math notranslate nohighlight">\(N\)</span> <strong>equally spaced points</strong>.</p>
+<p>The FFT process partitions the <strong>frequency range from 0 Hz to :math:`f_S`</strong> into <span class="math notranslate nohighlight">\(N\)</span> equally spaced points. It is important to note that the frequency value <strong>:math:`f_S` itself is excluded</strong> from this interval due to the periodic nature of the Fourier transform applied to a sampled signal. Consequently, the frequency components are represented in the range <span class="math notranslate nohighlight">\(\[0, f_s\[\)</span>, ensuring that the highest frequency is <span class="math notranslate nohighlight">\(f_S - \Delta{}f\)</span>, where <span class="math notranslate nohighlight">\(\Delta{}f = \frac{f_S}{N}\)</span>.</p>
 <section id="frequency-resolution">
 <h4>Frequency Resolution<a class="headerlink" href="#frequency-resolution" title="Link to this heading"></a></h4>
 <p>The frequency difference between consecutive bins is given by:</p>
@@ -288,8 +298,8 @@
 <li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of samples or the size of the FFT.</p></li>
 </ul>
 </section>
-<section id="physical-representation">
-<h4>Physical representation<a class="headerlink" href="#physical-representation" title="Link to this heading"></a></h4>
+<section id="representation-for-physicians">
+<h4>Representation for physicians<a class="headerlink" href="#representation-for-physicians" title="Link to this heading"></a></h4>
 <p>Physicians and engineers often prefer to display the frequency range from negative to positive to provide a complete view of the signal’s frequency content.</p>
 <p>This centered frequency spectrum allows for easier interpretation of certain phenomena, such as symmetry, phase shifts, and frequency modulation effects, which are crucial in many physical systems.</p>
 <p>But, the standard FFT algorithm, when applied to <em>a real-valued signal</em>, typically outputs a frequency spectrum from 0 to <span class="math notranslate nohighlight">\(fs\)</span>.</p>
@@ -359,6 +369,31 @@ So, the second half of the FFT output, corresponding to frequencies from <span c
 </section>
 <section id="construct-frequency-axis">
 <h3>Construct Frequency Axis<a class="headerlink" href="#construct-frequency-axis" title="Link to this heading"></a></h3>
+<section id="homemade-version">
+<h4>Homemade Version<a class="headerlink" href="#homemade-version" title="Link to this heading"></a></h4>
+<p>The goal is to create a vector representing the frequency axis, where the frequencies are given by this expression:</p>
+<div class="math notranslate nohighlight">
+\[f_k = \frac{k \cdot f_s}{N}, \quad \text{for} \ k = 0, 1, 2, \dots, N-1\]</div>
+<p>It’s possible to use the <code class="code docutils literal notranslate"><span class="pre">numpy.linspace()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="n">Fs</span>
+</pre></div>
+</div>
+<p>To change the frequency higher than <span class="math notranslate nohighlight">\(f_s/2\)</span> to the negative part of the spectrum, you can use this code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span> <span class="o">=</span> <span class="n">xf</span> <span class="o">&gt;</span> <span class="n">Fs</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">xf</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Fs</span> <span class="o">-</span> <span class="n">xf</span><span class="p">[</span><span class="n">condition</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>And finally, to obtain a vector from <span class="math notranslate nohighlight">\(-f_s/2\)</span> to <span class="math notranslate nohighlight">\(f_s/2\)</span>, it’s possible to use the <code class="code docutils literal notranslate"><span class="pre">numpy.fft.fftshift()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">xf</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to display the FFT result using the latest version of <code class="code docutils literal notranslate"><span class="pre">xf</span></code>, you also need to shift the FFT data to obtain a relevant graph.</p>
+</div>
+</section>
+<section id="fftfreq-function">
+<h4>fftfreq function<a class="headerlink" href="#fftfreq-function" title="Link to this heading"></a></h4>
 <p>The frequency axis can be computed using <code class="code docutils literal notranslate"><span class="pre">numpy.fft.fftfreq()</span></code> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the frequency axis</span>
 <span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
@@ -366,7 +401,12 @@ So, the second half of the FFT output, corresponding to frequencies from <span c
 </div>
 <p>This method requires the <strong>number of sample points</strong> (<span class="math notranslate nohighlight">\(N\)</span>) and the interval between two samples (or the sampling interval <span class="math notranslate nohighlight">\(T_s = \frac{1}{f_s}\)</span>).</p>
 <p>With this two parameters, the frequency axis can be reconstructed.</p>
-<p>The <code class="code docutils literal notranslate"><span class="pre">fftfreq()</span></code> method gives a frequency axis range from negative to positive value, i.e. from <span class="math notranslate nohighlight">\(-\frac{f_s}{2}\)</span> to <span class="math notranslate nohighlight">\(\frac{f_s}{2}\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">fftfreq()</span></code> method gives a frequency axis range from negative to positive value, i.e. from <span class="math notranslate nohighlight">\(-\frac{f_s}{2}\)</span> to <span class="math notranslate nohighlight">\(\frac{f_s}{2}\)</span>, but in a vector starting with the positive frequencies followed by the negative ones.</p>
+<p>frequencies = [0, … N/2-1, -N/2… -1] * Fs</p>
+</div>
+</section>
 </section>
 </section>
 <section id="display-the-fft-of-a-signal">
@@ -381,7 +421,7 @@ So, the second half of the FFT output, corresponding to frequencies from <span c
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">fft_magnitude</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">frequencies</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft_magnitude</span><span class="p">))</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;FFT of the Signal&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
