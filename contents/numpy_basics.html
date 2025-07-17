@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Numpy Basics &mdash; Python for Science / Basics 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
       <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
@@ -17,7 +17,7 @@
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/js/theme.js"></script>
@@ -172,7 +172,7 @@
 <p>This library facilitates <strong>data formatting</strong> for many other advanced scientific libraries: Pandas, Scipy, Scikit-image, OpenCV, Keras, TensorFlow…</p>
 <p>For more information about this library: <a class="reference external" href="https://numpy.org/">https://numpy.org/</a></p>
 <p>To use this library, you need to import it in your script:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 <section id="mathematical-functions">
@@ -349,7 +349,7 @@
 <p>This method can also be used with functions that you have defined yourself.</p>
 <p>In the following example, we provide a function <span class="math notranslate nohighlight">\(f(x) = 4 \cdot x^2 - 3 \cdot x + 9\)</span> and wish to calculate the value of this function for different values of <span class="math notranslate nohighlight">\(x\)</span>. These values are then stored in a vector.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">9</span>
 
 <span class="n">y_vect</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_vect</span><span class="p">)</span>
